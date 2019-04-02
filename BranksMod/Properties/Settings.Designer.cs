@@ -157,7 +157,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.1-PRE")]
+        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.1")]
         public string InjectorVersion {
             get {
                 return ((string)(this["InjectorVersion"]));

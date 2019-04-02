@@ -44,12 +44,13 @@ namespace BranksMod
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
+            GetFolderPath();
             CreateLogger();
+            VerifyDirectory();
             CheckSafeMode();
             CheckWarnings();
             CheckAutoUpdates();
             CheckInstall();
-            GetFolderPath();
             ProcessTmr.Start();
         }
 
@@ -65,20 +66,25 @@ namespace BranksMod
             RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CreateLogger] Initialized logging.");
         }
 
+        public void VerifyDirectory()
+        {
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[VerifyDirectory] " + Properties.Settings.Default.FolderPath);
+            if (Directory.Exists(Properties.Settings.Default.FolderPath) & !Directory.Exists(Properties.Settings.Default.FolderPath + "\\bakkesmod"))
+            {
+                MessageBox.Show("ERROR: Rocket League path found but could not find BakkesMod folder, do you not have it installed?", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[VerifyDirectory] Could not find BakkesMod folder.");
+            }
+            else
+            {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[VerifyDirectory] Found BakkesMod folder.");
+            }
+        }
+
         public void GetFolderPath()
         {           
             string Path = RLLauncher.GetDirFromLog();
             Properties.Settings.Default.FolderPath = Path;
             Properties.Settings.Default.Save();
-            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[GetFolderPath] " + Properties.Settings.Default.FolderPath);
-
-            if (!Directory.Exists(Path + "\\bakkesmod"))
-            {
-                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[GetFolderPath] Could not find BakkesMod folder.");
-            } else
-            {
-                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[GetFolderPath] Found BakkesMod folder.");
-            }
         }
 
         private void ProcessTmr_Tick(object sender, EventArgs e)
@@ -313,7 +319,7 @@ namespace BranksMod
 
         private void UninstallMenuBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("BranKs dumbass forgot to add this part.");
+            
         }
 
         private void ExitMenuBtn_Click(object sender, EventArgs e)

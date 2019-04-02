@@ -15,6 +15,8 @@ namespace BranksMod
 {
     public partial class SettingsFrm : Form
     {
+        string Time = DateTime.Now.ToString("[HH:mm:ss] ");
+
         public SettingsFrm()
         {
             InitializeComponent();
@@ -107,6 +109,7 @@ namespace BranksMod
             RLVersionLbl.Text = "Rocket League Build: " + Properties.Settings.Default.RLVersion;
             InjectorVersionLbl.Text = "Injector Version: " + Properties.Settings.Default.InjectorVersion;
             ModVersionLbl.Text = "Mod Version: " + Properties.Settings.Default.ModVersion;
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadSettings] All settings loaded.");
         }
 
 
@@ -137,6 +140,7 @@ namespace BranksMod
             ManualBox.Checked = false;        
             TimeoutBox.Text = "2500";
             SaveChanges();
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[ResetBtn] Reset settings to default.");
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)
@@ -153,6 +157,7 @@ namespace BranksMod
             Process P = new Process();
             P.StartInfo.FileName = "www.icons8.com";
             P.Start();
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[Icons8Link] Opened link.");
         }
 
         public void CheckAutoInjector()
@@ -162,19 +167,23 @@ namespace BranksMod
                 StreamWriter INIFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
                 INIFile.Write(Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
                 INIFile.Close();
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Created X3DAudio1_7.ini.");
 
                 StreamWriter DLLFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll");
                 DLLFile.Close();
                 File.WriteAllBytes(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll", Properties.Resources.X3DAudio1_7);
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Created X3DAudio1_7.dll.");
             } else if (AutoRunBox.Checked == false)
             {
                  try
                 {
                     File.Delete(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Deleted X3DAudio1_7.ini.");
                     File.Delete(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll");
-                } catch (Exception)
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Deleted X3DAudio1_7.dll.");
+                } catch (Exception Ex)
                 {
-
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] " + Ex);
                 }
             }
         }
@@ -223,6 +232,7 @@ namespace BranksMod
             Properties.Settings.Default.AutoSave = AutoSaveBox.Checked;
             Properties.Settings.Default.RunOnStart = StartupBox.Checked;
             Properties.Settings.Default.Save();
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[SaveSettings] All settings saved.");
         }
 
         private void TimeoutBox_KeyPress(object sender, KeyPressEventArgs e)

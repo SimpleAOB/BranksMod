@@ -98,6 +98,7 @@
             // MiniStartupBox
             // 
             this.MiniStartupBox.BackColor = System.Drawing.Color.Transparent;
+            this.MiniStartupBox.Enabled = false;
             this.MiniStartupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MiniStartupBox.Location = new System.Drawing.Point(37, 68);
             this.MiniStartupBox.Name = "MiniStartupBox";

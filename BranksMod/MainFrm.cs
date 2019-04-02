@@ -29,6 +29,7 @@ namespace BranksMod
         string UpdateURL;
         string bakkesModDirectory;
         String InjectionStatus = "";
+        string Time = DateTime.Now.ToString("[HH:mm:ss] ");
 
         private static readonly string BAKKESMOD_FILES_ZIP_DIR = "bminstall.zip";
         private static readonly string REGISTRY_CURRENTUSER_BASE_DIR = @"Software\BranksMod";
@@ -43,6 +44,7 @@ namespace BranksMod
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
+            CreateLogger();
             CheckSafeMode();
             CheckWarnings();
             CheckAutoUpdates();
@@ -56,11 +58,27 @@ namespace BranksMod
             CheckMiniHide();
         }
 
+        public void CreateLogger()
+        {      
+            StreamWriter LogFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\branksmod.log");
+            LogFile.Close();
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CreateLogger] Initialized logging.");
+        }
+
         public void GetFolderPath()
-        {
+        {           
             string Path = RLLauncher.GetDirFromLog();
             Properties.Settings.Default.FolderPath = Path;
             Properties.Settings.Default.Save();
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[GetFolderPath] " + Properties.Settings.Default.FolderPath);
+
+            if (!Directory.Exists(Path + "\\bakkesmod"))
+            {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[GetFolderPath] Could not find BakkesMod folder.");
+            } else
+            {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[GetFolderPath] Found BakkesMod folder.");
+            }
         }
 
         private void ProcessTmr_Tick(object sender, EventArgs e)
@@ -108,22 +126,27 @@ namespace BranksMod
 
         void InjectDLL()
         {
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[InjectDLL] Attempting injection.");
             InjectionResult Result = DllInjector.Instance.Inject("RocketLeague", Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
             switch (Result)
             {
                 case InjectionResult.DLL_NOT_FOUND:
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[InjectDLL] Could Not Find DLL File.");
                     StatusLbl.Text = "Status: Could Not Find DLL File.";
                     InjectionStatus = StatusStrings.INSTALLATION_WRONG;
                     break;
                 case InjectionResult.GAME_PROCESS_NOT_FOUND:
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[InjectDLL] Uninjected, Rocket League is not running.");
                     StatusLbl.Text = "Status: Uninjected.";
                     InjectionStatus = StatusStrings.PROCESS_NOT_ACTIVE;
                     break;
                 case InjectionResult.INJECTION_FAILED:
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[InjectDLL] Injection Failed.");
                     StatusLbl.Text = "Status: Injection Failed.";
                     InjectionStatus = StatusStrings.INJECTION_FAILED;
                     break;
                 case InjectionResult.SUCCESS:
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[InjectDLL] Successfully Injected.");
                     StatusLbl.Text = "Status: Successfully Injected.";
                     InjectionStatus = StatusStrings.INJECTED;
                     IsInjected = true;
@@ -152,10 +175,11 @@ namespace BranksMod
 
         public void CheckForUpdates()
         {
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckingForUpdates] Checking for updates.");
             string URL = "https://pastebin.com/raw/91j3JaZM";
             string Pattern = "(\"([^ \"]|\"\")*\")";
             string InjectorVersion = "";
-
+            
             StatusLbl.Text = "Status: Checking For Updates...";
             HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
@@ -165,17 +189,20 @@ namespace BranksMod
 
                 if (DownloadBox.Text.Contains("InjectorVersion"))
                 {
-                   InjectorVersion = Regex.Match(DownloadBox.Text, Pattern, RegexOptions.IgnoreCase | RegexOptions.RightToLeft).Groups[1].Value.Replace("\"", "");                 
-                }
+                   InjectorVersion = Regex.Match(DownloadBox.Text, Pattern, RegexOptions.IgnoreCase | RegexOptions.RightToLeft).Groups[1].Value.Replace("\"", "");
+                   RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckingForUpdates] Latest Injector Version: " + InjectorVersion);
+            }
 
                 if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
                 {
-                    
-                } else
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckingForUpdates] No update found.");
+            } else
                 {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckingForUpdates] Update Found, Prompting User.");
                 DialogResult result = MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result == DialogResult.Yes)
                 {
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckingForUpdates] Opened Link.");
                     Process P = new Process();
                     P.StartInfo.FileName = "https://github.com/ItsBranK/BranksMod/releases";
                     P.Start();
@@ -250,13 +277,15 @@ namespace BranksMod
 
         private void OpenFolderMenuBtn_Click(object sender, EventArgs e)
         {
-            string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod\\";
+            string BranksModDirectory = Properties.Settings.Default.FolderPath + "\\bakkesmod";
             if (Directory.Exists(BranksModDirectory))
             {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[OpenFolder] Found BakkesMod folder.");
                 Process.Start(BranksModDirectory);
             }
             else
             {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[OpenFolder] Could not find BakkesMod folder.");
                 MessageBox.Show("Could not find the BakkesMod folder, it's either deleted or corrupted.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -268,18 +297,18 @@ namespace BranksMod
 
         private void ReinstallMenuBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod" ,MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (result == DialogResult.Yes)
-            {
-                string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod\\";
-                if (Directory.Exists(BranksModDirectory))
-                {
-                    Directory.Delete(BranksModDirectory, true);
-                }
-                //CheckInstall();
-                CheckForUpdates();
-                FirstRun = false;
-            }
+           // DialogResult result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod" ,MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+           // if (result == DialogResult.Yes)
+          //  {
+             //   string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod\\";
+            //    if (Directory.Exists(BranksModDirectory))
+            //    {
+              //      Directory.Delete(BranksModDirectory, true);
+            //    }
+             //   //CheckInstall();
+               // CheckForUpdates();
+             //   FirstRun = false;
+          //  }
         }
 
         private void UninstallMenuBtn_Click(object sender, EventArgs e)
@@ -296,7 +325,7 @@ namespace BranksMod
         {
             SettingsFrm Settings = new SettingsFrm();
             Settings.Show();
-
+            
         }
 
         private void TroubleshootingMenuBtn_Click(object sender, EventArgs e)
@@ -308,6 +337,7 @@ namespace BranksMod
 
         private void InjectBtn_Click(object sender, EventArgs e)
         {
+            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[InjectBtn] Manually injecting DLL.");
             InjectDLL();
         }
         #endregion
@@ -318,6 +348,8 @@ namespace BranksMod
            Properties.Settings.Default.RLVersion = RLLauncher.GetRLVersion(Properties.Settings.Default.FolderPath + "/../../../../");
            Properties.Settings.Default.ModVersion = RLLauncher.GetModVersion(Properties.Settings.Default.FolderPath);
            Properties.Settings.Default.Save();
+           RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckVersion] Rocket League Version: " + Properties.Settings.Default.RLVersion);
+           RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckVersion] Mod Version: " + Properties.Settings.Default.ModVersion);
         }
 
         public void CheckSafeMode()
@@ -348,14 +380,16 @@ namespace BranksMod
         {
             if (File.Exists(Properties.Settings.Default.FolderPath + "d3d9.dll"))
             {
+                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckD3D9] D3D9.dll found.");
                 DialogResult DialogResult = MessageBox.Show(@"WARNING: d3d9.dll detected. This file is used by ReShade/uMod and might prevent the GUI from working. Would you like BranksMod to remove this file?", "BakkesMod", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (DialogResult == DialogResult.Yes)
                 {
                     File.Delete(Properties.Settings.Default.RunOnStart + "d3d9.dll");
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckD3D9] Deleted D3D9.dll.");
                 }
                 else if (DialogResult == DialogResult.No)
                 {
-
+                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckD3D9] D3D9.dll not found.");
                 }
             }
         }

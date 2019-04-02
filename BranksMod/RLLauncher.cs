@@ -10,6 +10,15 @@ using System.Windows.Forms;
 
     class RLLauncher
     {
+        public static void WriteToLog(String Path, String Data)
+        {
+        string LogDir = Path + "\\branksmod.log";
+        if (File.Exists(LogDir))
+        {
+            File.AppendAllText(LogDir, Environment.NewLine + Data);
+        }
+    }
+
         public static string GetDirFromLog()
         {
             string MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -36,7 +45,6 @@ using System.Windows.Forms;
             return ReturnDir;
         }
 
-        
         public static string GetRLVersion(String Path)
         {
             string AppInfo = Path + "\\appmanifest_252950.acf";

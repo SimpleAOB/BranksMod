@@ -18,7 +18,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Timeout" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">2500</Value>
     </Setting>
     <Setting Name="InjectionType" Type="System.String" Scope="User">
       <Value Profile="(Default)">Automatic</Value>
@@ -30,7 +30,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="AutoInject" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -39,10 +39,10 @@
       <Value Profile="(Default)">V1.0.1</Value>
     </Setting>
     <Setting Name="ModVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="RLVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

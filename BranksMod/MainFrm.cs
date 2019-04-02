@@ -47,7 +47,7 @@ namespace BranksMod
             CheckWarnings();
             CheckAutoUpdates();
             CheckInstall();
-            GetFolderPath();       
+            GetFolderPath();
             ProcessTmr.Start();
         }
 
@@ -156,6 +156,7 @@ namespace BranksMod
             string Pattern = "(\"([^ \"]|\"\")*\")";
             string InjectorVersion = "";
 
+            StatusLbl.Text = "Status: Checking For Updates...";
             HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             StreamReader SR = new StreamReader(Response.GetResponseStream());
@@ -172,8 +173,14 @@ namespace BranksMod
                     
                 } else
                 {
-                    MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (result == DialogResult.Yes)
+                {
+                    Process P = new Process();
+                    P.StartInfo.FileName = "https://github.com/ItsBranK/BranksMod/releases";
+                    P.Start();
                 }
+            }
         }
 
         void Install()
@@ -261,7 +268,7 @@ namespace BranksMod
 
         private void ReinstallMenuBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod" ,MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
                 string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod\\";
@@ -309,6 +316,7 @@ namespace BranksMod
         public void CheckVersion()
         {
            Properties.Settings.Default.RLVersion = RLLauncher.GetRLVersion(Properties.Settings.Default.FolderPath + "/../../../../");
+           Properties.Settings.Default.ModVersion = RLLauncher.GetModVersion(Properties.Settings.Default.FolderPath);
            Properties.Settings.Default.Save();
         }
 

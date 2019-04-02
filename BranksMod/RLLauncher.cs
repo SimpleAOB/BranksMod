@@ -62,7 +62,27 @@ using System.Windows.Forms;
             return Version;
         }
 
-        void Launch()
+    public static string GetModVersion(String Path)
+    {
+        string AppInfo = Path + "\\bakkesmod\\version.txt";
+        string Version = "0";
+
+        if (File.Exists(AppInfo))
+        {
+            string Line;
+            using (FileStream Stream = File.Open(AppInfo, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                StreamReader File = new StreamReader(Stream);
+                while ((Line = File.ReadLine()) != null)
+                {
+                        Version = Line;
+                }
+            }
+        }
+        return Version;
+    }
+
+    void Launch()
         {
             var P = new Process
             {

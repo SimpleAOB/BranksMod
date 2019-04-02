@@ -104,7 +104,9 @@ namespace BranksMod
                 AutoRunBox.Checked = false;
             }
 
-            RLVersionLbl.Text = "Rocket League Build: V" + Properties.Settings.Default.RLVersion;
+            RLVersionLbl.Text = "Rocket League Build: " + Properties.Settings.Default.RLVersion;
+            InjectorVersionLbl.Text = "Injector Version: " + Properties.Settings.Default.InjectorVersion;
+            ModVersionLbl.Text = "Mod Version: " + Properties.Settings.Default.ModVersion;
         }
 
 
@@ -161,14 +163,19 @@ namespace BranksMod
                 INIFile.Write(Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
                 INIFile.Close();
 
-                StreamWriter DLLFile = new StreamWriter(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll");
+                StreamWriter DLLFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll");
                 DLLFile.Close();
-                File.WriteAllBytes(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll", Properties.Resources.X3DAudio1_7);
+                File.WriteAllBytes(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll", Properties.Resources.X3DAudio1_7);
             } else if (AutoRunBox.Checked == false)
             {
-                StreamWriter INIFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
-                INIFile.Write("");
-                INIFile.Close();
+                 try
+                {
+                    File.Delete(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
+                    File.Delete(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll");
+                } catch (Exception)
+                {
+
+                }
             }
         }
 

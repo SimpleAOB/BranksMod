@@ -239,7 +239,6 @@
             this.AutoUpdateBox.BackColor = System.Drawing.Color.Transparent;
             this.AutoUpdateBox.Checked = true;
             this.AutoUpdateBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoUpdateBox.Enabled = false;
             this.AutoUpdateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoUpdateBox.Location = new System.Drawing.Point(37, 68);
             this.AutoUpdateBox.Name = "AutoUpdateBox";

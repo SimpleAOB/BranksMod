@@ -4,18 +4,16 @@ Currently in beta, BranksMod is a complete rewrite of the original BakkesModInje
 
 ![](screenshot.png)
 
-## Known Bugs
+## Known Issues
 
 - Troubleshooting is not yet implemented.
-- Version numbers are wrong (too lazy to fix right now but it shouldn't be a problem.).
 - Uninstall is not yet implemented.
-- Autoupdater doesn't work so you'll have to manually download the bakkesmod.dll everytime there's an update...
 
 ## Contact
 
 If you notice any problems or have a suggestion feel free to message me on Discord - ItsBranK#4095
 
-Be sure to join our server if you have questions.
+Also be sure to join our Discord server.
 
 https://discordapp.com/invite/HsM6kAR
 

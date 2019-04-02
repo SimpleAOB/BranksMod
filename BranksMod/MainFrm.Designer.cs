@@ -51,6 +51,7 @@
             this.InjectBtn = new System.Windows.Forms.PictureBox();
             this.StatusImg = new System.Windows.Forms.PictureBox();
             this.RLImg = new System.Windows.Forms.PictureBox();
+            this.DownloadBox = new System.Windows.Forms.TextBox();
             this.MStrip.SuspendLayout();
             this.TrayMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InjectBtn)).BeginInit();
@@ -243,6 +244,15 @@
             this.RLImg.TabIndex = 4;
             this.RLImg.TabStop = false;
             // 
+            // DownloadBox
+            // 
+            this.DownloadBox.Location = new System.Drawing.Point(0, 0);
+            this.DownloadBox.Multiline = true;
+            this.DownloadBox.Name = "DownloadBox";
+            this.DownloadBox.Size = new System.Drawing.Size(20, 20);
+            this.DownloadBox.TabIndex = 7;
+            this.DownloadBox.Visible = false;
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +265,7 @@
             this.Controls.Add(this.StatusLbl);
             this.Controls.Add(this.RLLbl);
             this.Controls.Add(this.MStrip);
+            this.Controls.Add(this.DownloadBox);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -299,5 +310,6 @@
         private System.Windows.Forms.PictureBox RLImg;
         private System.Windows.Forms.PictureBox StatusImg;
         private System.Windows.Forms.PictureBox InjectBtn;
+        private System.Windows.Forms.TextBox DownloadBox;
     }
 }

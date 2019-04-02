@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace BranksMod
 {
@@ -26,15 +27,12 @@ namespace BranksMod
         string updaterStorePath = Path.GetTempPath() + "\\bmupdate.zip";
         string SafeVersion = "";
         string UpdateURL;
-        string rocketLeagueDirectory;
         string bakkesModDirectory;
         String InjectionStatus = "";
 
         private static readonly string BAKKESMOD_FILES_ZIP_DIR = "bminstall.zip";
         private static readonly string REGISTRY_CURRENTUSER_BASE_DIR = @"Software\BranksMod";
         private static readonly string REGISTRY_BASE_DIR = @"HKEY_CURRENT_USER\SOFTWARE\BranksMod\AppPath";
-        private static readonly string APPLICATION_NAME = "BranksMod";
-        private static readonly string REGISTRY_RUN = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
         private static readonly string REGISTRY_ROCKET_LEAGUE_PATH = "RocketLeaguePath";
         private static readonly string REGISTRY_BAKKESMOD_PATH = "BranksModPath";
 
@@ -48,9 +46,8 @@ namespace BranksMod
             CheckSafeMode();
             CheckWarnings();
             CheckAutoUpdates();
-            //CheckAutoRun();
-            //CheckInstall();
-            GetFolderPath();
+            CheckInstall();
+            GetFolderPath();       
             ProcessTmr.Start();
         }
 
@@ -61,7 +58,7 @@ namespace BranksMod
 
         public void GetFolderPath()
         {
-            string Path = RLLauncher.GetRocketLeagueDirFromLog();
+            string Path = RLLauncher.GetDirFromLog();
             Properties.Settings.Default.FolderPath = Path;
             Properties.Settings.Default.Save();
         }
@@ -77,8 +74,14 @@ namespace BranksMod
             else
             {
                 RLLbl.Text = "Rocket League is running.";
-                InjectionTmr.Interval = Properties.Settings.Default.Timeout;
-                InjectionTmr.Start();
+                if (Properties.Settings.Default.AutoInject == true)
+                {
+                    StatusLbl.Text = "Status: AutoInjector Enabled.";
+                } else if (Properties.Settings.Default.AutoInject == false)
+                {
+                    InjectionTmr.Interval = Properties.Settings.Default.Timeout;
+                    InjectionTmr.Start();
+                }
             }
         }
 
@@ -130,7 +133,7 @@ namespace BranksMod
 
         private bool IsSafeToInject()
         {
-            string Version = RLLauncher.GetRocketLeagueSteamVersion(rocketLeagueDirectory + "/../../../../");
+            string Version = RLLauncher.GetRLVersion(Properties.Settings.Default.FolderPath + "/../../../../");
             return Version.Equals(SafeVersion) || !Properties.Settings.Default.EnableSafeMode;
         }
 
@@ -139,33 +142,43 @@ namespace BranksMod
             string InstallPath = (string)Registry.GetValue(REGISTRY_BASE_DIR, REGISTRY_ROCKET_LEAGUE_PATH, null);
             if (InstallPath == null)
             {
-                Install();
+                //Install();
             }
             else
             {
-                rocketLeagueDirectory = InstallPath;
-                string bakkesModDir = (string)Registry.GetValue(REGISTRY_BASE_DIR, REGISTRY_BAKKESMOD_PATH, null);
-                if (!Directory.Exists(bakkesModDir))
-                {
-                    RegistryKey keys = Registry.CurrentUser.OpenSubKey(REGISTRY_CURRENTUSER_BASE_DIR, true);
-                    keys.DeleteSubKeyTree("apppath");
-                    Install();
-                }
-                else
-                {
-                    bakkesModDirectory = bakkesModDir;
-                }
+
             }
         }
 
         public void CheckForUpdates()
         {
+            string URL = "https://pastebin.com/raw/91j3JaZM";
+            string Pattern = "(\"([^ \"]|\"\")*\")";
+            string InjectorVersion = "";
 
+            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
+            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+            StreamReader SR = new StreamReader(Response.GetResponseStream());
+            DownloadBox.Text = SR.ReadToEnd();
+            SR.Close();
+
+                if (DownloadBox.Text.Contains("InjectorVersion"))
+                {
+                   InjectorVersion = Regex.Match(DownloadBox.Text, Pattern, RegexOptions.IgnoreCase | RegexOptions.RightToLeft).Groups[1].Value.Replace("\"", "");                 
+                }
+
+                if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
+                {
+                    
+                } else
+                {
+                    MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                }
         }
 
         void Install()
         {
-            string Path = RLLauncher.GetRocketLeagueDirFromLog() + "RocketLeague.exe";
+            string Path = RLLauncher.GetDirFromLog() + "RocketLeague.exe";
 
             if (!File.Exists(Path))
             {
@@ -185,7 +198,7 @@ namespace BranksMod
                     return;
                 }
             }
-            Properties.Settings.Default.FolderPath = RLLauncher.GetRocketLeagueDirFromLog() + "RocketLeague.exe";
+            Properties.Settings.Default.FolderPath = RLLauncher.GetDirFromLog() + "RocketLeague.exe";
             //rocketLeagueDirectory = Path.Substring(0, Path.LastIndexOf("\\") + 1);
            // bakkesModDirectory = rocketLeagueDirectory + "bakkesmod\\";
             //if (!Directory.Exists(bakkesModDirectory))
@@ -237,7 +250,7 @@ namespace BranksMod
             }
             else
             {
-                MessageBox.Show("Could not find the BranksMod folder, its either deleted or corrupted.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Could not find the BakkesMod folder, it's either deleted or corrupted.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -248,7 +261,7 @@ namespace BranksMod
 
         private void ReinstallMenuBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("This will fully remove all bakkesmod files, are you sure you want to continue?", "Confirm reinstall", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod\\";
@@ -256,7 +269,7 @@ namespace BranksMod
                 {
                     Directory.Delete(BranksModDirectory, true);
                 }
-                CheckInstall();
+                //CheckInstall();
                 CheckForUpdates();
                 FirstRun = false;
             }
@@ -293,11 +306,17 @@ namespace BranksMod
         #endregion
 
         #region "Apply Settings"
+        public void CheckVersion()
+        {
+           Properties.Settings.Default.RLVersion = RLLauncher.GetRLVersion(Properties.Settings.Default.FolderPath + "/../../../../");
+           Properties.Settings.Default.Save();
+        }
+
         public void CheckSafeMode()
         {
             if (Properties.Settings.Default.EnableSafeMode == true)
             {
-
+                CheckVersion();
             }
             else if (Properties.Settings.Default.EnableSafeMode == false)
             {
@@ -355,19 +374,6 @@ namespace BranksMod
             else if (Properties.Settings.Default.MinimizeHide == false)
             {
                 TrayIcon.Visible = false;
-            }
-        }
-
-        public void CheckAutoRun()
-        {
-            if (Properties.Settings.Default.AutoRun == true)
-            {
-                Process P = new Process();
-                P.StartInfo.FileName = "RocketLeague.exe";
-                P.Start();
-            } else if (Properties.Settings.Default.AutoRun == false)
-            {
-
             }
         }
         #endregion

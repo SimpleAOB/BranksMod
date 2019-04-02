@@ -269,7 +269,6 @@
             // AutoRunBox
             // 
             this.AutoRunBox.BackColor = System.Drawing.Color.Transparent;
-            this.AutoRunBox.Enabled = false;
             this.AutoRunBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoRunBox.Location = new System.Drawing.Point(37, 37);
             this.AutoRunBox.Name = "AutoRunBox";
@@ -376,6 +375,7 @@
             this.TimeoutBox.Size = new System.Drawing.Size(139, 22);
             this.TimeoutBox.TabIndex = 17;
             this.TimeoutBox.Text = "2500";
+            this.TimeoutBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimeoutBox_KeyPress);
             // 
             // AutomaticBox
             // 
@@ -436,7 +436,7 @@
             this.RLVersionLbl.Name = "RLVersionLbl";
             this.RLVersionLbl.Size = new System.Drawing.Size(280, 25);
             this.RLVersionLbl.TabIndex = 20;
-            this.RLVersionLbl.Text = "Rocket League Version: V1.0.0";
+            this.RLVersionLbl.Text = "Rocket League Build: V1.0.0";
             this.RLVersionLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Icons8Lbl

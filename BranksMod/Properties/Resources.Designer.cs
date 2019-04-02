@@ -269,5 +269,15 @@ namespace BranksMod.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] X3DAudio1_7 {
+            get {
+                object obj = ResourceManager.GetObject("X3DAudio1_7", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

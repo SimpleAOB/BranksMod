@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.IO;
 
 namespace BranksMod
 {
@@ -94,14 +95,16 @@ namespace BranksMod
             {
                 StartupBox.Checked = false;
             }
-            if (Properties.Settings.Default.AutoRun == true)
+            if (Properties.Settings.Default.AutoInject == true)
             {
                 AutoRunBox.Checked = true;
             }
-            else if (Properties.Settings.Default.AutoRun == false)
+            else if (Properties.Settings.Default.AutoInject == false)
             {
                 AutoRunBox.Checked = false;
             }
+
+            RLVersionLbl.Text = "Rocket League Build: V" + Properties.Settings.Default.RLVersion;
         }
 
 
@@ -150,16 +153,46 @@ namespace BranksMod
             P.Start();
         }
 
+        public void CheckAutoInjector()
+        {
+            if (AutoRunBox.Checked == true)
+            {
+                StreamWriter INIFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
+                INIFile.Write(Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
+                INIFile.Close();
+
+                StreamWriter DLLFile = new StreamWriter(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll");
+                DLLFile.Close();
+                File.WriteAllBytes(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll", Properties.Resources.X3DAudio1_7);
+            } else if (AutoRunBox.Checked == false)
+            {
+                StreamWriter INIFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
+                INIFile.Write("");
+                INIFile.Close();
+            }
+        }
+
         public void SaveChanges()
         {
+            CheckAutoInjector();
             string InjectionType = "";
             if (AutomaticBox.Checked == true)
             {
                 InjectionType = "Automatic";
             }
-            else
+            else if (AutomaticBox.Checked == false)
             {
                 InjectionType = "Manual";
+            }
+
+            int Val = int.Parse(TimeoutBox.Text);
+            if (TimeoutBox.Text == "0")
+            {
+                TimeoutBox.Text = "2500";
+                Properties.Settings.Default.Timeout = Val;
+            } else
+            {
+                Properties.Settings.Default.Timeout = Val;
             }
 
             RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -172,12 +205,10 @@ namespace BranksMod
                 rk.DeleteValue("BranksMod", false);
             }
 
-                int Val = int.Parse(TimeoutBox.Text);
-            Properties.Settings.Default.Timeout = Val;
             Properties.Settings.Default.EnableSafeMode = SafeBox.Checked;
             Properties.Settings.Default.DisableWarnings = WarningsBox.Checked;
             Properties.Settings.Default.AutoUpdate = AutoUpdateBox.Checked;
-            Properties.Settings.Default.AutoRun = AutoRunBox.Checked;
+            Properties.Settings.Default.AutoInject = AutoRunBox.Checked;
             Properties.Settings.Default.AutoSave = AutomaticBox.Checked;
             Properties.Settings.Default.MinimizeStartup = MiniStartupBox.Checked;
             Properties.Settings.Default.MinimizeHide = MiniHideBox.Checked;
@@ -185,6 +216,11 @@ namespace BranksMod
             Properties.Settings.Default.AutoSave = AutoSaveBox.Checked;
             Properties.Settings.Default.RunOnStart = StartupBox.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void TimeoutBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

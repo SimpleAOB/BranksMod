@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\X3DAudio1_7.dll" />
     <None Include="Resources\Inject.png" />
     <None Include="Resources\Status.png" />
     <None Include="Resources\RL.png" />

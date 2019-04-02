@@ -146,12 +146,48 @@ namespace BranksMod.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoRun {
+        public bool AutoInject {
             get {
-                return ((bool)(this["AutoRun"]));
+                return ((bool)(this["AutoInject"]));
             }
             set {
-                this["AutoRun"] = value;
+                this["AutoInject"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.1")]
+        public string InjectorVersion {
+            get {
+                return ((string)(this["InjectorVersion"]));
+            }
+            set {
+                this["InjectorVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ModVersion {
+            get {
+                return ((string)(this["ModVersion"]));
+            }
+            set {
+                this["ModVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RLVersion {
+            get {
+                return ((string)(this["RLVersion"]));
+            }
+            set {
+                this["RLVersion"] = value;
             }
         }
     }

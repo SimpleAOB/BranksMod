@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
     class RLLauncher
     {
-        public static string GetRocketLeagueDirFromLog()
+        public static string GetDirFromLog()
         {
             string MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string LogDir = MyDocuments + @"\My Games\Rocket League\TAGame\Logs\";
@@ -36,7 +36,8 @@ using System.Windows.Forms;
             return ReturnDir;
         }
 
-        public static string GetRocketLeagueSteamVersion(String Path)
+        
+        public static string GetRLVersion(String Path)
         {
             string AppInfo = Path + "\\appmanifest_252950.acf";
             string Version = "0";

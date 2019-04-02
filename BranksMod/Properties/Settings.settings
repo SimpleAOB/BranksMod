@@ -32,8 +32,17 @@
     <Setting Name="FolderPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="AutoRun" Type="System.Boolean" Scope="User">
+    <Setting Name="AutoInject" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="InjectorVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V1.0.1</Value>
+    </Setting>
+    <Setting Name="ModVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RLVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

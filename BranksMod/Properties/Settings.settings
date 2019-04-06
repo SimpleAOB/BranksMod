@@ -21,16 +21,13 @@
       <Value Profile="(Default)">2500</Value>
     </Setting>
     <Setting Name="InjectionType" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Automatic</Value>
-    </Setting>
-    <Setting Name="AutoSave" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">Timeout</Value>
     </Setting>
     <Setting Name="RunOnStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">Null</Value>
     </Setting>
     <Setting Name="AutoInject" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -39,10 +36,19 @@
       <Value Profile="(Default)">V1.0.1</Value>
     </Setting>
     <Setting Name="ModVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="RLVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">3676665</Value>
+    </Setting>
+    <Setting Name="SettingsTopmost" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="BrankTopmost" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Light</Value>
     </Setting>
   </Settings>
 </SettingsFile>

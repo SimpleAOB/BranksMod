@@ -16,6 +16,9 @@ namespace BranksMod
     public partial class SettingsFrm : Form
     {
         string Time = DateTime.Now.ToString("[HH:mm:ss] ");
+        Color ThemeBackground = Color.FromArgb(0, 0, 0);
+        Color ThemeHighlight = Color.FromArgb(0, 0, 0);
+        Color ThemeFontColor = Color.Black;
 
         public SettingsFrm()
         {
@@ -25,28 +28,142 @@ namespace BranksMod
         private void SettingsFrm_Load(object sender, EventArgs e)
         {
             LoadSettings();
+            LoadPlugins();
+            CheckTheme();
+        }
+
+        private void SettingsFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveChanges();
+        }
+
+        public void CheckAutoInjector()
+        {
+            //if (AutoInjectBox.Checked == true)
+            //{
+            //    StreamWriter INIFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
+            //    INIFile.Write(Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
+            //    INIFile.Close();
+            //    Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Created X3DAudio1_7.ini.");
+
+            //    StreamWriter DLLFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll");
+            //    DLLFile.Close();
+            //    File.WriteAllBytes(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll", Properties.Resources.winrnr);
+            //    Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Created X3DAudio1_7.dll.");
+            //}
+            //else if (AutoInjectBox.Checked == false)
+            //{
+            //    try
+            //    {
+            //        File.Delete(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
+            //        Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Deleted X3DAudio1_7.ini.");
+            //        File.Delete(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll");
+            //        Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Deleted X3DAudio1_7.dll.");
+            //    }
+            //    catch (Exception Ex)
+            //    {
+            //        Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] " + Ex);
+            //    }
+            //}
+        }
+
+        private void TimerBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void PluginAddBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PluginRemoveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PluginSettingsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region "Saving & Loading Events"
+        public void SaveChanges()
+        {
+            CheckAutoInjector();
+
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (StartupBox.Checked == true)
+            {
+                rk.SetValue("BranksMod", Application.ExecutablePath);
+            }
+            if (StartupBox.Checked == false)
+            {
+                rk.DeleteValue("BranksMod", false);
+            }
+
+            if (SettingsTopBox.Checked == true)
+            {
+                this.TopMost = true;
+            }
+            else if (SettingsTopBox.Checked == true)
+            {
+                this.TopMost = false;
+            }
+
+            string Theme = "";
+            if (NightBox.Checked == true)
+            {
+                Theme = "Night";
+            }
+            else if (NightBox.Checked == false)
+            {
+                Theme = "Light";
+            }
+
+            string InjectionType = "";
+            if (AutoInjectBox.Checked == true)
+            {
+                InjectionType = "AutoInject";
+            }
+            else if (TimeoutBox.Checked == true)
+            {
+                InjectionType = "Timeout";
+            }
+            else if (ManualBox.Checked == true)
+            {
+                InjectionType = "Manual";
+            }
+
+            int Timeout = int.Parse(TimerBox.Text);
+            if (TimerBox.Text == "0")
+            {
+                TimerBox.Text = "2500";
+            }
+            else
+            {
+
+            }
+
+            Properties.Settings.Default.AutoUpdate = AutoUpdateBox.Checked;
+            Properties.Settings.Default.RunOnStart = StartupBox.Checked;
+            Properties.Settings.Default.MinimizeStartup = MiniStartupBox.Checked;
+            Properties.Settings.Default.MinimizeHide = MiniHideBox.Checked;
+            Properties.Settings.Default.BrankTopmost = BrankTopBox.Checked;
+            Properties.Settings.Default.SettingsTopmost = SettingsTopBox.Checked;
+            Properties.Settings.Default.Theme = Theme;
+            Properties.Settings.Default.EnableSafeMode = SafeBox.Checked;
+            Properties.Settings.Default.DisableWarnings = WarningsBox.Checked;
+            Properties.Settings.Default.InjectionType = InjectionType;
+            Properties.Settings.Default.Timeout = Timeout;
+            Properties.Settings.Default.Save();
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[SaveSettings] All settings saved.");
         }
 
         public void LoadSettings()
         {
-            TimeoutBox.Text = Properties.Settings.Default.Timeout.ToString();
+            TimerBox.Text = Properties.Settings.Default.Timeout.ToString();
 
-            if (Properties.Settings.Default.EnableSafeMode == true)
-            {
-                SafeBox.Checked = true;
-            }
-            else if (Properties.Settings.Default.EnableSafeMode == false)
-            {
-                SafeBox.Checked = false;
-            }
-            if (Properties.Settings.Default.DisableWarnings == true)
-            {
-                WarningsBox.Checked = true;
-            }
-            else if (Properties.Settings.Default.DisableWarnings == false)
-            {
-                WarningsBox.Checked = false;
-            }
             if (Properties.Settings.Default.AutoUpdate == true)
             {
                 AutoUpdateBox.Checked = true;
@@ -54,6 +171,14 @@ namespace BranksMod
             else if (Properties.Settings.Default.AutoUpdate == false)
             {
                 AutoUpdateBox.Checked = false;
+            }
+            if (Properties.Settings.Default.RunOnStart == true)
+            {
+                StartupBox.Checked = true;
+            }
+            else if (Properties.Settings.Default.RunOnStart == false)
+            {
+                StartupBox.Checked = false;
             }
             if (Properties.Settings.Default.MinimizeStartup == true)
             {
@@ -71,85 +196,139 @@ namespace BranksMod
             {
                 MiniHideBox.Checked = false;
             }
-            if (Properties.Settings.Default.InjectionType == "Automatic")
+            if (Properties.Settings.Default.BrankTopmost == true)
             {
-                AutomaticBox.Checked = true;
-                ManualBox.Checked = false;
+                BrankTopBox.Checked = true;
+            }
+            else if (Properties.Settings.Default.BrankTopmost == false)
+            {
+                BrankTopBox.Checked = false;
+            }
+            if (Properties.Settings.Default.SettingsTopmost == true)
+            {
+                SettingsTopBox.Checked = true;
+            }
+            else if (Properties.Settings.Default.SettingsTopmost == false)
+            {
+                SettingsTopBox.Checked = false;
+            }
+            if (Properties.Settings.Default.Theme == "Light")
+            {
+                NightBox.Checked = false;
+            }
+            else if (Properties.Settings.Default.Theme == "Night")
+            {
+                NightBox.Checked = true;
+            }
+            if (Properties.Settings.Default.EnableSafeMode == true)
+            {
+                SafeBox.Checked = true;
+            }
+            else if (Properties.Settings.Default.EnableSafeMode == false)
+            {
+                SafeBox.Checked = false;
+            }
+            if (Properties.Settings.Default.DisableWarnings == true)
+            {
+                WarningsBox.Checked = true;
+            }
+            else if (Properties.Settings.Default.DisableWarnings == false)
+            {
+                WarningsBox.Checked = false;
+            }
+            if (Properties.Settings.Default.InjectionType == "AutoInject")
+            {
+                AutoInjectBox.Checked = true;
+            }
+            else if (Properties.Settings.Default.InjectionType == "Timeout")
+            {
+                TimeoutBox.Checked = true;
             }
             else if (Properties.Settings.Default.InjectionType == "Manual")
             {
                 ManualBox.Checked = true;
-                AutomaticBox.Checked = false;
             }
-            if (Properties.Settings.Default.AutoSave == true)
-            {
-                AutoSaveBox.Checked = true;
-            }
-            else if (Properties.Settings.Default.AutoSave == false)
-            {
-                AutoSaveBox.Checked = false;
-            }
-            if (Properties.Settings.Default.RunOnStart == true)
-            {
-                StartupBox.Checked = true;
-            }
-            else if (Properties.Settings.Default.RunOnStart == false)
-            {
-                StartupBox.Checked = false;
-            }
-            if (Properties.Settings.Default.AutoInject == true)
-            {
-                AutoRunBox.Checked = true;
-            }
-            else if (Properties.Settings.Default.AutoInject == false)
-            {
-                AutoRunBox.Checked = false;
-            }
+
+            string Timeout = Properties.Settings.Default.Timeout.ToString();
+            TimerBox.Text = Timeout;
 
             RLVersionLbl.Text = "Rocket League Build: " + Properties.Settings.Default.RLVersion;
             InjectorVersionLbl.Text = "Injector Version: " + Properties.Settings.Default.InjectorVersion;
             ModVersionLbl.Text = "Mod Version: " + Properties.Settings.Default.ModVersion;
-            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadSettings] All settings loaded.");
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadSettings] All settings loaded.");
         }
 
-
-        private void SettingsFrm_FormClosing(object sender, FormClosingEventArgs e)
+        public void LoadPlugins()
         {
-            if (AutoSaveBox.Checked == true)
+            PluginsListview.Clear();
+            string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath + "\\bakkesmod\\plugins");
+            
+            foreach (string File in Files)
             {
-                SaveChanges();
+                PluginsListview.Items.Add(Path.GetFileName(File));
             }
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] All plugins loaded.");
         }
 
-        private void SaveBtn_Click(object sender, EventArgs e)
+        public void ResetSettings()
         {
-            SaveChanges();
-        }
-
-        private void ResetBtn_Click(object sender, EventArgs e)
-        {
-            SafeBox.Checked = true;
-            WarningsBox.Checked = false;
             AutoUpdateBox.Checked = true;
-            AutoSaveBox.Checked = false;
             StartupBox.Checked = false;
-            AutoRunBox.Checked = false;
             MiniStartupBox.Checked = false;
             MiniHideBox.Checked = false;
-            AutomaticBox.Checked = true;
-            ManualBox.Checked = false;        
-            TimeoutBox.Text = "2500";
+            BrankTopBox.Checked = false;
+            SettingsTopBox.Checked = true;
+            NightBox.Checked = false;
+            SafeBox.Checked = true;
+            WarningsBox.Checked = false;
+            AutoInjectBox.Checked = false;
+            TimeoutBox.Checked = false;
+            ManualBox.Checked = false;
+            TimerBox.Text = "2500";
             SaveChanges();
-            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[ResetBtn] Reset settings to default.");
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[ResetBtn] Reset settings to default.");
+        }
+        #endregion
+
+        #region "GUI Events"
+        public void RefreshTabs()
+        {
+            GeneralBtn.BackColor = ThemeBackground;
+            InjectorBtn.BackColor = ThemeBackground;
+            PluginsBtn.BackColor = ThemeBackground;
+            AboutBtn.BackColor = ThemeBackground;
         }
 
-        private void CloseBtn_Click(object sender, EventArgs e)
+        private void GeneralBtn_Click(object sender, EventArgs e)
         {
-            if (AutoSaveBox.Checked == true)
-            {
-                SaveChanges();
-            }
-            this.Hide();
+            SettingsTabCtrl.SelectedTab = GeneralTab;
+            RefreshTabs();
+            GeneralBtn.BackColor = ThemeHighlight;
+            GeneralTab.BackColor = ThemeHighlight;
+        }
+
+        private void InjectorBtn_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = InjectorTab;
+            RefreshTabs();
+            InjectorBtn.BackColor = ThemeHighlight;
+            InjectorTab.BackColor = ThemeHighlight;
+        }
+
+        private void PluginsBtn_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = PluginsTab;
+            RefreshTabs();
+            PluginsBtn.BackColor = ThemeHighlight;
+            PluginsTab.BackColor = ThemeHighlight;
+        }
+
+        private void AboutBtn_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = AboutTab;
+            RefreshTabs();
+            AboutBtn.BackColor = ThemeHighlight;
+            AboutTab.BackColor = ThemeHighlight;
         }
 
         private void Icons8Link_Click(object sender, EventArgs e)
@@ -157,87 +336,121 @@ namespace BranksMod
             Process P = new Process();
             P.StartInfo.FileName = "www.icons8.com";
             P.Start();
-            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[Icons8Link] Opened link.");
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[Icons8Link] Opened link.");
         }
 
-        public void CheckAutoInjector()
+        private void DiscordLink_Click(object sender, EventArgs e)
         {
-            if (AutoRunBox.Checked == true)
-            {
-                StreamWriter INIFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
-                INIFile.Write(Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
-                INIFile.Close();
-                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Created X3DAudio1_7.ini.");
-
-                StreamWriter DLLFile = new StreamWriter(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll");
-                DLLFile.Close();
-                File.WriteAllBytes(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.dll", Properties.Resources.X3DAudio1_7);
-                RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Created X3DAudio1_7.dll.");
-            } else if (AutoRunBox.Checked == false)
-            {
-                 try
-                {
-                    File.Delete(Properties.Settings.Default.FolderPath + "\\X3DAudio1_7.ini");
-                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Deleted X3DAudio1_7.ini.");
-                    File.Delete(Properties.Settings.Default.FolderPath + "X3DAudio1_7.dll");
-                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] Deleted X3DAudio1_7.dll.");
-                } catch (Exception Ex)
-                {
-                    RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckAutoInjector] " + Ex);
-                }
-            }
+            Process.Start("https://discordapp.com/invite/HsM6kAR");
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[DiscordLink] Opened link.");
         }
+        #endregion
 
-        public void SaveChanges()
+        #region "Theme Events"
+        public void CheckTheme()
         {
-            CheckAutoInjector();
-            string InjectionType = "";
-            if (AutomaticBox.Checked == true)
+            if (Properties.Settings.Default.Theme == "Light")
             {
-                InjectionType = "Automatic";
+                ThemeBackground = Color.WhiteSmoke;
+                ThemeHighlight = Color.FromArgb(255, 255, 255);
+                ThemeFontColor = Color.Black;
+                LoadLight();
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckTheme] Loaded Light Theme. ");
             }
-            else if (AutomaticBox.Checked == false)
+            else if (Properties.Settings.Default.Theme == "Night")
             {
-                InjectionType = "Manual";
+                ThemeBackground = Color.FromArgb(20, 20, 20);
+                ThemeHighlight = Color.FromArgb(35, 35, 35);
+                ThemeFontColor = Color.White;
+                LoadNight();
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckTheme] Loaded Night Theme. ");
             }
-
-            int Val = int.Parse(TimeoutBox.Text);
-            if (TimeoutBox.Text == "0")
-            {
-                TimeoutBox.Text = "2500";
-                Properties.Settings.Default.Timeout = Val;
-            } else
-            {
-                Properties.Settings.Default.Timeout = Val;
-            }
-
-            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            if (StartupBox.Checked == true)
-            {
-                rk.SetValue("BranksMod", Application.ExecutablePath);
-            }
-            if (StartupBox.Checked == false)
-            {
-                rk.DeleteValue("BranksMod", false);
-            }
-
-            Properties.Settings.Default.EnableSafeMode = SafeBox.Checked;
-            Properties.Settings.Default.DisableWarnings = WarningsBox.Checked;
-            Properties.Settings.Default.AutoUpdate = AutoUpdateBox.Checked;
-            Properties.Settings.Default.AutoInject = AutoRunBox.Checked;
-            Properties.Settings.Default.AutoSave = AutomaticBox.Checked;
-            Properties.Settings.Default.MinimizeStartup = MiniStartupBox.Checked;
-            Properties.Settings.Default.MinimizeHide = MiniHideBox.Checked;
-            Properties.Settings.Default.InjectionType = InjectionType;
-            Properties.Settings.Default.AutoSave = AutoSaveBox.Checked;
-            Properties.Settings.Default.RunOnStart = StartupBox.Checked;
-            Properties.Settings.Default.Save();
-            RLLauncher.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[SaveSettings] All settings saved.");
+            GeneralTab.BackColor = ThemeHighlight;
+            InjectorTab.BackColor = ThemeHighlight;
+            PluginsTab.BackColor = ThemeHighlight;
+            AboutTab.BackColor = ThemeHighlight;
+            GeneralBtn.BackColor = ThemeHighlight;
+            InjectorBtn.BackColor = ThemeBackground;
+            PluginsBtn.BackColor = ThemeBackground;
+            AboutBtn.BackColor = ThemeBackground;
+            TimerBox.BackColor = ThemeBackground;
+            PluginAddImg.BackColor = ThemeBackground;
+            PluginRemoveImg.BackColor = ThemeBackground;
+            PluginSettingsImg.BackColor = ThemeBackground;
+            PluginsListview.BackColor = ThemeHighlight;
+            PluginAddBtn.BackColor = ThemeBackground;
+            PluginRemoveBtn.BackColor = ThemeBackground;
+            PluginSettingsBtn.BackColor = ThemeBackground;
+            PluginsListview.ForeColor = ThemeFontColor;
+            GeneralBtn.ForeColor = ThemeFontColor;
+            InjectorBtn.ForeColor = ThemeFontColor;
+            PluginsBtn.ForeColor = ThemeFontColor;
+            AboutBtn.ForeColor = ThemeFontColor;
+            AutoUpdateBox.ForeColor = ThemeFontColor;
+            StartupBox.ForeColor = ThemeFontColor;
+            MiniStartupBox.ForeColor = ThemeFontColor;
+            MiniHideBox.ForeColor = ThemeFontColor;
+            BrankTopBox.ForeColor = ThemeFontColor;
+            SettingsTopBox.ForeColor = ThemeFontColor;
+            NightBox.ForeColor = ThemeFontColor;
+            SafeBox.ForeColor = ThemeFontColor;
+            WarningsBox.ForeColor = ThemeFontColor;
+            AutoInjectBox.ForeColor = ThemeFontColor;
+            TimeoutBox.ForeColor = ThemeFontColor;
+            ManualBox.ForeColor = ThemeFontColor;
+            TimerLbl.ForeColor = ThemeFontColor;
+            TimerBox.ForeColor = ThemeFontColor;
+            PluginAddBtn.ForeColor = ThemeFontColor;
+            PluginRemoveBtn.ForeColor = ThemeFontColor;
+            PluginSettingsBtn.ForeColor = ThemeFontColor;
+            RLVersionLbl.ForeColor = ThemeFontColor;
+            InjectorVersionLbl.ForeColor = ThemeFontColor;
+            ModVersionLbl.ForeColor = ThemeFontColor;
+            DiscordLbl.ForeColor = ThemeFontColor;
+            Icons8Lbl.ForeColor = ThemeFontColor;
+            DevelopersLbl.ForeColor = ThemeFontColor;
         }
 
-        private void TimeoutBox_KeyPress(object sender, KeyPressEventArgs e)
+        public void LoadLight()
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            UpdateImg.BackgroundImage = Properties.Resources.Update_Light;
+            StartupImg.BackgroundImage = Properties.Resources.Run_Light;
+            MiniStartupImg.BackgroundImage = Properties.Resources.Minimize_Light;
+            MiniHideImg.BackgroundImage = Properties.Resources.Hide_Light;
+            BrankTopImg.BackgroundImage = Properties.Resources.Topmost_Light;
+            SettingsTopImg.BackgroundImage = Properties.Resources.Topmost_Light;
+            NightImg.BackgroundImage = Properties.Resources.Night_Light;
+            SafeModeImg.BackgroundImage = Properties.Resources.Safe_Light;
+            WarningsImg.BackgroundImage = Properties.Resources.Warning_Light;
+            AutoInjectImg.BackgroundImage = Properties.Resources.RL_Light;
+            TimeoutImg.BackgroundImage = Properties.Resources.Automatic_Light;
+            ManualImg.BackgroundImage = Properties.Resources.Manual_Light;
+            TimerImg.BackgroundImage = Properties.Resources.Timeout_Light;
+            PluginAddImg.BackgroundImage = Properties.Resources.Add_Light;
+            PluginRemoveImg.BackgroundImage = Properties.Resources.Delete_Light;
+            PluginSettingsImg.BackgroundImage = Properties.Resources.Settings_Light;
         }
+
+        public void LoadNight()
+        {
+            UpdateImg.BackgroundImage = Properties.Resources.Update_Dark;
+            StartupImg.BackgroundImage = Properties.Resources.Run_Dark;
+            MiniStartupImg.BackgroundImage = Properties.Resources.Minimize_Dark;
+            MiniHideImg.BackgroundImage = Properties.Resources.Hide_Dark;
+            BrankTopImg.BackgroundImage = Properties.Resources.Topmost_Dark;
+            SettingsTopImg.BackgroundImage = Properties.Resources.Topmost_Dark;
+            NightImg.BackgroundImage = Properties.Resources.Night_Dark;
+            SafeModeImg.BackgroundImage = Properties.Resources.Safe_Dark;
+            WarningsImg.BackgroundImage = Properties.Resources.Warning_Dark;
+            AutoInjectImg.BackgroundImage = Properties.Resources.RL_Dark;
+            TimeoutImg.BackgroundImage = Properties.Resources.Automatic_Dark;
+            ManualImg.BackgroundImage = Properties.Resources.Manual_Dark;
+            TimerImg.BackgroundImage = Properties.Resources.Timeout_Dark;
+            PluginAddImg.BackgroundImage = Properties.Resources.Add_Dark;
+            PluginRemoveImg.BackgroundImage = Properties.Resources.Delete_Dark;
+            PluginSettingsImg.BackgroundImage = Properties.Resources.Delete_Dark;
+        }
+        #endregion
+
     }
 }

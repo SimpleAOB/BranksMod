@@ -16,11 +16,11 @@ using System.Windows.Forms;
         SUCCESS
     }
 
-    public sealed class DllInjector
+    public sealed class Injector
     {
         static readonly IntPtr IntPtr_Zero = IntPtr.Zero;
         static readonly uint desiredAccess = (0x2 | 0x8 | 0x10 | 0x20 | 0x400);
-        static DllInjector instance;
+        static Injector instance;
 
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, int lpNumberOfBytesWritten);
@@ -44,19 +44,19 @@ using System.Windows.Forms;
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern int CloseHandle(IntPtr hObject);
 
-        public static DllInjector Instance
+        public static Injector Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new DllInjector();
+                    instance = new Injector();
                 }
                 return instance;
             }
         }
 
-        private DllInjector() { }
+        private Injector() { }
 
         public InjectionResult Inject(string processName, string dllPath)
         {

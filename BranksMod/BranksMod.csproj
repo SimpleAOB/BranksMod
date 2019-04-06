@@ -38,6 +38,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLLInjector.cs" />
+    <Compile Include="Injector.cs" />
     <Compile Include="HelpFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,7 +64,12 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RLLauncher.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SettingsFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,14 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,28 +107,57 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
-    <None Include="Resources\X3DAudio1_7.dll" />
-    <None Include="Resources\Inject.png" />
-    <None Include="Resources\Status.png" />
-    <None Include="Resources\RL.png" />
-    <None Include="Resources\Minimize.png" />
-    <None Include="Resources\Hide.png" />
-    <None Include="Resources\Run.png" />
-    <None Include="Resources\Timeout.png" />
-    <None Include="Resources\Manual.png" />
-    <None Include="Resources\Automatic.png" />
-    <None Include="Resources\Warning.png" />
-    <None Include="Resources\Save.png" />
-    <None Include="Resources\Safe.png" />
-    <None Include="Resources\Reinstall.png" />
-    <None Include="Resources\Update.png" />
-    <None Include="Resources\Settings.png" />
-    <None Include="Resources\Help.png" />
-    <None Include="Resources\Menu.png" />
-    <None Include="Resources\Exit.png" />
-    <None Include="Resources\Uninstall.png" />
-    <None Include="Resources\Open.png" />
-    <None Include="Resources\Invite.png" />
+    <None Include="Resources\Plugins_Dark.png" />
+    <None Include="Resources\Plugins_Light.png" />
+    <None Include="Resources\Warning_Light.png" />
+    <None Include="Resources\Update_Light.png" />
+    <None Include="Resources\Topmost_Light.png" />
+    <None Include="Resources\Timeout_Light.png" />
+    <None Include="Resources\Status_Light.png" />
+    <None Include="Resources\Settings_Light.png" />
+    <None Include="Resources\Save_Light.png" />
+    <None Include="Resources\Safe_Light.png" />
+    <None Include="Resources\Run_Light.png" />
+    <None Include="Resources\RL_Light.png" />
+    <None Include="Resources\Reinstall_Light.png" />
+    <None Include="Resources\Open_Light.png" />
+    <None Include="Resources\Night_Light.png" />
+    <None Include="Resources\Minimize_Light.png" />
+    <None Include="Resources\Menu_Light.png" />
+    <None Include="Resources\Manual_Light.png" />
+    <None Include="Resources\Warning_Dark.png" />
+    <None Include="Resources\Update_Dark.png" />
+    <None Include="Resources\Topmost_Dark.png" />
+    <None Include="Resources\Timeout_Dark.png" />
+    <None Include="Resources\Status_Dark.png" />
+    <None Include="Resources\Settings_Dark.png" />
+    <None Include="Resources\Save_Dark.png" />
+    <None Include="Resources\Safe_Dark.png" />
+    <None Include="Resources\Run_Dark.png" />
+    <None Include="Resources\RL_Dark.png" />
+    <None Include="Resources\Reinstall_Dark.png" />
+    <None Include="Resources\Open_Dark.png" />
+    <None Include="Resources\Night_Dark.png" />
+    <None Include="Resources\Minimize_Dark.png" />
+    <None Include="Resources\Menu_Dark.png" />
+    <None Include="Resources\Manual_Dark.png" />
+    <None Include="Resources\Add_Dark.png" />
+    <None Include="Resources\Automatic_Dark.png" />
+    <None Include="Resources\Delete_Dark.png" />
+    <None Include="Resources\Documentation_Dark.png" />
+    <None Include="Resources\Exit_Dark.png" />
+    <None Include="Resources\Help_Dark.png" />
+    <None Include="Resources\Hide_Dark.png" />
+    <None Include="Resources\Inject_Dark.png" />
+    <None Include="Resources\Add_Light.png" />
+    <None Include="Resources\Automatic_Light.png" />
+    <None Include="Resources\Delete_Light.png" />
+    <None Include="Resources\Documentation_Light.png" />
+    <None Include="Resources\Exit_Light.png" />
+    <None Include="Resources\Help_Light.png" />
+    <None Include="Resources\Hide_Light.png" />
+    <None Include="Resources\Inject_Light.png" />
+    <Content Include="Resources\Invite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

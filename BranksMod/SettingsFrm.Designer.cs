@@ -34,61 +34,82 @@
             this.SafeBox = new System.Windows.Forms.CheckBox();
             this.MiniHideBox = new System.Windows.Forms.CheckBox();
             this.WarningsBox = new System.Windows.Forms.CheckBox();
-            this.TimeoutLbl = new System.Windows.Forms.Label();
-            this.TabCtrl = new System.Windows.Forms.TabControl();
+            this.TimerLbl = new System.Windows.Forms.Label();
+            this.SettingsTabCtrl = new System.Windows.Forms.TabControl();
             this.GeneralTab = new System.Windows.Forms.TabPage();
-            this.SaveImg = new System.Windows.Forms.PictureBox();
+            this.SettingsTopBox = new System.Windows.Forms.CheckBox();
+            this.NightBox = new System.Windows.Forms.CheckBox();
+            this.BrankTopBox = new System.Windows.Forms.CheckBox();
+            this.NightImg = new System.Windows.Forms.PictureBox();
+            this.BrankTopImg = new System.Windows.Forms.PictureBox();
             this.UpdateImg = new System.Windows.Forms.PictureBox();
-            this.WarningsImg = new System.Windows.Forms.PictureBox();
-            this.SafeModeImg = new System.Windows.Forms.PictureBox();
-            this.AutoSaveBox = new System.Windows.Forms.CheckBox();
+            this.SettingsTopImg = new System.Windows.Forms.PictureBox();
             this.AutoUpdateBox = new System.Windows.Forms.CheckBox();
-            this.StartupTab = new System.Windows.Forms.TabPage();
-            this.AutoRunBox = new System.Windows.Forms.CheckBox();
-            this.AutoRunImg = new System.Windows.Forms.PictureBox();
-            this.MiniHideImg = new System.Windows.Forms.PictureBox();
             this.MiniStartupImg = new System.Windows.Forms.PictureBox();
+            this.MiniHideImg = new System.Windows.Forms.PictureBox();
             this.StartupImg = new System.Windows.Forms.PictureBox();
             this.InjectorTab = new System.Windows.Forms.TabPage();
-            this.TimeoutImg = new System.Windows.Forms.PictureBox();
-            this.ManualImg = new System.Windows.Forms.PictureBox();
-            this.AutomaticImg = new System.Windows.Forms.PictureBox();
-            this.TimeoutBox = new System.Windows.Forms.TextBox();
-            this.AutomaticBox = new System.Windows.Forms.RadioButton();
+            this.AutoInjectBox = new System.Windows.Forms.RadioButton();
             this.ManualBox = new System.Windows.Forms.RadioButton();
+            this.TimerBox = new System.Windows.Forms.TextBox();
+            this.TimeoutBox = new System.Windows.Forms.RadioButton();
+            this.TimerImg = new System.Windows.Forms.PictureBox();
+            this.WarningsImg = new System.Windows.Forms.PictureBox();
+            this.SafeModeImg = new System.Windows.Forms.PictureBox();
+            this.AutoInjectImg = new System.Windows.Forms.PictureBox();
+            this.ManualImg = new System.Windows.Forms.PictureBox();
+            this.TimeoutImg = new System.Windows.Forms.PictureBox();
+            this.PluginsTab = new System.Windows.Forms.TabPage();
+            this.PluginAddImg = new System.Windows.Forms.PictureBox();
+            this.PluginSettingsImg = new System.Windows.Forms.PictureBox();
+            this.PluginRemoveImg = new System.Windows.Forms.PictureBox();
+            this.PluginsListview = new System.Windows.Forms.ListView();
             this.AboutTab = new System.Windows.Forms.TabPage();
+            this.DiscordLink = new System.Windows.Forms.PictureBox();
+            this.DiscordLbl = new System.Windows.Forms.Label();
             this.Icons8Link = new System.Windows.Forms.Label();
             this.RLVersionLbl = new System.Windows.Forms.Label();
             this.Icons8Lbl = new System.Windows.Forms.Label();
             this.DevelopersLbl = new System.Windows.Forms.Label();
             this.ModVersionLbl = new System.Windows.Forms.Label();
             this.InjectorVersionLbl = new System.Windows.Forms.Label();
-            this.SaveBtn = new System.Windows.Forms.Button();
-            this.ResetBtn = new System.Windows.Forms.Button();
-            this.CloseBtn = new System.Windows.Forms.Button();
-            this.TabCtrl.SuspendLayout();
+            this.GeneralBtn = new System.Windows.Forms.Label();
+            this.InjectorBtn = new System.Windows.Forms.Label();
+            this.AboutBtn = new System.Windows.Forms.Label();
+            this.PluginsBtn = new System.Windows.Forms.Label();
+            this.PluginAddBtn = new System.Windows.Forms.Label();
+            this.PluginRemoveBtn = new System.Windows.Forms.Label();
+            this.PluginSettingsBtn = new System.Windows.Forms.Label();
+            this.SettingsTabCtrl.SuspendLayout();
             this.GeneralTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NightImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BrankTopImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarningsImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SafeModeImg)).BeginInit();
-            this.StartupTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AutoRunImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MiniHideImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingsTopImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiniStartupImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiniHideImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupImg)).BeginInit();
             this.InjectorTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TimeoutImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimerImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WarningsImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SafeModeImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoInjectImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ManualImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AutomaticImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimeoutImg)).BeginInit();
+            this.PluginsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginAddImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginSettingsImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginRemoveImg)).BeginInit();
             this.AboutTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).BeginInit();
             this.SuspendLayout();
             // 
             // StartupBox
             // 
             this.StartupBox.BackColor = System.Drawing.Color.Transparent;
             this.StartupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartupBox.Location = new System.Drawing.Point(37, 6);
+            this.StartupBox.ForeColor = System.Drawing.Color.Black;
+            this.StartupBox.Location = new System.Drawing.Point(43, 43);
             this.StartupBox.Name = "StartupBox";
             this.StartupBox.Size = new System.Drawing.Size(175, 25);
             this.StartupBox.TabIndex = 0;
@@ -98,9 +119,9 @@
             // MiniStartupBox
             // 
             this.MiniStartupBox.BackColor = System.Drawing.Color.Transparent;
-            this.MiniStartupBox.Enabled = false;
             this.MiniStartupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MiniStartupBox.Location = new System.Drawing.Point(37, 68);
+            this.MiniStartupBox.ForeColor = System.Drawing.Color.Black;
+            this.MiniStartupBox.Location = new System.Drawing.Point(43, 74);
             this.MiniStartupBox.Name = "MiniStartupBox";
             this.MiniStartupBox.Size = new System.Drawing.Size(175, 25);
             this.MiniStartupBox.TabIndex = 1;
@@ -113,7 +134,7 @@
             this.SafeBox.Checked = true;
             this.SafeBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.SafeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SafeBox.Location = new System.Drawing.Point(37, 6);
+            this.SafeBox.Location = new System.Drawing.Point(43, 12);
             this.SafeBox.Name = "SafeBox";
             this.SafeBox.Size = new System.Drawing.Size(175, 25);
             this.SafeBox.TabIndex = 3;
@@ -124,7 +145,8 @@
             // 
             this.MiniHideBox.BackColor = System.Drawing.Color.Transparent;
             this.MiniHideBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MiniHideBox.Location = new System.Drawing.Point(37, 99);
+            this.MiniHideBox.ForeColor = System.Drawing.Color.Black;
+            this.MiniHideBox.Location = new System.Drawing.Point(43, 105);
             this.MiniHideBox.Name = "MiniHideBox";
             this.MiniHideBox.Size = new System.Drawing.Size(175, 25);
             this.MiniHideBox.TabIndex = 2;
@@ -135,105 +157,134 @@
             // 
             this.WarningsBox.BackColor = System.Drawing.Color.Transparent;
             this.WarningsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WarningsBox.Location = new System.Drawing.Point(37, 37);
+            this.WarningsBox.Location = new System.Drawing.Point(43, 43);
             this.WarningsBox.Name = "WarningsBox";
             this.WarningsBox.Size = new System.Drawing.Size(175, 25);
             this.WarningsBox.TabIndex = 4;
             this.WarningsBox.Text = "Disable Warnings";
             this.WarningsBox.UseVisualStyleBackColor = false;
             // 
-            // TimeoutLbl
+            // TimerLbl
             // 
-            this.TimeoutLbl.BackColor = System.Drawing.Color.Transparent;
-            this.TimeoutLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeoutLbl.Location = new System.Drawing.Point(37, 68);
-            this.TimeoutLbl.Name = "TimeoutLbl";
-            this.TimeoutLbl.Size = new System.Drawing.Size(104, 25);
-            this.TimeoutLbl.TabIndex = 11;
-            this.TimeoutLbl.Text = "Injection Timeout:";
-            this.TimeoutLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TimerLbl.BackColor = System.Drawing.Color.Transparent;
+            this.TimerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimerLbl.Location = new System.Drawing.Point(43, 167);
+            this.TimerLbl.Name = "TimerLbl";
+            this.TimerLbl.Size = new System.Drawing.Size(104, 25);
+            this.TimerLbl.TabIndex = 11;
+            this.TimerLbl.Text = "Injection Timeout:";
+            this.TimerLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TabCtrl
+            // SettingsTabCtrl
             // 
-            this.TabCtrl.Controls.Add(this.GeneralTab);
-            this.TabCtrl.Controls.Add(this.StartupTab);
-            this.TabCtrl.Controls.Add(this.InjectorTab);
-            this.TabCtrl.Controls.Add(this.AboutTab);
-            this.TabCtrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabCtrl.Location = new System.Drawing.Point(12, 12);
-            this.TabCtrl.Name = "TabCtrl";
-            this.TabCtrl.SelectedIndex = 0;
-            this.TabCtrl.Size = new System.Drawing.Size(300, 162);
-            this.TabCtrl.TabIndex = 12;
+            this.SettingsTabCtrl.Controls.Add(this.GeneralTab);
+            this.SettingsTabCtrl.Controls.Add(this.InjectorTab);
+            this.SettingsTabCtrl.Controls.Add(this.PluginsTab);
+            this.SettingsTabCtrl.Controls.Add(this.AboutTab);
+            this.SettingsTabCtrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsTabCtrl.Location = new System.Drawing.Point(-4, 3);
+            this.SettingsTabCtrl.Name = "SettingsTabCtrl";
+            this.SettingsTabCtrl.SelectedIndex = 0;
+            this.SettingsTabCtrl.Size = new System.Drawing.Size(408, 307);
+            this.SettingsTabCtrl.TabIndex = 12;
             // 
             // GeneralTab
             // 
-            this.GeneralTab.Controls.Add(this.SaveImg);
+            this.GeneralTab.BackColor = System.Drawing.Color.White;
+            this.GeneralTab.Controls.Add(this.SettingsTopBox);
+            this.GeneralTab.Controls.Add(this.NightBox);
+            this.GeneralTab.Controls.Add(this.BrankTopBox);
+            this.GeneralTab.Controls.Add(this.NightImg);
+            this.GeneralTab.Controls.Add(this.BrankTopImg);
             this.GeneralTab.Controls.Add(this.UpdateImg);
-            this.GeneralTab.Controls.Add(this.WarningsImg);
-            this.GeneralTab.Controls.Add(this.SafeModeImg);
-            this.GeneralTab.Controls.Add(this.AutoSaveBox);
+            this.GeneralTab.Controls.Add(this.SettingsTopImg);
+            this.GeneralTab.Controls.Add(this.MiniStartupBox);
             this.GeneralTab.Controls.Add(this.AutoUpdateBox);
-            this.GeneralTab.Controls.Add(this.SafeBox);
-            this.GeneralTab.Controls.Add(this.WarningsBox);
+            this.GeneralTab.Controls.Add(this.MiniHideBox);
+            this.GeneralTab.Controls.Add(this.MiniStartupImg);
+            this.GeneralTab.Controls.Add(this.MiniHideImg);
+            this.GeneralTab.Controls.Add(this.StartupImg);
+            this.GeneralTab.Controls.Add(this.StartupBox);
             this.GeneralTab.Location = new System.Drawing.Point(4, 22);
             this.GeneralTab.Name = "GeneralTab";
             this.GeneralTab.Padding = new System.Windows.Forms.Padding(3);
-            this.GeneralTab.Size = new System.Drawing.Size(292, 136);
+            this.GeneralTab.Size = new System.Drawing.Size(400, 281);
             this.GeneralTab.TabIndex = 1;
             this.GeneralTab.Text = "General";
-            this.GeneralTab.UseVisualStyleBackColor = true;
             // 
-            // SaveImg
+            // SettingsTopBox
             // 
-            this.SaveImg.BackgroundImage = global::BranksMod.Properties.Resources.Save;
-            this.SaveImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.SaveImg.Location = new System.Drawing.Point(6, 99);
-            this.SaveImg.Name = "SaveImg";
-            this.SaveImg.Size = new System.Drawing.Size(25, 25);
-            this.SaveImg.TabIndex = 24;
-            this.SaveImg.TabStop = false;
+            this.SettingsTopBox.BackColor = System.Drawing.Color.Transparent;
+            this.SettingsTopBox.Checked = true;
+            this.SettingsTopBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SettingsTopBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsTopBox.ForeColor = System.Drawing.Color.Black;
+            this.SettingsTopBox.Location = new System.Drawing.Point(43, 167);
+            this.SettingsTopBox.Name = "SettingsTopBox";
+            this.SettingsTopBox.Size = new System.Drawing.Size(175, 25);
+            this.SettingsTopBox.TabIndex = 29;
+            this.SettingsTopBox.Text = "Settings Always on Top";
+            this.SettingsTopBox.UseVisualStyleBackColor = false;
+            // 
+            // NightBox
+            // 
+            this.NightBox.BackColor = System.Drawing.Color.Transparent;
+            this.NightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NightBox.ForeColor = System.Drawing.Color.Black;
+            this.NightBox.Location = new System.Drawing.Point(43, 198);
+            this.NightBox.Name = "NightBox";
+            this.NightBox.Size = new System.Drawing.Size(185, 25);
+            this.NightBox.TabIndex = 30;
+            this.NightBox.Text = "Night Mode (Restart to Apply)";
+            this.NightBox.UseVisualStyleBackColor = false;
+            // 
+            // BrankTopBox
+            // 
+            this.BrankTopBox.BackColor = System.Drawing.Color.Transparent;
+            this.BrankTopBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BrankTopBox.ForeColor = System.Drawing.Color.Black;
+            this.BrankTopBox.Location = new System.Drawing.Point(43, 136);
+            this.BrankTopBox.Name = "BrankTopBox";
+            this.BrankTopBox.Size = new System.Drawing.Size(175, 25);
+            this.BrankTopBox.TabIndex = 28;
+            this.BrankTopBox.Text = "BranksMod Always on Top";
+            this.BrankTopBox.UseVisualStyleBackColor = false;
+            // 
+            // NightImg
+            // 
+            this.NightImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.NightImg.Location = new System.Drawing.Point(12, 198);
+            this.NightImg.Name = "NightImg";
+            this.NightImg.Size = new System.Drawing.Size(25, 25);
+            this.NightImg.TabIndex = 27;
+            this.NightImg.TabStop = false;
+            // 
+            // BrankTopImg
+            // 
+            this.BrankTopImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BrankTopImg.Location = new System.Drawing.Point(12, 136);
+            this.BrankTopImg.Name = "BrankTopImg";
+            this.BrankTopImg.Size = new System.Drawing.Size(25, 25);
+            this.BrankTopImg.TabIndex = 25;
+            this.BrankTopImg.TabStop = false;
             // 
             // UpdateImg
             // 
-            this.UpdateImg.BackgroundImage = global::BranksMod.Properties.Resources.Update;
             this.UpdateImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.UpdateImg.Location = new System.Drawing.Point(6, 68);
+            this.UpdateImg.Location = new System.Drawing.Point(12, 12);
             this.UpdateImg.Name = "UpdateImg";
             this.UpdateImg.Size = new System.Drawing.Size(25, 25);
             this.UpdateImg.TabIndex = 23;
             this.UpdateImg.TabStop = false;
             // 
-            // WarningsImg
+            // SettingsTopImg
             // 
-            this.WarningsImg.BackgroundImage = global::BranksMod.Properties.Resources.Warning;
-            this.WarningsImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.WarningsImg.Location = new System.Drawing.Point(6, 37);
-            this.WarningsImg.Name = "WarningsImg";
-            this.WarningsImg.Size = new System.Drawing.Size(25, 25);
-            this.WarningsImg.TabIndex = 22;
-            this.WarningsImg.TabStop = false;
-            // 
-            // SafeModeImg
-            // 
-            this.SafeModeImg.BackgroundImage = global::BranksMod.Properties.Resources.Safe;
-            this.SafeModeImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.SafeModeImg.Location = new System.Drawing.Point(6, 6);
-            this.SafeModeImg.Name = "SafeModeImg";
-            this.SafeModeImg.Size = new System.Drawing.Size(25, 25);
-            this.SafeModeImg.TabIndex = 21;
-            this.SafeModeImg.TabStop = false;
-            // 
-            // AutoSaveBox
-            // 
-            this.AutoSaveBox.BackColor = System.Drawing.Color.Transparent;
-            this.AutoSaveBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoSaveBox.Location = new System.Drawing.Point(37, 99);
-            this.AutoSaveBox.Name = "AutoSaveBox";
-            this.AutoSaveBox.Size = new System.Drawing.Size(185, 25);
-            this.AutoSaveBox.TabIndex = 20;
-            this.AutoSaveBox.Text = "Automatically Save Changes";
-            this.AutoSaveBox.UseVisualStyleBackColor = false;
+            this.SettingsTopImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SettingsTopImg.Location = new System.Drawing.Point(12, 167);
+            this.SettingsTopImg.Name = "SettingsTopImg";
+            this.SettingsTopImg.Size = new System.Drawing.Size(25, 25);
+            this.SettingsTopImg.TabIndex = 26;
+            this.SettingsTopImg.TabStop = false;
             // 
             // AutoUpdateBox
             // 
@@ -241,77 +292,36 @@
             this.AutoUpdateBox.Checked = true;
             this.AutoUpdateBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.AutoUpdateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoUpdateBox.Location = new System.Drawing.Point(37, 68);
+            this.AutoUpdateBox.ForeColor = System.Drawing.Color.Black;
+            this.AutoUpdateBox.Location = new System.Drawing.Point(43, 12);
             this.AutoUpdateBox.Name = "AutoUpdateBox";
             this.AutoUpdateBox.Size = new System.Drawing.Size(175, 25);
             this.AutoUpdateBox.TabIndex = 19;
             this.AutoUpdateBox.Text = "Automatically Update";
             this.AutoUpdateBox.UseVisualStyleBackColor = false;
             // 
-            // StartupTab
-            // 
-            this.StartupTab.Controls.Add(this.AutoRunBox);
-            this.StartupTab.Controls.Add(this.AutoRunImg);
-            this.StartupTab.Controls.Add(this.MiniHideImg);
-            this.StartupTab.Controls.Add(this.MiniStartupImg);
-            this.StartupTab.Controls.Add(this.StartupImg);
-            this.StartupTab.Controls.Add(this.StartupBox);
-            this.StartupTab.Controls.Add(this.MiniStartupBox);
-            this.StartupTab.Controls.Add(this.MiniHideBox);
-            this.StartupTab.Location = new System.Drawing.Point(4, 22);
-            this.StartupTab.Name = "StartupTab";
-            this.StartupTab.Padding = new System.Windows.Forms.Padding(3);
-            this.StartupTab.Size = new System.Drawing.Size(292, 136);
-            this.StartupTab.TabIndex = 0;
-            this.StartupTab.Text = "Startup";
-            this.StartupTab.UseVisualStyleBackColor = true;
-            // 
-            // AutoRunBox
-            // 
-            this.AutoRunBox.BackColor = System.Drawing.Color.Transparent;
-            this.AutoRunBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoRunBox.Location = new System.Drawing.Point(37, 37);
-            this.AutoRunBox.Name = "AutoRunBox";
-            this.AutoRunBox.Size = new System.Drawing.Size(235, 25);
-            this.AutoRunBox.TabIndex = 26;
-            this.AutoRunBox.Text = "Automatically run with Rocket League.";
-            this.AutoRunBox.UseVisualStyleBackColor = false;
-            // 
-            // AutoRunImg
-            // 
-            this.AutoRunImg.BackgroundImage = global::BranksMod.Properties.Resources.RL;
-            this.AutoRunImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AutoRunImg.Location = new System.Drawing.Point(6, 37);
-            this.AutoRunImg.Name = "AutoRunImg";
-            this.AutoRunImg.Size = new System.Drawing.Size(25, 25);
-            this.AutoRunImg.TabIndex = 25;
-            this.AutoRunImg.TabStop = false;
-            // 
-            // MiniHideImg
-            // 
-            this.MiniHideImg.BackgroundImage = global::BranksMod.Properties.Resources.Hide;
-            this.MiniHideImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MiniHideImg.Location = new System.Drawing.Point(6, 99);
-            this.MiniHideImg.Name = "MiniHideImg";
-            this.MiniHideImg.Size = new System.Drawing.Size(25, 25);
-            this.MiniHideImg.TabIndex = 24;
-            this.MiniHideImg.TabStop = false;
-            // 
             // MiniStartupImg
             // 
-            this.MiniStartupImg.BackgroundImage = global::BranksMod.Properties.Resources.Minimize;
             this.MiniStartupImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MiniStartupImg.Location = new System.Drawing.Point(6, 68);
+            this.MiniStartupImg.Location = new System.Drawing.Point(12, 74);
             this.MiniStartupImg.Name = "MiniStartupImg";
             this.MiniStartupImg.Size = new System.Drawing.Size(25, 25);
             this.MiniStartupImg.TabIndex = 23;
             this.MiniStartupImg.TabStop = false;
             // 
+            // MiniHideImg
+            // 
+            this.MiniHideImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MiniHideImg.Location = new System.Drawing.Point(12, 105);
+            this.MiniHideImg.Name = "MiniHideImg";
+            this.MiniHideImg.Size = new System.Drawing.Size(25, 25);
+            this.MiniHideImg.TabIndex = 24;
+            this.MiniHideImg.TabStop = false;
+            // 
             // StartupImg
             // 
-            this.StartupImg.BackgroundImage = global::BranksMod.Properties.Resources.Run;
             this.StartupImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.StartupImg.Location = new System.Drawing.Point(6, 6);
+            this.StartupImg.Location = new System.Drawing.Point(12, 43);
             this.StartupImg.Name = "StartupImg";
             this.StartupImg.Size = new System.Drawing.Size(25, 25);
             this.StartupImg.TabIndex = 22;
@@ -319,88 +329,195 @@
             // 
             // InjectorTab
             // 
-            this.InjectorTab.Controls.Add(this.TimeoutImg);
-            this.InjectorTab.Controls.Add(this.ManualImg);
-            this.InjectorTab.Controls.Add(this.AutomaticImg);
-            this.InjectorTab.Controls.Add(this.TimeoutBox);
-            this.InjectorTab.Controls.Add(this.AutomaticBox);
-            this.InjectorTab.Controls.Add(this.TimeoutLbl);
+            this.InjectorTab.Controls.Add(this.AutoInjectBox);
+            this.InjectorTab.Controls.Add(this.WarningsBox);
+            this.InjectorTab.Controls.Add(this.SafeBox);
             this.InjectorTab.Controls.Add(this.ManualBox);
+            this.InjectorTab.Controls.Add(this.TimerBox);
+            this.InjectorTab.Controls.Add(this.TimerLbl);
+            this.InjectorTab.Controls.Add(this.TimeoutBox);
+            this.InjectorTab.Controls.Add(this.TimerImg);
+            this.InjectorTab.Controls.Add(this.WarningsImg);
+            this.InjectorTab.Controls.Add(this.SafeModeImg);
+            this.InjectorTab.Controls.Add(this.AutoInjectImg);
+            this.InjectorTab.Controls.Add(this.ManualImg);
+            this.InjectorTab.Controls.Add(this.TimeoutImg);
             this.InjectorTab.Location = new System.Drawing.Point(4, 22);
             this.InjectorTab.Name = "InjectorTab";
-            this.InjectorTab.Size = new System.Drawing.Size(292, 136);
-            this.InjectorTab.TabIndex = 2;
+            this.InjectorTab.Padding = new System.Windows.Forms.Padding(3);
+            this.InjectorTab.Size = new System.Drawing.Size(400, 281);
+            this.InjectorTab.TabIndex = 0;
             this.InjectorTab.Text = "Injector";
             this.InjectorTab.UseVisualStyleBackColor = true;
             // 
-            // TimeoutImg
+            // AutoInjectBox
             // 
-            this.TimeoutImg.BackgroundImage = global::BranksMod.Properties.Resources.Timeout;
-            this.TimeoutImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.TimeoutImg.Location = new System.Drawing.Point(6, 68);
-            this.TimeoutImg.Name = "TimeoutImg";
-            this.TimeoutImg.Size = new System.Drawing.Size(25, 25);
-            this.TimeoutImg.TabIndex = 24;
-            this.TimeoutImg.TabStop = false;
-            // 
-            // ManualImg
-            // 
-            this.ManualImg.BackgroundImage = global::BranksMod.Properties.Resources.Manual;
-            this.ManualImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ManualImg.Location = new System.Drawing.Point(6, 37);
-            this.ManualImg.Name = "ManualImg";
-            this.ManualImg.Size = new System.Drawing.Size(25, 25);
-            this.ManualImg.TabIndex = 23;
-            this.ManualImg.TabStop = false;
-            // 
-            // AutomaticImg
-            // 
-            this.AutomaticImg.BackgroundImage = global::BranksMod.Properties.Resources.Automatic;
-            this.AutomaticImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AutomaticImg.Location = new System.Drawing.Point(6, 6);
-            this.AutomaticImg.Name = "AutomaticImg";
-            this.AutomaticImg.Size = new System.Drawing.Size(25, 25);
-            this.AutomaticImg.TabIndex = 22;
-            this.AutomaticImg.TabStop = false;
-            // 
-            // TimeoutBox
-            // 
-            this.TimeoutBox.BackColor = System.Drawing.Color.White;
-            this.TimeoutBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TimeoutBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeoutBox.ForeColor = System.Drawing.Color.Black;
-            this.TimeoutBox.Location = new System.Drawing.Point(147, 71);
-            this.TimeoutBox.MaxLength = 999999;
-            this.TimeoutBox.Name = "TimeoutBox";
-            this.TimeoutBox.Size = new System.Drawing.Size(139, 22);
-            this.TimeoutBox.TabIndex = 17;
-            this.TimeoutBox.Text = "2500";
-            this.TimeoutBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimeoutBox_KeyPress);
-            // 
-            // AutomaticBox
-            // 
-            this.AutomaticBox.Checked = true;
-            this.AutomaticBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutomaticBox.Location = new System.Drawing.Point(37, 6);
-            this.AutomaticBox.Name = "AutomaticBox";
-            this.AutomaticBox.Size = new System.Drawing.Size(165, 25);
-            this.AutomaticBox.TabIndex = 14;
-            this.AutomaticBox.TabStop = true;
-            this.AutomaticBox.Text = "Automatic Injection";
-            this.AutomaticBox.UseVisualStyleBackColor = true;
+            this.AutoInjectBox.Enabled = false;
+            this.AutoInjectBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoInjectBox.Location = new System.Drawing.Point(43, 74);
+            this.AutoInjectBox.Name = "AutoInjectBox";
+            this.AutoInjectBox.Size = new System.Drawing.Size(165, 25);
+            this.AutoInjectBox.TabIndex = 26;
+            this.AutoInjectBox.Text = "Automatically Inject";
+            this.AutoInjectBox.UseVisualStyleBackColor = true;
             // 
             // ManualBox
             // 
             this.ManualBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManualBox.Location = new System.Drawing.Point(37, 37);
+            this.ManualBox.Location = new System.Drawing.Point(43, 136);
             this.ManualBox.Name = "ManualBox";
             this.ManualBox.Size = new System.Drawing.Size(165, 25);
             this.ManualBox.TabIndex = 13;
             this.ManualBox.Text = "Manual Injection";
             this.ManualBox.UseVisualStyleBackColor = true;
             // 
+            // TimerBox
+            // 
+            this.TimerBox.BackColor = System.Drawing.Color.White;
+            this.TimerBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TimerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimerBox.ForeColor = System.Drawing.Color.Black;
+            this.TimerBox.Location = new System.Drawing.Point(153, 170);
+            this.TimerBox.MaxLength = 999999;
+            this.TimerBox.Name = "TimerBox";
+            this.TimerBox.Size = new System.Drawing.Size(139, 22);
+            this.TimerBox.TabIndex = 17;
+            this.TimerBox.Text = "2500";
+            this.TimerBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimerBox_KeyPress);
+            // 
+            // TimeoutBox
+            // 
+            this.TimeoutBox.Checked = true;
+            this.TimeoutBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeoutBox.Location = new System.Drawing.Point(43, 105);
+            this.TimeoutBox.Name = "TimeoutBox";
+            this.TimeoutBox.Size = new System.Drawing.Size(165, 25);
+            this.TimeoutBox.TabIndex = 14;
+            this.TimeoutBox.TabStop = true;
+            this.TimeoutBox.Text = "Timeout Injection";
+            this.TimeoutBox.UseVisualStyleBackColor = true;
+            // 
+            // TimerImg
+            // 
+            this.TimerImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.TimerImg.Location = new System.Drawing.Point(12, 167);
+            this.TimerImg.Name = "TimerImg";
+            this.TimerImg.Size = new System.Drawing.Size(25, 25);
+            this.TimerImg.TabIndex = 24;
+            this.TimerImg.TabStop = false;
+            // 
+            // WarningsImg
+            // 
+            this.WarningsImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.WarningsImg.Location = new System.Drawing.Point(12, 43);
+            this.WarningsImg.Name = "WarningsImg";
+            this.WarningsImg.Size = new System.Drawing.Size(25, 25);
+            this.WarningsImg.TabIndex = 22;
+            this.WarningsImg.TabStop = false;
+            // 
+            // SafeModeImg
+            // 
+            this.SafeModeImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SafeModeImg.Location = new System.Drawing.Point(12, 12);
+            this.SafeModeImg.Name = "SafeModeImg";
+            this.SafeModeImg.Size = new System.Drawing.Size(25, 25);
+            this.SafeModeImg.TabIndex = 21;
+            this.SafeModeImg.TabStop = false;
+            // 
+            // AutoInjectImg
+            // 
+            this.AutoInjectImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AutoInjectImg.Location = new System.Drawing.Point(12, 74);
+            this.AutoInjectImg.Name = "AutoInjectImg";
+            this.AutoInjectImg.Size = new System.Drawing.Size(25, 25);
+            this.AutoInjectImg.TabIndex = 25;
+            this.AutoInjectImg.TabStop = false;
+            // 
+            // ManualImg
+            // 
+            this.ManualImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ManualImg.Location = new System.Drawing.Point(12, 136);
+            this.ManualImg.Name = "ManualImg";
+            this.ManualImg.Size = new System.Drawing.Size(25, 25);
+            this.ManualImg.TabIndex = 23;
+            this.ManualImg.TabStop = false;
+            // 
+            // TimeoutImg
+            // 
+            this.TimeoutImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.TimeoutImg.Location = new System.Drawing.Point(12, 105);
+            this.TimeoutImg.Name = "TimeoutImg";
+            this.TimeoutImg.Size = new System.Drawing.Size(25, 25);
+            this.TimeoutImg.TabIndex = 22;
+            this.TimeoutImg.TabStop = false;
+            // 
+            // PluginsTab
+            // 
+            this.PluginsTab.Controls.Add(this.PluginAddImg);
+            this.PluginsTab.Controls.Add(this.PluginSettingsImg);
+            this.PluginsTab.Controls.Add(this.PluginRemoveImg);
+            this.PluginsTab.Controls.Add(this.PluginsListview);
+            this.PluginsTab.Controls.Add(this.PluginSettingsBtn);
+            this.PluginsTab.Controls.Add(this.PluginAddBtn);
+            this.PluginsTab.Controls.Add(this.PluginRemoveBtn);
+            this.PluginsTab.Location = new System.Drawing.Point(4, 22);
+            this.PluginsTab.Name = "PluginsTab";
+            this.PluginsTab.Size = new System.Drawing.Size(400, 281);
+            this.PluginsTab.TabIndex = 2;
+            this.PluginsTab.Text = "Plugins";
+            this.PluginsTab.UseVisualStyleBackColor = true;
+            // 
+            // PluginAddImg
+            // 
+            this.PluginAddImg.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginAddImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PluginAddImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginAddImg.Location = new System.Drawing.Point(12, 244);
+            this.PluginAddImg.Name = "PluginAddImg";
+            this.PluginAddImg.Size = new System.Drawing.Size(25, 25);
+            this.PluginAddImg.TabIndex = 4;
+            this.PluginAddImg.TabStop = false;
+            // 
+            // PluginSettingsImg
+            // 
+            this.PluginSettingsImg.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginSettingsImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PluginSettingsImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginSettingsImg.Location = new System.Drawing.Point(223, 244);
+            this.PluginSettingsImg.Name = "PluginSettingsImg";
+            this.PluginSettingsImg.Size = new System.Drawing.Size(25, 25);
+            this.PluginSettingsImg.TabIndex = 2;
+            this.PluginSettingsImg.TabStop = false;
+            // 
+            // PluginRemoveImg
+            // 
+            this.PluginRemoveImg.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginRemoveImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PluginRemoveImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginRemoveImg.Location = new System.Drawing.Point(118, 244);
+            this.PluginRemoveImg.Name = "PluginRemoveImg";
+            this.PluginRemoveImg.Size = new System.Drawing.Size(25, 25);
+            this.PluginRemoveImg.TabIndex = 1;
+            this.PluginRemoveImg.TabStop = false;
+            // 
+            // PluginsListview
+            // 
+            this.PluginsListview.BackColor = System.Drawing.Color.White;
+            this.PluginsListview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PluginsListview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginsListview.ForeColor = System.Drawing.Color.Black;
+            this.PluginsListview.LabelWrap = false;
+            this.PluginsListview.Location = new System.Drawing.Point(3, 3);
+            this.PluginsListview.Name = "PluginsListview";
+            this.PluginsListview.Size = new System.Drawing.Size(394, 235);
+            this.PluginsListview.TabIndex = 0;
+            this.PluginsListview.UseCompatibleStateImageBehavior = false;
+            this.PluginsListview.View = System.Windows.Forms.View.List;
+            // 
             // AboutTab
             // 
+            this.AboutTab.Controls.Add(this.DiscordLink);
+            this.AboutTab.Controls.Add(this.DiscordLbl);
             this.AboutTab.Controls.Add(this.Icons8Link);
             this.AboutTab.Controls.Add(this.RLVersionLbl);
             this.AboutTab.Controls.Add(this.Icons8Lbl);
@@ -409,18 +526,41 @@
             this.AboutTab.Controls.Add(this.InjectorVersionLbl);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
-            this.AboutTab.Size = new System.Drawing.Size(292, 136);
+            this.AboutTab.Size = new System.Drawing.Size(400, 281);
             this.AboutTab.TabIndex = 3;
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
+            // 
+            // DiscordLink
+            // 
+            this.DiscordLink.BackgroundImage = global::BranksMod.Properties.Resources.Invite;
+            this.DiscordLink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DiscordLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DiscordLink.Location = new System.Drawing.Point(24, 189);
+            this.DiscordLink.Name = "DiscordLink";
+            this.DiscordLink.Size = new System.Drawing.Size(350, 80);
+            this.DiscordLink.TabIndex = 23;
+            this.DiscordLink.TabStop = false;
+            this.DiscordLink.Click += new System.EventHandler(this.DiscordLink_Click);
+            // 
+            // DiscordLbl
+            // 
+            this.DiscordLbl.BackColor = System.Drawing.Color.Transparent;
+            this.DiscordLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DiscordLbl.Location = new System.Drawing.Point(24, 161);
+            this.DiscordLbl.Name = "DiscordLbl";
+            this.DiscordLbl.Size = new System.Drawing.Size(350, 25);
+            this.DiscordLbl.TabIndex = 22;
+            this.DiscordLbl.Text = "Join the BakkesMod Discord!";
+            this.DiscordLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Icons8Link
             // 
             this.Icons8Link.BackColor = System.Drawing.Color.Transparent;
             this.Icons8Link.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Icons8Link.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icons8Link.ForeColor = System.Drawing.Color.Blue;
-            this.Icons8Link.Location = new System.Drawing.Point(117, 81);
+            this.Icons8Link.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Icons8Link.Location = new System.Drawing.Point(123, 87);
             this.Icons8Link.Name = "Icons8Link";
             this.Icons8Link.Size = new System.Drawing.Size(70, 25);
             this.Icons8Link.TabIndex = 21;
@@ -432,9 +572,9 @@
             // 
             this.RLVersionLbl.BackColor = System.Drawing.Color.Transparent;
             this.RLVersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RLVersionLbl.Location = new System.Drawing.Point(6, 6);
+            this.RLVersionLbl.Location = new System.Drawing.Point(12, 12);
             this.RLVersionLbl.Name = "RLVersionLbl";
-            this.RLVersionLbl.Size = new System.Drawing.Size(280, 25);
+            this.RLVersionLbl.Size = new System.Drawing.Size(375, 25);
             this.RLVersionLbl.TabIndex = 20;
             this.RLVersionLbl.Text = "Rocket League Build: V1.0.0";
             this.RLVersionLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -443,7 +583,7 @@
             // 
             this.Icons8Lbl.BackColor = System.Drawing.Color.Transparent;
             this.Icons8Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icons8Lbl.Location = new System.Drawing.Point(6, 81);
+            this.Icons8Lbl.Location = new System.Drawing.Point(12, 87);
             this.Icons8Lbl.Name = "Icons8Lbl";
             this.Icons8Lbl.Size = new System.Drawing.Size(105, 25);
             this.Icons8Lbl.TabIndex = 19;
@@ -454,20 +594,20 @@
             // 
             this.DevelopersLbl.BackColor = System.Drawing.Color.Transparent;
             this.DevelopersLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DevelopersLbl.Location = new System.Drawing.Point(6, 106);
+            this.DevelopersLbl.Location = new System.Drawing.Point(12, 112);
             this.DevelopersLbl.Name = "DevelopersLbl";
-            this.DevelopersLbl.Size = new System.Drawing.Size(280, 25);
+            this.DevelopersLbl.Size = new System.Drawing.Size(375, 25);
             this.DevelopersLbl.TabIndex = 17;
-            this.DevelopersLbl.Text = "Developed by: ItsBranK && Bakkes";
+            this.DevelopersLbl.Text = "Developed by: Bakkes && ItsBranK";
             this.DevelopersLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ModVersionLbl
             // 
             this.ModVersionLbl.BackColor = System.Drawing.Color.Transparent;
             this.ModVersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModVersionLbl.Location = new System.Drawing.Point(6, 56);
+            this.ModVersionLbl.Location = new System.Drawing.Point(12, 62);
             this.ModVersionLbl.Name = "ModVersionLbl";
-            this.ModVersionLbl.Size = new System.Drawing.Size(280, 25);
+            this.ModVersionLbl.Size = new System.Drawing.Size(375, 25);
             this.ModVersionLbl.TabIndex = 13;
             this.ModVersionLbl.Text = "Mod Version: V1.0.0";
             this.ModVersionLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -476,53 +616,125 @@
             // 
             this.InjectorVersionLbl.BackColor = System.Drawing.Color.Transparent;
             this.InjectorVersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InjectorVersionLbl.Location = new System.Drawing.Point(6, 31);
+            this.InjectorVersionLbl.Location = new System.Drawing.Point(12, 37);
             this.InjectorVersionLbl.Name = "InjectorVersionLbl";
-            this.InjectorVersionLbl.Size = new System.Drawing.Size(280, 25);
+            this.InjectorVersionLbl.Size = new System.Drawing.Size(375, 25);
             this.InjectorVersionLbl.TabIndex = 12;
             this.InjectorVersionLbl.Text = "Injector Version: V1.0.0";
             this.InjectorVersionLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SaveBtn
+            // GeneralBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(12, 180);
-            this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(95, 25);
-            this.SaveBtn.TabIndex = 13;
-            this.SaveBtn.Text = "Save Changes";
-            this.SaveBtn.UseVisualStyleBackColor = true;
-            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            this.GeneralBtn.BackColor = System.Drawing.Color.White;
+            this.GeneralBtn.Cursor = System.Windows.Forms.Cursors.Default;
+            this.GeneralBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GeneralBtn.ForeColor = System.Drawing.Color.Black;
+            this.GeneralBtn.Location = new System.Drawing.Point(0, 0);
+            this.GeneralBtn.Name = "GeneralBtn";
+            this.GeneralBtn.Size = new System.Drawing.Size(100, 25);
+            this.GeneralBtn.TabIndex = 13;
+            this.GeneralBtn.Text = "General";
+            this.GeneralBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.GeneralBtn.Click += new System.EventHandler(this.GeneralBtn_Click);
             // 
-            // ResetBtn
+            // InjectorBtn
             // 
-            this.ResetBtn.Location = new System.Drawing.Point(113, 180);
-            this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(95, 25);
-            this.ResetBtn.TabIndex = 14;
-            this.ResetBtn.Text = "Reset Settings";
-            this.ResetBtn.UseVisualStyleBackColor = true;
-            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            this.InjectorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.InjectorBtn.Cursor = System.Windows.Forms.Cursors.Default;
+            this.InjectorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InjectorBtn.ForeColor = System.Drawing.Color.Black;
+            this.InjectorBtn.Location = new System.Drawing.Point(100, 0);
+            this.InjectorBtn.Name = "InjectorBtn";
+            this.InjectorBtn.Size = new System.Drawing.Size(100, 25);
+            this.InjectorBtn.TabIndex = 14;
+            this.InjectorBtn.Text = "Injector";
+            this.InjectorBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.InjectorBtn.Click += new System.EventHandler(this.InjectorBtn_Click);
             // 
-            // CloseBtn
+            // AboutBtn
             // 
-            this.CloseBtn.Location = new System.Drawing.Point(213, 180);
-            this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(95, 25);
-            this.CloseBtn.TabIndex = 15;
-            this.CloseBtn.Text = "Close";
-            this.CloseBtn.UseVisualStyleBackColor = true;
-            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            this.AboutBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.AboutBtn.Cursor = System.Windows.Forms.Cursors.Default;
+            this.AboutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutBtn.ForeColor = System.Drawing.Color.Black;
+            this.AboutBtn.Location = new System.Drawing.Point(300, 0);
+            this.AboutBtn.Name = "AboutBtn";
+            this.AboutBtn.Size = new System.Drawing.Size(100, 25);
+            this.AboutBtn.TabIndex = 16;
+            this.AboutBtn.Text = "About";
+            this.AboutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
+            // 
+            // PluginsBtn
+            // 
+            this.PluginsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.PluginsBtn.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PluginsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginsBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginsBtn.Location = new System.Drawing.Point(200, 0);
+            this.PluginsBtn.Name = "PluginsBtn";
+            this.PluginsBtn.Size = new System.Drawing.Size(100, 25);
+            this.PluginsBtn.TabIndex = 15;
+            this.PluginsBtn.Text = "Plugins";
+            this.PluginsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginsBtn.Click += new System.EventHandler(this.PluginsBtn_Click);
+            // 
+            // PluginAddBtn
+            // 
+            this.PluginAddBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginAddBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PluginAddBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginAddBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginAddBtn.Location = new System.Drawing.Point(11, 243);
+            this.PluginAddBtn.Name = "PluginAddBtn";
+            this.PluginAddBtn.Size = new System.Drawing.Size(101, 27);
+            this.PluginAddBtn.TabIndex = 14;
+            this.PluginAddBtn.Text = "Add";
+            this.PluginAddBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginAddBtn.Click += new System.EventHandler(this.PluginAddBtn_Click);
+            // 
+            // PluginRemoveBtn
+            // 
+            this.PluginRemoveBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginRemoveBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PluginRemoveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginRemoveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginRemoveBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginRemoveBtn.Location = new System.Drawing.Point(117, 243);
+            this.PluginRemoveBtn.Name = "PluginRemoveBtn";
+            this.PluginRemoveBtn.Size = new System.Drawing.Size(100, 27);
+            this.PluginRemoveBtn.TabIndex = 15;
+            this.PluginRemoveBtn.Text = "Remove";
+            this.PluginRemoveBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginRemoveBtn.Click += new System.EventHandler(this.PluginRemoveBtn_Click);
+            // 
+            // PluginSettingsBtn
+            // 
+            this.PluginSettingsBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginSettingsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PluginSettingsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginSettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginSettingsBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginSettingsBtn.Location = new System.Drawing.Point(222, 243);
+            this.PluginSettingsBtn.Name = "PluginSettingsBtn";
+            this.PluginSettingsBtn.Size = new System.Drawing.Size(100, 27);
+            this.PluginSettingsBtn.TabIndex = 16;
+            this.PluginSettingsBtn.Text = "Settings";
+            this.PluginSettingsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginSettingsBtn.Click += new System.EventHandler(this.PluginSettingsBtn_Click);
             // 
             // SettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(324, 216);
-            this.Controls.Add(this.CloseBtn);
-            this.Controls.Add(this.ResetBtn);
-            this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.TabCtrl);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(400, 306);
+            this.Controls.Add(this.AboutBtn);
+            this.Controls.Add(this.PluginsBtn);
+            this.Controls.Add(this.InjectorBtn);
+            this.Controls.Add(this.GeneralBtn);
+            this.Controls.Add(this.SettingsTabCtrl);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -534,23 +746,29 @@
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsFrm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsFrm_Load);
-            this.TabCtrl.ResumeLayout(false);
+            this.SettingsTabCtrl.ResumeLayout(false);
             this.GeneralTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SaveImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NightImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BrankTopImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarningsImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SafeModeImg)).EndInit();
-            this.StartupTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AutoRunImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MiniHideImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingsTopImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiniStartupImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiniHideImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupImg)).EndInit();
             this.InjectorTab.ResumeLayout(false);
             this.InjectorTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TimeoutImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimerImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WarningsImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SafeModeImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoInjectImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ManualImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AutomaticImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimeoutImg)).EndInit();
+            this.PluginsTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PluginAddImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginSettingsImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginRemoveImg)).EndInit();
             this.AboutTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -562,38 +780,52 @@
         private System.Windows.Forms.CheckBox SafeBox;
         private System.Windows.Forms.CheckBox MiniHideBox;
         private System.Windows.Forms.CheckBox WarningsBox;
-        private System.Windows.Forms.Label TimeoutLbl;
-        private System.Windows.Forms.TabControl TabCtrl;
-        private System.Windows.Forms.TabPage StartupTab;
-        private System.Windows.Forms.TabPage GeneralTab;
+        private System.Windows.Forms.Label TimerLbl;
+        private System.Windows.Forms.TabControl SettingsTabCtrl;
         private System.Windows.Forms.TabPage InjectorTab;
-        private System.Windows.Forms.RadioButton AutomaticBox;
+        private System.Windows.Forms.TabPage GeneralTab;
+        private System.Windows.Forms.TabPage PluginsTab;
+        private System.Windows.Forms.RadioButton TimeoutBox;
         private System.Windows.Forms.RadioButton ManualBox;
         private System.Windows.Forms.TabPage AboutTab;
         private System.Windows.Forms.Label ModVersionLbl;
         private System.Windows.Forms.Label InjectorVersionLbl;
         private System.Windows.Forms.Label DevelopersLbl;
         private System.Windows.Forms.Label Icons8Lbl;
-        private System.Windows.Forms.CheckBox AutoSaveBox;
-        private System.Windows.Forms.Button SaveBtn;
-        private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.CheckBox AutoUpdateBox;
-        private System.Windows.Forms.TextBox TimeoutBox;
+        private System.Windows.Forms.TextBox TimerBox;
         private System.Windows.Forms.Label RLVersionLbl;
         private System.Windows.Forms.PictureBox SafeModeImg;
-        private System.Windows.Forms.PictureBox SaveImg;
         private System.Windows.Forms.PictureBox UpdateImg;
         private System.Windows.Forms.PictureBox WarningsImg;
-        private System.Windows.Forms.PictureBox AutomaticImg;
-        private System.Windows.Forms.PictureBox ManualImg;
         private System.Windows.Forms.PictureBox TimeoutImg;
-        private System.Windows.Forms.PictureBox StartupImg;
-        private System.Windows.Forms.PictureBox MiniHideImg;
-        private System.Windows.Forms.PictureBox MiniStartupImg;
-        private System.Windows.Forms.Button CloseBtn;
-        private System.Windows.Forms.CheckBox AutoRunBox;
-        private System.Windows.Forms.PictureBox AutoRunImg;
+        private System.Windows.Forms.PictureBox ManualImg;
+        private System.Windows.Forms.PictureBox TimerImg;
+        private System.Windows.Forms.PictureBox AutoInjectImg;
         private System.Windows.Forms.Label Icons8Link;
+        private System.Windows.Forms.RadioButton AutoInjectBox;
+        private System.Windows.Forms.PictureBox BrankTopImg;
+        private System.Windows.Forms.PictureBox SettingsTopImg;
+        private System.Windows.Forms.PictureBox MiniStartupImg;
+        private System.Windows.Forms.PictureBox MiniHideImg;
+        private System.Windows.Forms.Label GeneralBtn;
+        private System.Windows.Forms.Label InjectorBtn;
+        private System.Windows.Forms.Label AboutBtn;
+        private System.Windows.Forms.Label PluginsBtn;
+        private System.Windows.Forms.Label DiscordLbl;
+        private System.Windows.Forms.PictureBox DiscordLink;
+        private System.Windows.Forms.PictureBox NightImg;
+        private System.Windows.Forms.CheckBox SettingsTopBox;
+        private System.Windows.Forms.CheckBox NightBox;
+        private System.Windows.Forms.CheckBox BrankTopBox;
+        private System.Windows.Forms.PictureBox StartupImg;
+        private System.Windows.Forms.PictureBox PluginRemoveImg;
+        private System.Windows.Forms.ListView PluginsListview;
+        private System.Windows.Forms.PictureBox PluginSettingsImg;
+        private System.Windows.Forms.PictureBox PluginAddImg;
+        private System.Windows.Forms.Label PluginRemoveBtn;
+        private System.Windows.Forms.Label PluginAddBtn;
+        private System.Windows.Forms.Label PluginSettingsBtn;
     }
 }
 

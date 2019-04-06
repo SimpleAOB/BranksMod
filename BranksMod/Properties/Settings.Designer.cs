@@ -97,25 +97,13 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Automatic")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Timeout")]
         public string InjectionType {
             get {
                 return ((string)(this["InjectionType"]));
             }
             set {
                 this["InjectionType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoSave {
-            get {
-                return ((bool)(this["AutoSave"]));
-            }
-            set {
-                this["AutoSave"] = value;
             }
         }
         
@@ -133,7 +121,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Null")]
         public string FolderPath {
             get {
                 return ((string)(this["FolderPath"]));
@@ -169,7 +157,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
         public string ModVersion {
             get {
                 return ((string)(this["ModVersion"]));
@@ -181,13 +169,49 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3676665")]
         public string RLVersion {
             get {
                 return ((string)(this["RLVersion"]));
             }
             set {
                 this["RLVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SettingsTopmost {
+            get {
+                return ((bool)(this["SettingsTopmost"]));
+            }
+            set {
+                this["SettingsTopmost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BrankTopmost {
+            get {
+                return ((bool)(this["BrankTopmost"]));
+            }
+            set {
+                this["BrankTopmost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
+        public string Theme {
+            get {
+                return ((string)(this["Theme"]));
+            }
+            set {
+                this["Theme"] = value;
             }
         }
     }

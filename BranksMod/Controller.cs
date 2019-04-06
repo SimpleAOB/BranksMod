@@ -8,14 +8,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-    class RLLauncher
+    class Controller
     {
         public static void WriteToLog(String Path, String Data)
         {
-        string LogDir = Path + "\\branksmod.log";
-        if (File.Exists(LogDir))
+        if (File.Exists(Path))
         {
-            File.AppendAllText(LogDir, Environment.NewLine + Data);
+            File.AppendAllText(Path, Environment.NewLine + Data);
         }
     }
 
@@ -25,6 +24,7 @@ using System.Windows.Forms;
             string LogDir = MyDocuments + @"\My Games\Rocket League\TAGame\Logs\";
             string LogFile = LogDir + "launch.log";
             string ReturnDir = "";
+
             if (File.Exists(LogFile))
             {
                 string Line;
@@ -83,31 +83,10 @@ using System.Windows.Forms;
                 StreamReader File = new StreamReader(Stream);
                 while ((Line = File.ReadLine()) != null)
                 {
-                        Version = Line;
+                    Version = Line;
                 }
             }
         }
         return Version;
     }
-
-    void Launch()
-        {
-            var P = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "F:\\SteamLibrary\\steamapps\\common\\rocketleague\\Binaries\\Win32\\RocketLeague.exe",
-                    Arguments = "",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
-            P.Start();
-            while (!P.StandardOutput.EndOfStream)
-            {
-                string Line = P.StandardOutput.ReadLine();
-                MessageBox.Show(Line);
-            }
-        }
-    }
+}

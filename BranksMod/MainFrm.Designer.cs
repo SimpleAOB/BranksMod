@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            this.MStrip = new System.Windows.Forms.MenuStrip();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFolderMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.CheckUpdatesMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +38,7 @@
             this.UninstallMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.TroubleshootingMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpMenuBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.RLLbl = new System.Windows.Forms.Label();
             this.StatusLbl = new System.Windows.Forms.Label();
             this.ProcessTmr = new System.Windows.Forms.Timer(this.components);
@@ -48,30 +48,30 @@
             this.ExitTrayBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.InjectionTmr = new System.Windows.Forms.Timer(this.components);
+            this.DownloadBox = new System.Windows.Forms.TextBox();
             this.InjectBtn = new System.Windows.Forms.PictureBox();
             this.StatusImg = new System.Windows.Forms.PictureBox();
             this.RLImg = new System.Windows.Forms.PictureBox();
-            this.DownloadBox = new System.Windows.Forms.TextBox();
-            this.MStrip.SuspendLayout();
+            this.MenuStrip.SuspendLayout();
             this.TrayMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InjectBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RLImg)).BeginInit();
             this.SuspendLayout();
             // 
-            // MStrip
+            // MenuStrip
             // 
-            this.MStrip.BackColor = System.Drawing.Color.White;
-            this.MStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuStrip.BackColor = System.Drawing.Color.White;
+            this.MenuStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuBtn,
             this.SettingsMenuBtn,
-            this.TroubleshootingMenuBtn});
-            this.MStrip.Location = new System.Drawing.Point(0, 0);
-            this.MStrip.Name = "MStrip";
-            this.MStrip.Size = new System.Drawing.Size(309, 24);
-            this.MStrip.TabIndex = 0;
-            this.MStrip.Text = "MStrip";
+            this.HelpMenuBtn});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(309, 24);
+            this.MenuStrip.TabIndex = 0;
+            this.MenuStrip.Text = "MStrip";
             // 
             // FileMenuBtn
             // 
@@ -81,15 +81,13 @@
             this.ReinstallMenuBtn,
             this.UninstallMenuBtn,
             this.ExitMenuBtn});
-            this.FileMenuBtn.Image = global::BranksMod.Properties.Resources.Menu;
             this.FileMenuBtn.Name = "FileMenuBtn";
-            this.FileMenuBtn.Size = new System.Drawing.Size(67, 20);
+            this.FileMenuBtn.Size = new System.Drawing.Size(51, 20);
             this.FileMenuBtn.Text = "Menu";
             // 
             // OpenFolderMenuBtn
             // 
             this.OpenFolderMenuBtn.ForeColor = System.Drawing.Color.Black;
-            this.OpenFolderMenuBtn.Image = global::BranksMod.Properties.Resources.Open;
             this.OpenFolderMenuBtn.Name = "OpenFolderMenuBtn";
             this.OpenFolderMenuBtn.Size = new System.Drawing.Size(210, 22);
             this.OpenFolderMenuBtn.Text = "Open BakkesMod Folder";
@@ -98,7 +96,6 @@
             // CheckUpdatesMenuBtn
             // 
             this.CheckUpdatesMenuBtn.ForeColor = System.Drawing.Color.Black;
-            this.CheckUpdatesMenuBtn.Image = global::BranksMod.Properties.Resources.Update;
             this.CheckUpdatesMenuBtn.Name = "CheckUpdatesMenuBtn";
             this.CheckUpdatesMenuBtn.Size = new System.Drawing.Size(210, 22);
             this.CheckUpdatesMenuBtn.Text = "Check for Updates";
@@ -107,7 +104,6 @@
             // ReinstallMenuBtn
             // 
             this.ReinstallMenuBtn.ForeColor = System.Drawing.Color.Black;
-            this.ReinstallMenuBtn.Image = global::BranksMod.Properties.Resources.Reinstall;
             this.ReinstallMenuBtn.Name = "ReinstallMenuBtn";
             this.ReinstallMenuBtn.Size = new System.Drawing.Size(210, 22);
             this.ReinstallMenuBtn.Text = "Reinstall";
@@ -116,7 +112,6 @@
             // UninstallMenuBtn
             // 
             this.UninstallMenuBtn.ForeColor = System.Drawing.Color.Black;
-            this.UninstallMenuBtn.Image = global::BranksMod.Properties.Resources.Uninstall;
             this.UninstallMenuBtn.Name = "UninstallMenuBtn";
             this.UninstallMenuBtn.Size = new System.Drawing.Size(210, 22);
             this.UninstallMenuBtn.Text = "Uninstall";
@@ -125,7 +120,6 @@
             // ExitMenuBtn
             // 
             this.ExitMenuBtn.ForeColor = System.Drawing.Color.Black;
-            this.ExitMenuBtn.Image = global::BranksMod.Properties.Resources.Exit;
             this.ExitMenuBtn.Name = "ExitMenuBtn";
             this.ExitMenuBtn.Size = new System.Drawing.Size(210, 22);
             this.ExitMenuBtn.Text = "Exit";
@@ -133,19 +127,17 @@
             // 
             // SettingsMenuBtn
             // 
-            this.SettingsMenuBtn.Image = global::BranksMod.Properties.Resources.Settings;
             this.SettingsMenuBtn.Name = "SettingsMenuBtn";
-            this.SettingsMenuBtn.Size = new System.Drawing.Size(79, 20);
+            this.SettingsMenuBtn.Size = new System.Drawing.Size(63, 20);
             this.SettingsMenuBtn.Text = "Settings";
             this.SettingsMenuBtn.Click += new System.EventHandler(this.SettingsMenuBtn_Click);
             // 
-            // TroubleshootingMenuBtn
+            // HelpMenuBtn
             // 
-            this.TroubleshootingMenuBtn.Image = global::BranksMod.Properties.Resources.Help;
-            this.TroubleshootingMenuBtn.Name = "TroubleshootingMenuBtn";
-            this.TroubleshootingMenuBtn.Size = new System.Drawing.Size(124, 20);
-            this.TroubleshootingMenuBtn.Text = "Troubleshooting";
-            this.TroubleshootingMenuBtn.Click += new System.EventHandler(this.TroubleshootingMenuBtn_Click);
+            this.HelpMenuBtn.Name = "HelpMenuBtn";
+            this.HelpMenuBtn.Size = new System.Drawing.Size(45, 20);
+            this.HelpMenuBtn.Text = "Help";
+            this.HelpMenuBtn.Click += new System.EventHandler(this.TroubleshootingMenuBtn_Click);
             // 
             // RLLbl
             // 
@@ -211,10 +203,18 @@
             this.InjectionTmr.Interval = 2500;
             this.InjectionTmr.Tick += new System.EventHandler(this.InjectionTmr_Tick);
             // 
+            // DownloadBox
+            // 
+            this.DownloadBox.Location = new System.Drawing.Point(0, 0);
+            this.DownloadBox.Multiline = true;
+            this.DownloadBox.Name = "DownloadBox";
+            this.DownloadBox.Size = new System.Drawing.Size(20, 20);
+            this.DownloadBox.TabIndex = 7;
+            this.DownloadBox.Visible = false;
+            // 
             // InjectBtn
             // 
             this.InjectBtn.BackColor = System.Drawing.Color.Transparent;
-            this.InjectBtn.BackgroundImage = global::BranksMod.Properties.Resources.Inject;
             this.InjectBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.InjectBtn.Location = new System.Drawing.Point(272, 67);
             this.InjectBtn.Name = "InjectBtn";
@@ -227,7 +227,6 @@
             // StatusImg
             // 
             this.StatusImg.BackColor = System.Drawing.Color.Transparent;
-            this.StatusImg.BackgroundImage = global::BranksMod.Properties.Resources.Status;
             this.StatusImg.Location = new System.Drawing.Point(12, 67);
             this.StatusImg.Name = "StatusImg";
             this.StatusImg.Size = new System.Drawing.Size(25, 25);
@@ -237,47 +236,37 @@
             // RLImg
             // 
             this.RLImg.BackColor = System.Drawing.Color.Transparent;
-            this.RLImg.BackgroundImage = global::BranksMod.Properties.Resources.RL;
             this.RLImg.Location = new System.Drawing.Point(12, 36);
             this.RLImg.Name = "RLImg";
             this.RLImg.Size = new System.Drawing.Size(25, 25);
             this.RLImg.TabIndex = 4;
             this.RLImg.TabStop = false;
             // 
-            // DownloadBox
-            // 
-            this.DownloadBox.Location = new System.Drawing.Point(0, 0);
-            this.DownloadBox.Multiline = true;
-            this.DownloadBox.Name = "DownloadBox";
-            this.DownloadBox.Size = new System.Drawing.Size(20, 20);
-            this.DownloadBox.TabIndex = 7;
-            this.DownloadBox.Visible = false;
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(309, 106);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ClientSize = new System.Drawing.Size(309, 103);
             this.Controls.Add(this.InjectBtn);
             this.Controls.Add(this.StatusImg);
             this.Controls.Add(this.RLImg);
             this.Controls.Add(this.StatusLbl);
             this.Controls.Add(this.RLLbl);
-            this.Controls.Add(this.MStrip);
+            this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.DownloadBox);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.MStrip;
+            this.MainMenuStrip = this.MenuStrip;
             this.MaximizeBox = false;
             this.Name = "MainFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BranksMod";
             this.Load += new System.EventHandler(this.MainFrm_Load);
             this.Resize += new System.EventHandler(this.MainFrm_Resize);
-            this.MStrip.ResumeLayout(false);
-            this.MStrip.PerformLayout();
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
             this.TrayMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.InjectBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusImg)).EndInit();
@@ -289,7 +278,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip MStrip;
+        private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem OpenFolderMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem CheckUpdatesMenuBtn;
@@ -297,7 +286,7 @@
         private System.Windows.Forms.ToolStripMenuItem UninstallMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem ExitMenuBtn;
         private System.Windows.Forms.ToolStripMenuItem SettingsMenuBtn;
-        private System.Windows.Forms.ToolStripMenuItem TroubleshootingMenuBtn;
+        private System.Windows.Forms.ToolStripMenuItem HelpMenuBtn;
         internal System.Windows.Forms.Label RLLbl;
         internal System.Windows.Forms.Label StatusLbl;
         private System.Windows.Forms.Timer ProcessTmr;

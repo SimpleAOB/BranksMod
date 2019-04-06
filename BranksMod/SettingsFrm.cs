@@ -351,7 +351,7 @@ namespace BranksMod
         {
             if (Properties.Settings.Default.Theme == "Light")
             {
-                ThemeBackground = Color.WhiteSmoke;
+                ThemeBackground = Color.FromArgb(240, 240, 240);
                 ThemeHighlight = Color.FromArgb(255, 255, 255);
                 ThemeFontColor = Color.Black;
                 LoadLight();
@@ -359,7 +359,7 @@ namespace BranksMod
             }
             else if (Properties.Settings.Default.Theme == "Night")
             {
-                ThemeBackground = Color.FromArgb(20, 20, 20);
+                ThemeBackground = Color.FromArgb(25, 25, 25);
                 ThemeHighlight = Color.FromArgb(35, 35, 35);
                 ThemeFontColor = Color.White;
                 LoadNight();

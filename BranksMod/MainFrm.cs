@@ -156,6 +156,7 @@ namespace BranksMod
                 DialogResult Result = MessageBox.Show("A new BranksMod version was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (Result == DialogResult.Yes)
                 {
+                    Process.Start("https://github.com/ItsBranK/BranksMod/releases");
                     //Install Injector
                 }
             }

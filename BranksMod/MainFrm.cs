@@ -268,7 +268,6 @@ namespace BranksMod
                             if (Entry.FullName.StartsWith("bakkesmod.dll", StringComparison.OrdinalIgnoreCase))
                             {
                                 string DestinationPath = Path.GetFullPath(Path.Combine(Properties.Settings.Default.FolderPath + "\\bakkesmod\\", Entry.FullName));
-
                                 File.Delete(Properties.Settings.Default.FolderPath + "\\bakkesmod\\bakkesmod.dll");
                                 Entry.ExtractToFile(DestinationPath);
                             }

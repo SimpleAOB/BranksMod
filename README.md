@@ -4,11 +4,6 @@ Currently in beta, BranksMod is a complete rewrite of the original BakkesModInje
 
 ![](preview.png)
 
-## Known Issues
-
-- Auto Updater doesn't install new DLL.
-- Troubleshooting is not yet implemented.
-
 ## Contact
 
 If you notice any problems or have a suggestion feel free to message me on Discord - ItsBranK#4095

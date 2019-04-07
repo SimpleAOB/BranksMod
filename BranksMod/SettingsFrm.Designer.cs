@@ -60,10 +60,10 @@
             this.ManualImg = new System.Windows.Forms.PictureBox();
             this.TimeoutImg = new System.Windows.Forms.PictureBox();
             this.PluginsTab = new System.Windows.Forms.TabPage();
-            this.PluginAddImg = new System.Windows.Forms.PictureBox();
-            this.PluginSettingsImg = new System.Windows.Forms.PictureBox();
-            this.PluginRemoveImg = new System.Windows.Forms.PictureBox();
             this.PluginsListview = new System.Windows.Forms.ListView();
+            this.PluginSettingsBtn = new System.Windows.Forms.Label();
+            this.PluginAddBtn = new System.Windows.Forms.Label();
+            this.PluginRemoveBtn = new System.Windows.Forms.Label();
             this.AboutTab = new System.Windows.Forms.TabPage();
             this.DiscordLink = new System.Windows.Forms.PictureBox();
             this.DiscordLbl = new System.Windows.Forms.Label();
@@ -77,9 +77,7 @@
             this.InjectorBtn = new System.Windows.Forms.Label();
             this.AboutBtn = new System.Windows.Forms.Label();
             this.PluginsBtn = new System.Windows.Forms.Label();
-            this.PluginAddBtn = new System.Windows.Forms.Label();
-            this.PluginRemoveBtn = new System.Windows.Forms.Label();
-            this.PluginSettingsBtn = new System.Windows.Forms.Label();
+            this.PluginDialog = new System.Windows.Forms.OpenFileDialog();
             this.SettingsTabCtrl.SuspendLayout();
             this.GeneralTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NightImg)).BeginInit();
@@ -97,9 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ManualImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeoutImg)).BeginInit();
             this.PluginsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PluginAddImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PluginSettingsImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PluginRemoveImg)).BeginInit();
             this.AboutTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).BeginInit();
             this.SuspendLayout();
@@ -453,9 +448,6 @@
             // 
             // PluginsTab
             // 
-            this.PluginsTab.Controls.Add(this.PluginAddImg);
-            this.PluginsTab.Controls.Add(this.PluginSettingsImg);
-            this.PluginsTab.Controls.Add(this.PluginRemoveImg);
             this.PluginsTab.Controls.Add(this.PluginsListview);
             this.PluginsTab.Controls.Add(this.PluginSettingsBtn);
             this.PluginsTab.Controls.Add(this.PluginAddBtn);
@@ -466,39 +458,6 @@
             this.PluginsTab.TabIndex = 2;
             this.PluginsTab.Text = "Plugins";
             this.PluginsTab.UseVisualStyleBackColor = true;
-            // 
-            // PluginAddImg
-            // 
-            this.PluginAddImg.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginAddImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PluginAddImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginAddImg.Location = new System.Drawing.Point(12, 244);
-            this.PluginAddImg.Name = "PluginAddImg";
-            this.PluginAddImg.Size = new System.Drawing.Size(25, 25);
-            this.PluginAddImg.TabIndex = 4;
-            this.PluginAddImg.TabStop = false;
-            // 
-            // PluginSettingsImg
-            // 
-            this.PluginSettingsImg.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginSettingsImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PluginSettingsImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginSettingsImg.Location = new System.Drawing.Point(223, 244);
-            this.PluginSettingsImg.Name = "PluginSettingsImg";
-            this.PluginSettingsImg.Size = new System.Drawing.Size(25, 25);
-            this.PluginSettingsImg.TabIndex = 2;
-            this.PluginSettingsImg.TabStop = false;
-            // 
-            // PluginRemoveImg
-            // 
-            this.PluginRemoveImg.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginRemoveImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PluginRemoveImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginRemoveImg.Location = new System.Drawing.Point(118, 244);
-            this.PluginRemoveImg.Name = "PluginRemoveImg";
-            this.PluginRemoveImg.Size = new System.Drawing.Size(25, 25);
-            this.PluginRemoveImg.TabIndex = 1;
-            this.PluginRemoveImg.TabStop = false;
             // 
             // PluginsListview
             // 
@@ -513,6 +472,57 @@
             this.PluginsListview.TabIndex = 0;
             this.PluginsListview.UseCompatibleStateImageBehavior = false;
             this.PluginsListview.View = System.Windows.Forms.View.List;
+            // 
+            // PluginSettingsBtn
+            // 
+            this.PluginSettingsBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginSettingsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PluginSettingsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginSettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginSettingsBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginSettingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PluginSettingsBtn.Location = new System.Drawing.Point(263, 247);
+            this.PluginSettingsBtn.Name = "PluginSettingsBtn";
+            this.PluginSettingsBtn.Size = new System.Drawing.Size(115, 25);
+            this.PluginSettingsBtn.TabIndex = 16;
+            this.PluginSettingsBtn.Text = "Settings";
+            this.PluginSettingsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginSettingsBtn.Visible = false;
+            this.PluginSettingsBtn.Click += new System.EventHandler(this.PluginSettingsBtn_Click);
+            // 
+            // PluginAddBtn
+            // 
+            this.PluginAddBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginAddBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PluginAddBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginAddBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginAddBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PluginAddBtn.Location = new System.Drawing.Point(21, 247);
+            this.PluginAddBtn.Name = "PluginAddBtn";
+            this.PluginAddBtn.Size = new System.Drawing.Size(115, 25);
+            this.PluginAddBtn.TabIndex = 14;
+            this.PluginAddBtn.Text = "Add";
+            this.PluginAddBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginAddBtn.Visible = false;
+            this.PluginAddBtn.Click += new System.EventHandler(this.PluginAddBtn_Click);
+            // 
+            // PluginRemoveBtn
+            // 
+            this.PluginRemoveBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PluginRemoveBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PluginRemoveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PluginRemoveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginRemoveBtn.ForeColor = System.Drawing.Color.Black;
+            this.PluginRemoveBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PluginRemoveBtn.Location = new System.Drawing.Point(142, 247);
+            this.PluginRemoveBtn.Name = "PluginRemoveBtn";
+            this.PluginRemoveBtn.Size = new System.Drawing.Size(115, 25);
+            this.PluginRemoveBtn.TabIndex = 15;
+            this.PluginRemoveBtn.Text = "Remove";
+            this.PluginRemoveBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PluginRemoveBtn.Visible = false;
+            this.PluginRemoveBtn.Click += new System.EventHandler(this.PluginRemoveBtn_Click);
             // 
             // AboutTab
             // 
@@ -679,50 +689,9 @@
             this.PluginsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.PluginsBtn.Click += new System.EventHandler(this.PluginsBtn_Click);
             // 
-            // PluginAddBtn
+            // PluginDialog
             // 
-            this.PluginAddBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginAddBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PluginAddBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginAddBtn.ForeColor = System.Drawing.Color.Black;
-            this.PluginAddBtn.Location = new System.Drawing.Point(11, 243);
-            this.PluginAddBtn.Name = "PluginAddBtn";
-            this.PluginAddBtn.Size = new System.Drawing.Size(101, 27);
-            this.PluginAddBtn.TabIndex = 14;
-            this.PluginAddBtn.Text = "Add";
-            this.PluginAddBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PluginAddBtn.Click += new System.EventHandler(this.PluginAddBtn_Click);
-            // 
-            // PluginRemoveBtn
-            // 
-            this.PluginRemoveBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginRemoveBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PluginRemoveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginRemoveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginRemoveBtn.ForeColor = System.Drawing.Color.Black;
-            this.PluginRemoveBtn.Location = new System.Drawing.Point(117, 243);
-            this.PluginRemoveBtn.Name = "PluginRemoveBtn";
-            this.PluginRemoveBtn.Size = new System.Drawing.Size(100, 27);
-            this.PluginRemoveBtn.TabIndex = 15;
-            this.PluginRemoveBtn.Text = "Remove";
-            this.PluginRemoveBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PluginRemoveBtn.Click += new System.EventHandler(this.PluginRemoveBtn_Click);
-            // 
-            // PluginSettingsBtn
-            // 
-            this.PluginSettingsBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginSettingsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PluginSettingsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginSettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginSettingsBtn.ForeColor = System.Drawing.Color.Black;
-            this.PluginSettingsBtn.Location = new System.Drawing.Point(222, 243);
-            this.PluginSettingsBtn.Name = "PluginSettingsBtn";
-            this.PluginSettingsBtn.Size = new System.Drawing.Size(100, 27);
-            this.PluginSettingsBtn.TabIndex = 16;
-            this.PluginSettingsBtn.Text = "Settings";
-            this.PluginSettingsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PluginSettingsBtn.Click += new System.EventHandler(this.PluginSettingsBtn_Click);
+            this.PluginDialog.Filter = "DLL Files (*.dll)|*.dll|Set Files (*set.*)|*set.*";
             // 
             // SettingsFrm
             // 
@@ -764,9 +733,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ManualImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeoutImg)).EndInit();
             this.PluginsTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PluginAddImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PluginSettingsImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PluginRemoveImg)).EndInit();
             this.AboutTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).EndInit();
             this.ResumeLayout(false);
@@ -819,13 +785,11 @@
         private System.Windows.Forms.CheckBox NightBox;
         private System.Windows.Forms.CheckBox BrankTopBox;
         private System.Windows.Forms.PictureBox StartupImg;
-        private System.Windows.Forms.PictureBox PluginRemoveImg;
         private System.Windows.Forms.ListView PluginsListview;
-        private System.Windows.Forms.PictureBox PluginSettingsImg;
-        private System.Windows.Forms.PictureBox PluginAddImg;
         private System.Windows.Forms.Label PluginRemoveBtn;
         private System.Windows.Forms.Label PluginAddBtn;
         private System.Windows.Forms.Label PluginSettingsBtn;
+        private System.Windows.Forms.OpenFileDialog PluginDialog;
     }
 }
 

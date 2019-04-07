@@ -84,6 +84,7 @@ using System.Windows.Forms;
                 while ((Line = File.ReadLine()) != null)
                 {
                     Version = Line;
+                    break;
                 }
             }
         }

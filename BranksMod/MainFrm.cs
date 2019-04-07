@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace BranksMod
 {
@@ -88,7 +89,8 @@ namespace BranksMod
                     InjectionTmr.Stop();
                     InjectBtn.Visible = true;
                 }
-            } else
+            }
+            else
             {
 
             }
@@ -145,7 +147,7 @@ namespace BranksMod
             string InjectorVersion = HttpDownloader("https://pastebin.com/raw/91j3JaZM", "(\"([^ \"]|\"\")*\")", "InjectorVersion");
             Controller.WriteToLog(LogPath, Time + "[CheckInjectorUpdate] Latest Injector Version: " + InjectorVersion);
 
-
+            StatusLbl.Text = "Status: Checking Injector Version...";
             if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
             {
                 Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No injector update found.");
@@ -153,11 +155,10 @@ namespace BranksMod
             else
             {
                 Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Injector Update Found.");
-                DialogResult Result = MessageBox.Show("A new BranksMod version was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult Result = MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (Result == DialogResult.Yes)
                 {
-                    Process.Start("https://github.com/ItsBranK/BranksMod/releases");
-                    //Install Injector
+                    InstallInjector();
                 }
             }
 
@@ -165,6 +166,7 @@ namespace BranksMod
             string ModVersion = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
             Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Latest Mod Version: " + ModVersion);
 
+            StatusLbl.Text = "Status: Checking Mod Version...";
             if (Properties.Settings.Default.ModVersion == ModVersion)
             {
                 Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No Mod Update Found.");
@@ -172,10 +174,10 @@ namespace BranksMod
             else
             {
                 Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Mod Update Found.");
-                DialogResult Result = MessageBox.Show("A new BakkesMod.dll was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult Result = MessageBox.Show("A new version of BakkesMod.dll was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (Result == DialogResult.Yes)
                 {
-                    //Install DLL
+                    InstallDLL();
                 }
             }
         }
@@ -226,7 +228,7 @@ namespace BranksMod
                 Client.DownloadFile(URL, "bakkesmod.zip");
             }
 
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "bakkesmod.zip"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip"))
             {
                 try
                 {
@@ -238,6 +240,47 @@ namespace BranksMod
                     MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        public void InstallInjector()
+        {
+            Process.Start("https://github.com/ItsBranK/BranksMod/releases");
+        }
+
+        public void InstallDLL()
+        {
+            string Version = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
+            string URL = "http://149.210.150.107/static/versions/bakkesmod_" + Version + ".zip";
+
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile(URL, "bakkesmod.zip");
+            }
+
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip"))
+            {
+                try
+                {
+                    using (ZipArchive Archive = ZipFile.OpenRead(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip"))
+                    {
+                        foreach (ZipArchiveEntry Entry in Archive.Entries)
+                        {
+                            if (Entry.FullName.StartsWith("bakkesmod.dll", StringComparison.OrdinalIgnoreCase))
+                            {
+                                string DestinationPath = Path.GetFullPath(Path.Combine(Properties.Settings.Default.FolderPath + "\\bakkesmod\\", Entry.FullName));
+
+                                File.Delete(Properties.Settings.Default.FolderPath + "\\bakkesmod\\bakkesmod.dll");
+                                Entry.ExtractToFile(DestinationPath);
+                            }
+                        }
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
         }
         #endregion
 
@@ -266,7 +309,7 @@ namespace BranksMod
             }
             else
             {
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[OpenFolder] Found BakkesMod folder.");
+                Controller.WriteToLog(LogPath, Time + "[OpenFolder] Found BakkesMod folder.");
                 Process.Start(BranksModDirectory);
             }
         }
@@ -278,16 +321,16 @@ namespace BranksMod
 
         private void ReinstallMenuBtn_Click(object sender, EventArgs e)
         {
-            //DialogResult Result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            //if (Result == DialogResult.Yes)
-            //{
-            //    string Path = Properties.Settings.Default.FolderPath + "\\bakkesmod";
-            //    if (Directory.Exists(Path))
-            //    {
-            //        Directory.Delete(Path, true);
-            //        Install();
-            //    }
-            //}
+            DialogResult Result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == DialogResult.Yes)
+            {
+                string Path = Properties.Settings.Default.FolderPath + "\\bakkesmod";
+                if (Directory.Exists(Path))
+                {
+                    Directory.Delete(Path, true);
+                    Install();
+                }
+            }
         }
 
         private void UninstallMenuBtn_Click(object sender, EventArgs e)
@@ -299,6 +342,7 @@ namespace BranksMod
                 if (Directory.Exists(Path))
                 {
                     Directory.Delete(Path, true);
+                    MessageBox.Show("BakkesMod has successfully been uninstalled, BranksMod will now close.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
@@ -507,5 +551,6 @@ namespace BranksMod
             HelpMenuBtn.Image = Properties.Resources.Help_Dark;
         }
         #endregion
+
     }
 }

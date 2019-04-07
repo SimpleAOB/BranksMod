@@ -74,7 +74,7 @@ namespace BranksMod
 
         private void PluginAddBtn_Click(object sender, EventArgs e)
         {
-
+            //DLL Files (*.dll)|*.dll|Set Files (*set.*)|*set.*
         }
 
         private void PluginRemoveBtn_Click(object sender, EventArgs e)
@@ -374,9 +374,9 @@ namespace BranksMod
             PluginsBtn.BackColor = ThemeBackground;
             AboutBtn.BackColor = ThemeBackground;
             TimerBox.BackColor = ThemeBackground;
-            PluginAddImg.BackColor = ThemeBackground;
-            PluginRemoveImg.BackColor = ThemeBackground;
-            PluginSettingsImg.BackColor = ThemeBackground;
+            PluginAddBtn.BackColor = ThemeBackground;
+            PluginRemoveBtn.BackColor = ThemeBackground;
+            PluginSettingsBtn.BackColor = ThemeBackground;
             PluginsListview.BackColor = ThemeHighlight;
             PluginAddBtn.BackColor = ThemeBackground;
             PluginRemoveBtn.BackColor = ThemeBackground;
@@ -426,9 +426,9 @@ namespace BranksMod
             TimeoutImg.BackgroundImage = Properties.Resources.Automatic_Light;
             ManualImg.BackgroundImage = Properties.Resources.Manual_Light;
             TimerImg.BackgroundImage = Properties.Resources.Timeout_Light;
-            PluginAddImg.BackgroundImage = Properties.Resources.Add_Light;
-            PluginRemoveImg.BackgroundImage = Properties.Resources.Delete_Light;
-            PluginSettingsImg.BackgroundImage = Properties.Resources.Settings_Light;
+            PluginAddBtn.Image = Properties.Resources.Add_Light;
+            PluginRemoveBtn.Image = Properties.Resources.Delete_Light;
+            PluginSettingsBtn.Image = Properties.Resources.Settings_Light;
         }
 
         public void LoadNight()
@@ -446,9 +446,9 @@ namespace BranksMod
             TimeoutImg.BackgroundImage = Properties.Resources.Automatic_Dark;
             ManualImg.BackgroundImage = Properties.Resources.Manual_Dark;
             TimerImg.BackgroundImage = Properties.Resources.Timeout_Dark;
-            PluginAddImg.BackgroundImage = Properties.Resources.Add_Dark;
-            PluginRemoveImg.BackgroundImage = Properties.Resources.Delete_Dark;
-            PluginSettingsImg.BackgroundImage = Properties.Resources.Delete_Dark;
+            PluginAddBtn.Image = Properties.Resources.Add_Dark;
+            PluginRemoveBtn.Image = Properties.Resources.Delete_Dark;
+            PluginSettingsBtn.Image = Properties.Resources.Settings_Dark;
         }
         #endregion
 

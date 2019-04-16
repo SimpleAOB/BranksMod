@@ -245,6 +245,7 @@ namespace BranksMod
         public void InstallInjector()
         {
             Process.Start("https://github.com/ItsBranK/BranksMod/releases");
+            this.Close();
         }
 
         public void InstallDLL()
@@ -270,6 +271,10 @@ namespace BranksMod
                                 string DestinationPath = Path.GetFullPath(Path.Combine(Properties.Settings.Default.FolderPath + "\\bakkesmod\\", Entry.FullName));
                                 File.Delete(Properties.Settings.Default.FolderPath + "\\bakkesmod\\bakkesmod.dll");
                                 Entry.ExtractToFile(DestinationPath);
+                            }
+                            if (File.Exists(Properties.Settings.Default.FolderPath + "\\bakkesmod\\version.txt"))
+                            {
+                                File.WriteAllText(Properties.Settings.Default.FolderPath + "\\bakkesmod\\version.txt", Version);
                             }
                         }
                     }

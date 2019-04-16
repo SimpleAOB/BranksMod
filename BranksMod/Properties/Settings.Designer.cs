@@ -145,7 +145,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("V1.0.3")]
         public string InjectorVersion {
             get {
                 return ((string)(this["InjectorVersion"]));
@@ -157,7 +157,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string ModVersion {
             get {
                 return ((string)(this["ModVersion"]));
@@ -169,7 +169,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3676665")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string RLVersion {
             get {
                 return ((string)(this["RLVersion"]));

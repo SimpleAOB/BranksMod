@@ -33,13 +33,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="InjectorVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">V1.0.2</Value>
+      <Value Profile="(Default)">V1.0.3</Value>
     </Setting>
     <Setting Name="ModVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">75</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="RLVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">3676665</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="SettingsTopmost" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

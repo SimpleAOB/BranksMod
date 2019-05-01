@@ -58,6 +58,7 @@ namespace BranksMod
             {
                 RLLbl.Text = "Rocket League is not running.";
                 StatusLbl.Text = "Status: Uninjected.";
+                IsInjected = false;
             }
             else
             {
@@ -103,16 +104,19 @@ namespace BranksMod
             switch (Result)
             {
                 case InjectionResult.DLL_NOT_FOUND:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Could Not Find DLL File.");
+                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Could not find DLL.");
                     StatusLbl.Text = "Status: Could Not Find DLL File.";
+                    IsInjected = false;
                     break;
                 case InjectionResult.GAME_PROCESS_NOT_FOUND:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Uninjected, Rocket League is not running.");
+                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Rocket League is not running.");
+                    IsInjected = false;
                     StatusLbl.Text = "Status: Uninjected.";
                     break;
                 case InjectionResult.INJECTION_FAILED:
                     Controller.WriteToLog(LogPath, Time + "[InjectDLL] Injection Failed.");
                     StatusLbl.Text = "Status: Injection Failed.";
+                    IsInjected = false;
                     break;
                 case InjectionResult.SUCCESS:
                     Controller.WriteToLog(LogPath, Time + "[InjectDLL] Successfully Injected.");
@@ -177,7 +181,7 @@ namespace BranksMod
                 DialogResult Result = MessageBox.Show("A new version of BakkesMod.dll was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (Result == DialogResult.Yes)
                 {
-                    InstallDLL();
+                    InstallUpdate();
                 }
             }
         }
@@ -225,6 +229,7 @@ namespace BranksMod
 
             using (WebClient Client = new WebClient())
             {
+                Controller.WriteToLog(LogPath, Time + "[Install] Downloading Archive.");
                 Client.DownloadFile(URL, "bakkesmod.zip");
             }
 
@@ -237,6 +242,7 @@ namespace BranksMod
                 }
                 catch (Exception Ex)
                 {
+                    Controller.WriteToLog(LogPath, Time + "[Install] " + Ex.ToString());
                     MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -248,16 +254,18 @@ namespace BranksMod
             this.Close();
         }
 
-        public void InstallDLL()
+        public void InstallUpdate()
         {
             string Version = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
             string URL = "http://149.210.150.107/static/versions/bakkesmod_" + Version + ".zip";
 
             using (WebClient Client = new WebClient())
             {
+                Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Downloading Archive.");
                 Client.DownloadFile(URL, "bakkesmod.zip");
             }
 
+            StatusLbl.Text = "Status: Installing Update...";
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip"))
             {
                 try
@@ -266,25 +274,40 @@ namespace BranksMod
                     {
                         foreach (ZipArchiveEntry Entry in Archive.Entries)
                         {
-                            if (Entry.FullName.StartsWith("bakkesmod.dll", StringComparison.OrdinalIgnoreCase))
+                            string DestinationPath = Path.GetFullPath(Path.Combine(Properties.Settings.Default.FolderPath + "\\bakkesmod\\", Entry.FullName));
+                            if (Entry.Name == "")
                             {
-                                string DestinationPath = Path.GetFullPath(Path.Combine(Properties.Settings.Default.FolderPath + "\\bakkesmod\\", Entry.FullName));
-                                File.Delete(Properties.Settings.Default.FolderPath + "\\bakkesmod\\bakkesmod.dll");
-                                Entry.ExtractToFile(DestinationPath);
+                                Directory.CreateDirectory(Path.GetDirectoryName(DestinationPath));
+                                continue;
                             }
-                            if (File.Exists(Properties.Settings.Default.FolderPath + "\\bakkesmod\\version.txt"))
+                            Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Checking existing installed files.");
+                            if (DestinationPath.ToLower().EndsWith(".cfg") || DestinationPath.ToLower().EndsWith(".json"))
                             {
-                                File.WriteAllText(Properties.Settings.Default.FolderPath + "\\bakkesmod\\version.txt", Version);
+                                if (File.Exists(DestinationPath))
+                                    continue;
                             }
+                            Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Extracting files.");
+                            Entry.ExtractToFile(DestinationPath, true);
                         }
                     }
                 }
                 catch (Exception Ex)
                 {
+                    Controller.WriteToLog(LogPath, Time + "[InstallUpdate] " + Ex.ToString());
                     MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
+            try
+            {
+                Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Removing Archive.");
+                File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
+            }
+            catch
+            {
+                Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Failed to remove Archive.");
+                MessageBox.Show("Failed to remove bakkesmod.zip, try running as administrator if you aren't arlready.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            StatusLbl.Text = "Status: Uninjected.";
         }
         #endregion
 

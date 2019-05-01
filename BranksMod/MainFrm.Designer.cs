@@ -165,6 +165,7 @@
             // 
             // ProcessTmr
             // 
+            this.ProcessTmr.Interval = 250;
             this.ProcessTmr.Tick += new System.EventHandler(this.ProcessTmr_Tick);
             // 
             // TrayIcon

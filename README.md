@@ -1,6 +1,6 @@
 # BranksMod
 
-Currently in beta, BranksMod is a complete rewrite of the original BakkesModInjector with new and improved features.
+BranksMod is a complete rewrite of the original BakkesModInjector with new and improved features.
 
 ![](preview.png)
 

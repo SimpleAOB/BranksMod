@@ -18,34 +18,38 @@ using System.Windows.Forms;
         }
     }
 
-        public static string GetDirFromLog()
-        {
-            string MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string LogDir = MyDocuments + @"\My Games\Rocket League\TAGame\Logs\";
-            string LogFile = LogDir + "launch.log";
-            string ReturnDir = "";
+    public static string GetDirFromLog()
+    {
+        string MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string LogDir = MyDocuments + @"\My Games\Rocket League\TAGame\Logs\";
+         string LogFile = LogDir + "launch.log";
+        string ReturnDir = "";
 
-            if (File.Exists(LogFile))
+        if (File.Exists(LogFile))
+        {
+            string Line;
+            using (FileStream Stream = File.Open(LogFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                string Line;
-                using (FileStream Stream = File.Open(LogFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                StreamReader File = new StreamReader(Stream);
+                while ((Line = File.ReadLine()) != null)
                 {
-                    StreamReader File = new StreamReader(Stream);
-                    while ((Line = File.ReadLine()) != null)
+                    if (Line.Contains("Init: Base directory: "))
                     {
-                        if (Line.Contains("Init: Base directory: "))
-                        {
                         Line = Line.Replace("Init: Base directory: ", "");
                         ReturnDir = Line;
-                            break;
-                        }
+                        break;
+                    }
+                    else
+                    {
+                        ReturnDir = "Null";
                     }
                 }
             }
-            return ReturnDir;
         }
+        return ReturnDir;
+    }
 
-        public static string GetRLVersion(String Path)
+    public static string GetRLVersion(String Path)
         {
             string AppInfo = Path + "\\appmanifest_252950.acf";
             string Version = "0";

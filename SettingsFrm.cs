@@ -72,34 +72,19 @@ namespace BranksMod
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void PluginAddBtn_Click(object sender, EventArgs e)
-        {
-            //DLL Files (*.dll)|*.dll|Set Files (*set.*)|*set.*
-        }
-
-        private void PluginRemoveBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PluginSettingsBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         #region "Saving & Loading Events"
         public void SaveChanges()
         {
             CheckAutoInjector();
 
-            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            RegistryKey RK = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             if (StartupBox.Checked == true)
             {
-                rk.SetValue("BranksMod", Application.ExecutablePath);
+                RK.SetValue("BranksMod", Application.ExecutablePath);
             }
             if (StartupBox.Checked == false)
             {
-                rk.DeleteValue("BranksMod", false);
+                RK.DeleteValue("BranksMod", false);
             }
 
             if (SettingsTopBox.Checked == true)
@@ -260,14 +245,21 @@ namespace BranksMod
 
         public void LoadPlugins()
         {
-            PluginsListview.Clear();
-            string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath + "\\bakkesmod\\plugins");
-            
-            foreach (string File in Files)
+            PluginsList.Clear();
+            try
             {
-                PluginsListview.Items.Add(Path.GetFileName(File));
+                string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath + "\\bakkesmod\\plugins");
+
+                foreach (string File in Files)
+                {
+                    PluginsList.Items.Add(Path.GetFileName(File));
+                }
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] All plugins loaded.");
             }
-            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] All plugins loaded.");
+            catch (Exception)
+            {
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] Failed to load plugins.");
+            }
         }
 
         public void ResetSettings()
@@ -297,6 +289,10 @@ namespace BranksMod
             InjectorBtn.BackColor = ThemeBackground;
             PluginsBtn.BackColor = ThemeBackground;
             AboutBtn.BackColor = ThemeBackground;
+            GeneralIcon.BackColor = ThemeBackground;
+            InjectorIcon.BackColor = ThemeBackground;
+            PluginsIcon.BackColor = ThemeBackground;
+            AboutIcon.BackColor = ThemeBackground;
         }
 
         private void GeneralBtn_Click(object sender, EventArgs e)
@@ -305,6 +301,7 @@ namespace BranksMod
             RefreshTabs();
             GeneralBtn.BackColor = ThemeHighlight;
             GeneralTab.BackColor = ThemeHighlight;
+            GeneralIcon.BackColor = ThemeHighlight;
         }
 
         private void InjectorBtn_Click(object sender, EventArgs e)
@@ -313,6 +310,7 @@ namespace BranksMod
             RefreshTabs();
             InjectorBtn.BackColor = ThemeHighlight;
             InjectorTab.BackColor = ThemeHighlight;
+            InjectorIcon.BackColor = ThemeHighlight;
         }
 
         private void PluginsBtn_Click(object sender, EventArgs e)
@@ -321,6 +319,7 @@ namespace BranksMod
             RefreshTabs();
             PluginsBtn.BackColor = ThemeHighlight;
             PluginsTab.BackColor = ThemeHighlight;
+            PluginsIcon.BackColor = ThemeHighlight;
         }
 
         private void AboutBtn_Click(object sender, EventArgs e)
@@ -329,6 +328,43 @@ namespace BranksMod
             RefreshTabs();
             AboutBtn.BackColor = ThemeHighlight;
             AboutTab.BackColor = ThemeHighlight;
+            AboutIcon.BackColor = ThemeHighlight;
+        }
+
+        private void GeneralIcon_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = GeneralTab;
+            RefreshTabs();
+            GeneralBtn.BackColor = ThemeHighlight;
+            GeneralTab.BackColor = ThemeHighlight;
+            GeneralIcon.BackColor = ThemeHighlight;
+        }
+
+        private void InjectorIcon_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = InjectorTab;
+            RefreshTabs();
+            InjectorBtn.BackColor = ThemeHighlight;
+            InjectorTab.BackColor = ThemeHighlight;
+            InjectorIcon.BackColor = ThemeHighlight;
+        }
+
+        private void PluginsIcon_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = PluginsTab;
+            RefreshTabs();
+            PluginsBtn.BackColor = ThemeHighlight;
+            PluginsTab.BackColor = ThemeHighlight;
+            PluginsIcon.BackColor = ThemeHighlight;
+        }
+
+        private void AboutIcon_Click(object sender, EventArgs e)
+        {
+            SettingsTabCtrl.SelectedTab = AboutTab;
+            RefreshTabs();
+            AboutBtn.BackColor = ThemeHighlight;
+            AboutTab.BackColor = ThemeHighlight;
+            AboutIcon.BackColor = ThemeHighlight;
         }
 
         private void Icons8Link_Click(object sender, EventArgs e)
@@ -353,15 +389,15 @@ namespace BranksMod
             {
                 ThemeBackground = Color.FromArgb(240, 240, 240);
                 ThemeHighlight = Color.FromArgb(255, 255, 255);
-                ThemeFontColor = Color.Black;
+                ThemeFontColor = Color.FromArgb(5, 5, 5);
                 LoadLight();
                 Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckTheme] Loaded Light Theme. ");
             }
             else if (Properties.Settings.Default.Theme == "Night")
             {
-                ThemeBackground = Color.FromArgb(25, 25, 25);
-                ThemeHighlight = Color.FromArgb(35, 35, 35);
-                ThemeFontColor = Color.White;
+                ThemeBackground = Color.FromArgb(35, 35, 35);
+                ThemeHighlight = Color.FromArgb(45, 45, 45);
+                ThemeFontColor = Color.FromArgb(235, 235, 235);
                 LoadNight();
                 Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckTheme] Loaded Night Theme. ");
             }
@@ -373,15 +409,13 @@ namespace BranksMod
             InjectorBtn.BackColor = ThemeBackground;
             PluginsBtn.BackColor = ThemeBackground;
             AboutBtn.BackColor = ThemeBackground;
+            GeneralIcon.BackColor = ThemeHighlight;
+            InjectorIcon.BackColor = ThemeBackground;
+            PluginsIcon.BackColor = ThemeBackground;
+            AboutIcon.BackColor = ThemeBackground;
             TimerBox.BackColor = ThemeBackground;
-            PluginAddBtn.BackColor = ThemeBackground;
-            PluginRemoveBtn.BackColor = ThemeBackground;
-            PluginSettingsBtn.BackColor = ThemeBackground;
-            PluginsListview.BackColor = ThemeHighlight;
-            PluginAddBtn.BackColor = ThemeBackground;
-            PluginRemoveBtn.BackColor = ThemeBackground;
-            PluginSettingsBtn.BackColor = ThemeBackground;
-            PluginsListview.ForeColor = ThemeFontColor;
+            PluginsList.BackColor = ThemeHighlight;
+            PluginsList.ForeColor = ThemeFontColor;
             GeneralBtn.ForeColor = ThemeFontColor;
             InjectorBtn.ForeColor = ThemeFontColor;
             PluginsBtn.ForeColor = ThemeFontColor;
@@ -400,9 +434,6 @@ namespace BranksMod
             ManualBox.ForeColor = ThemeFontColor;
             TimerLbl.ForeColor = ThemeFontColor;
             TimerBox.ForeColor = ThemeFontColor;
-            PluginAddBtn.ForeColor = ThemeFontColor;
-            PluginRemoveBtn.ForeColor = ThemeFontColor;
-            PluginSettingsBtn.ForeColor = ThemeFontColor;
             RLVersionLbl.ForeColor = ThemeFontColor;
             InjectorVersionLbl.ForeColor = ThemeFontColor;
             ModVersionLbl.ForeColor = ThemeFontColor;
@@ -426,9 +457,10 @@ namespace BranksMod
             TimeoutImg.BackgroundImage = Properties.Resources.Automatic_Light;
             ManualImg.BackgroundImage = Properties.Resources.Manual_Light;
             TimerImg.BackgroundImage = Properties.Resources.Timeout_Light;
-            PluginAddBtn.Image = Properties.Resources.Add_Light;
-            PluginRemoveBtn.Image = Properties.Resources.Delete_Light;
-            PluginSettingsBtn.Image = Properties.Resources.Settings_Light;
+            GeneralIcon.BackgroundImage = Properties.Resources.Settings_Light;
+            InjectorIcon.BackgroundImage = Properties.Resources.Inject_Light;
+            PluginsIcon.BackgroundImage = Properties.Resources.Plugins_Light;
+            AboutIcon.BackgroundImage = Properties.Resources.Help_Light;
         }
 
         public void LoadNight()
@@ -446,9 +478,10 @@ namespace BranksMod
             TimeoutImg.BackgroundImage = Properties.Resources.Automatic_Dark;
             ManualImg.BackgroundImage = Properties.Resources.Manual_Dark;
             TimerImg.BackgroundImage = Properties.Resources.Timeout_Dark;
-            PluginAddBtn.Image = Properties.Resources.Add_Dark;
-            PluginRemoveBtn.Image = Properties.Resources.Delete_Dark;
-            PluginSettingsBtn.Image = Properties.Resources.Settings_Dark;
+            GeneralIcon.BackgroundImage = Properties.Resources.Settings_Dark;
+            InjectorIcon.BackgroundImage = Properties.Resources.Inject_Dark;
+            PluginsIcon.BackgroundImage = Properties.Resources.Plugins_Dark;
+            AboutIcon.BackgroundImage = Properties.Resources.Help_Dark;
         }
         #endregion
 

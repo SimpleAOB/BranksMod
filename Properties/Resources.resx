@@ -118,116 +118,182 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Add_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Reinstall_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reinstall_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Warning_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Automatic_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Automatic_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Automatic_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Automatic_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Delete_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Delete_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Delete_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Delete_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Timeout_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Timeout_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Documentation_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Documentation_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Documentation_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Documentation_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dollycam_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Exit_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Exit_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Right_Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Right_Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Exit_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Exit_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dollycam_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Help_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Help_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Help_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Help_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hide_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hide_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hide_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hide_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Inject_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Inject_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Inject_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Inject_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Topmost_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Topmost_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Invite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Invite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Invite1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Manual_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Manual_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Manual_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Manual_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Menu_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Menu_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Menu_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Menu_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Minimize_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Minimize_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Minimize_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Minimize_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Night_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Night_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dollycam_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Night_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Night_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Open_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Open_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Reinstall_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reinstall_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Status_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Status_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Inject_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Inject_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Update_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Update_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Open_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Open_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Reinstall_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Reinstall_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Safe_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Safe_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Reinstall_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Reinstall_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Delete_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RL_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RL_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Inject_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Inject_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Documentation_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Documentation_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Exit_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Exit_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Status_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Status_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Manual_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Manual_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warning_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Help_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Topmost_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Topmost_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hide_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hide_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Automatic_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Automatic_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Help_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RL_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RL_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Run_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Run_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dollycam_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Left_Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Left_Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dollycam_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dollycam_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Open_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Menu_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Exit_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Exit_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Run_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Run_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Night_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Night_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Run_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Run_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Minimize_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Minimize_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Automatic_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Automatic_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Timeout_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Timeout_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Update_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Update_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Safe_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Safe_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Safe_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Safe_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Hide_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hide_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Minimize_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Minimize_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Manual_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Manual_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dollycam_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dollycam_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RL_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RL_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Plugins_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plugins_Light1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Download_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Download_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Download_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Download_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Home_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Home_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Settings_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,40 +301,7 @@
   <data name="Settings_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Status_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Status_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Status_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Status_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Timeout_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Timeout_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Timeout_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Timeout_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Topmost_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Topmost_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Topmost_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Topmost_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Update_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Update_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Update_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Update_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Warning_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Warning_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Warning_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Warning_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Plugins_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Plugins_Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Plugins_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Plugins_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

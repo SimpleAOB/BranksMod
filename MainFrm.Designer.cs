@@ -62,7 +62,7 @@
             // MenuStrip
             // 
             this.MenuStrip.BackColor = System.Drawing.Color.White;
-            this.MenuStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuStrip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuBtn,
             this.SettingsMenuBtn,
@@ -81,15 +81,16 @@
             this.ReinstallMenuBtn,
             this.UninstallMenuBtn,
             this.ExitMenuBtn});
+            this.FileMenuBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileMenuBtn.Name = "FileMenuBtn";
-            this.FileMenuBtn.Size = new System.Drawing.Size(51, 20);
+            this.FileMenuBtn.Size = new System.Drawing.Size(50, 20);
             this.FileMenuBtn.Text = "Menu";
             // 
             // OpenFolderMenuBtn
             // 
             this.OpenFolderMenuBtn.ForeColor = System.Drawing.Color.Black;
             this.OpenFolderMenuBtn.Name = "OpenFolderMenuBtn";
-            this.OpenFolderMenuBtn.Size = new System.Drawing.Size(210, 22);
+            this.OpenFolderMenuBtn.Size = new System.Drawing.Size(203, 22);
             this.OpenFolderMenuBtn.Text = "Open BakkesMod Folder";
             this.OpenFolderMenuBtn.Click += new System.EventHandler(this.OpenFolderMenuBtn_Click);
             // 
@@ -97,7 +98,7 @@
             // 
             this.CheckUpdatesMenuBtn.ForeColor = System.Drawing.Color.Black;
             this.CheckUpdatesMenuBtn.Name = "CheckUpdatesMenuBtn";
-            this.CheckUpdatesMenuBtn.Size = new System.Drawing.Size(210, 22);
+            this.CheckUpdatesMenuBtn.Size = new System.Drawing.Size(203, 22);
             this.CheckUpdatesMenuBtn.Text = "Check for Updates";
             this.CheckUpdatesMenuBtn.Click += new System.EventHandler(this.CheckUpdatesMenuBtn_Click);
             // 
@@ -105,7 +106,7 @@
             // 
             this.ReinstallMenuBtn.ForeColor = System.Drawing.Color.Black;
             this.ReinstallMenuBtn.Name = "ReinstallMenuBtn";
-            this.ReinstallMenuBtn.Size = new System.Drawing.Size(210, 22);
+            this.ReinstallMenuBtn.Size = new System.Drawing.Size(203, 22);
             this.ReinstallMenuBtn.Text = "Reinstall";
             this.ReinstallMenuBtn.Click += new System.EventHandler(this.ReinstallMenuBtn_Click);
             // 
@@ -113,7 +114,7 @@
             // 
             this.UninstallMenuBtn.ForeColor = System.Drawing.Color.Black;
             this.UninstallMenuBtn.Name = "UninstallMenuBtn";
-            this.UninstallMenuBtn.Size = new System.Drawing.Size(210, 22);
+            this.UninstallMenuBtn.Size = new System.Drawing.Size(203, 22);
             this.UninstallMenuBtn.Text = "Uninstall";
             this.UninstallMenuBtn.Click += new System.EventHandler(this.UninstallMenuBtn_Click);
             // 
@@ -121,28 +122,30 @@
             // 
             this.ExitMenuBtn.ForeColor = System.Drawing.Color.Black;
             this.ExitMenuBtn.Name = "ExitMenuBtn";
-            this.ExitMenuBtn.Size = new System.Drawing.Size(210, 22);
+            this.ExitMenuBtn.Size = new System.Drawing.Size(203, 22);
             this.ExitMenuBtn.Text = "Exit";
             this.ExitMenuBtn.Click += new System.EventHandler(this.ExitMenuBtn_Click);
             // 
             // SettingsMenuBtn
             // 
+            this.SettingsMenuBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsMenuBtn.Name = "SettingsMenuBtn";
-            this.SettingsMenuBtn.Size = new System.Drawing.Size(63, 20);
+            this.SettingsMenuBtn.Size = new System.Drawing.Size(61, 20);
             this.SettingsMenuBtn.Text = "Settings";
             this.SettingsMenuBtn.Click += new System.EventHandler(this.SettingsMenuBtn_Click);
             // 
             // HelpMenuBtn
             // 
+            this.HelpMenuBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpMenuBtn.Name = "HelpMenuBtn";
-            this.HelpMenuBtn.Size = new System.Drawing.Size(45, 20);
+            this.HelpMenuBtn.Size = new System.Drawing.Size(44, 20);
             this.HelpMenuBtn.Text = "Help";
             this.HelpMenuBtn.Click += new System.EventHandler(this.TroubleshootingMenuBtn_Click);
             // 
             // RLLbl
             // 
             this.RLLbl.BackColor = System.Drawing.Color.Transparent;
-            this.RLLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RLLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RLLbl.ForeColor = System.Drawing.Color.Black;
             this.RLLbl.Location = new System.Drawing.Point(43, 36);
             this.RLLbl.Name = "RLLbl";
@@ -154,7 +157,7 @@
             // StatusLbl
             // 
             this.StatusLbl.BackColor = System.Drawing.Color.Transparent;
-            this.StatusLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLbl.ForeColor = System.Drawing.Color.Black;
             this.StatusLbl.Location = new System.Drawing.Point(43, 67);
             this.StatusLbl.Name = "StatusLbl";
@@ -265,6 +268,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BranksMod";
             this.Load += new System.EventHandler(this.MainFrm_Load);
+            this.Shown += new System.EventHandler(this.MainFrm_Shown);
             this.Resize += new System.EventHandler(this.MainFrm_Resize);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();

@@ -58,25 +58,25 @@ using System.Windows.Forms;
 
         private Injector() { }
 
-        public InjectionResult Inject(string processName, string dllPath)
+        public InjectionResult Inject(string Name, string Path)
         {
-            if (!File.Exists(dllPath))
+            if (!File.Exists(Path))
             {
                 return InjectionResult.DLL_NOT_FOUND;
             }
 
-            uint processId = 0;
+            uint ProcessID = 0;
 
             Process[] processes = Process.GetProcesses();
             foreach (Process p in processes)
             {
-                if (p.ProcessName == processName)
+                if (p.ProcessName == Name)
                 {
-                    processId = (uint)p.Id;
+                    ProcessID = (uint)p.Id;
                 }
             }
-            if (processId == 0) return InjectionResult.GAME_PROCESS_NOT_FOUND;
-            if (!InjectDLL(processId, dllPath)) return InjectionResult.INJECTION_FAILED;
+            if (ProcessID == 0) return InjectionResult.GAME_PROCESS_NOT_FOUND;
+            if (!InjectDLL(ProcessID, Path)) return InjectionResult.INJECTION_FAILED;
             return InjectionResult.SUCCESS;
         }
 

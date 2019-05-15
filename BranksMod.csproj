@@ -108,13 +108,18 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <None Include="Resources\Plugins_Dark.png" />
+    <None Include="Resources\Settings_Light.png" />
+    <None Include="Resources\Settings_Dark.png" />
+    <None Include="Resources\Plugins_Light1.png" />
+    <None Include="Resources\Invite1.png" />
+    <None Include="Resources\Right_Arrow.png" />
+    <None Include="Resources\Left_Arrow.png" />
     <None Include="Resources\Plugins_Light.png" />
     <None Include="Resources\Warning_Light.png" />
     <None Include="Resources\Update_Light.png" />
     <None Include="Resources\Topmost_Light.png" />
     <None Include="Resources\Timeout_Light.png" />
     <None Include="Resources\Status_Light.png" />
-    <None Include="Resources\Settings_Light.png" />
     <None Include="Resources\Save_Light.png" />
     <None Include="Resources\Safe_Light.png" />
     <None Include="Resources\Run_Light.png" />
@@ -130,7 +135,6 @@
     <None Include="Resources\Topmost_Dark.png" />
     <None Include="Resources\Timeout_Dark.png" />
     <None Include="Resources\Status_Dark.png" />
-    <None Include="Resources\Settings_Dark.png" />
     <None Include="Resources\Save_Dark.png" />
     <None Include="Resources\Safe_Dark.png" />
     <None Include="Resources\Run_Dark.png" />
@@ -157,6 +161,17 @@
     <None Include="Resources\Help_Light.png" />
     <None Include="Resources\Hide_Light.png" />
     <None Include="Resources\Inject_Light.png" />
+    <None Include="Resources\Dollycam_1.png" />
+    <None Include="Resources\Dollycam_3.png" />
+    <None Include="Resources\Dollycam_4.png" />
+    <None Include="Resources\Dollycam_5.png" />
+    <None Include="Resources\Dollycam_6.png" />
+    <None Include="Resources\Dollycam_7.png" />
+    <None Include="Resources\Dollycam_2.png" />
+    <None Include="Resources\Download_Light.png" />
+    <None Include="Resources\Download_Dark.png" />
+    <None Include="Resources\Home_Dark.png" />
+    <None Include="Resources\Home_Light.png" />
     <Content Include="Resources\Invite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

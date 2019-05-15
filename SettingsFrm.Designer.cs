@@ -60,10 +60,7 @@
             this.ManualImg = new System.Windows.Forms.PictureBox();
             this.TimeoutImg = new System.Windows.Forms.PictureBox();
             this.PluginsTab = new System.Windows.Forms.TabPage();
-            this.PluginsListview = new System.Windows.Forms.ListView();
-            this.PluginSettingsBtn = new System.Windows.Forms.Label();
-            this.PluginAddBtn = new System.Windows.Forms.Label();
-            this.PluginRemoveBtn = new System.Windows.Forms.Label();
+            this.PluginsList = new System.Windows.Forms.ListView();
             this.AboutTab = new System.Windows.Forms.TabPage();
             this.DiscordLink = new System.Windows.Forms.PictureBox();
             this.DiscordLbl = new System.Windows.Forms.Label();
@@ -78,6 +75,10 @@
             this.AboutBtn = new System.Windows.Forms.Label();
             this.PluginsBtn = new System.Windows.Forms.Label();
             this.PluginDialog = new System.Windows.Forms.OpenFileDialog();
+            this.PluginsIcon = new System.Windows.Forms.PictureBox();
+            this.AboutIcon = new System.Windows.Forms.PictureBox();
+            this.InjectorIcon = new System.Windows.Forms.PictureBox();
+            this.GeneralIcon = new System.Windows.Forms.PictureBox();
             this.SettingsTabCtrl.SuspendLayout();
             this.GeneralTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NightImg)).BeginInit();
@@ -97,14 +98,18 @@
             this.PluginsTab.SuspendLayout();
             this.AboutTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginsIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AboutIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InjectorIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeneralIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // StartupBox
             // 
             this.StartupBox.BackColor = System.Drawing.Color.Transparent;
-            this.StartupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartupBox.ForeColor = System.Drawing.Color.Black;
-            this.StartupBox.Location = new System.Drawing.Point(43, 43);
+            this.StartupBox.Location = new System.Drawing.Point(43, 74);
             this.StartupBox.Name = "StartupBox";
             this.StartupBox.Size = new System.Drawing.Size(175, 25);
             this.StartupBox.TabIndex = 0;
@@ -114,9 +119,9 @@
             // MiniStartupBox
             // 
             this.MiniStartupBox.BackColor = System.Drawing.Color.Transparent;
-            this.MiniStartupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiniStartupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MiniStartupBox.ForeColor = System.Drawing.Color.Black;
-            this.MiniStartupBox.Location = new System.Drawing.Point(43, 74);
+            this.MiniStartupBox.Location = new System.Drawing.Point(43, 105);
             this.MiniStartupBox.Name = "MiniStartupBox";
             this.MiniStartupBox.Size = new System.Drawing.Size(175, 25);
             this.MiniStartupBox.TabIndex = 1;
@@ -128,7 +133,7 @@
             this.SafeBox.BackColor = System.Drawing.Color.Transparent;
             this.SafeBox.Checked = true;
             this.SafeBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SafeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SafeBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SafeBox.Location = new System.Drawing.Point(43, 12);
             this.SafeBox.Name = "SafeBox";
             this.SafeBox.Size = new System.Drawing.Size(175, 25);
@@ -139,9 +144,9 @@
             // MiniHideBox
             // 
             this.MiniHideBox.BackColor = System.Drawing.Color.Transparent;
-            this.MiniHideBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiniHideBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MiniHideBox.ForeColor = System.Drawing.Color.Black;
-            this.MiniHideBox.Location = new System.Drawing.Point(43, 105);
+            this.MiniHideBox.Location = new System.Drawing.Point(43, 136);
             this.MiniHideBox.Name = "MiniHideBox";
             this.MiniHideBox.Size = new System.Drawing.Size(175, 25);
             this.MiniHideBox.TabIndex = 2;
@@ -151,7 +156,7 @@
             // WarningsBox
             // 
             this.WarningsBox.BackColor = System.Drawing.Color.Transparent;
-            this.WarningsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WarningsBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WarningsBox.Location = new System.Drawing.Point(43, 43);
             this.WarningsBox.Name = "WarningsBox";
             this.WarningsBox.Size = new System.Drawing.Size(175, 25);
@@ -162,8 +167,8 @@
             // TimerLbl
             // 
             this.TimerLbl.BackColor = System.Drawing.Color.Transparent;
-            this.TimerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimerLbl.Location = new System.Drawing.Point(43, 167);
+            this.TimerLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimerLbl.Location = new System.Drawing.Point(43, 136);
             this.TimerLbl.Name = "TimerLbl";
             this.TimerLbl.Size = new System.Drawing.Size(104, 25);
             this.TimerLbl.TabIndex = 11;
@@ -187,6 +192,7 @@
             // 
             this.GeneralTab.BackColor = System.Drawing.Color.White;
             this.GeneralTab.Controls.Add(this.SettingsTopBox);
+            this.GeneralTab.Controls.Add(this.WarningsBox);
             this.GeneralTab.Controls.Add(this.NightBox);
             this.GeneralTab.Controls.Add(this.BrankTopBox);
             this.GeneralTab.Controls.Add(this.NightImg);
@@ -195,6 +201,7 @@
             this.GeneralTab.Controls.Add(this.SettingsTopImg);
             this.GeneralTab.Controls.Add(this.MiniStartupBox);
             this.GeneralTab.Controls.Add(this.AutoUpdateBox);
+            this.GeneralTab.Controls.Add(this.WarningsImg);
             this.GeneralTab.Controls.Add(this.MiniHideBox);
             this.GeneralTab.Controls.Add(this.MiniStartupImg);
             this.GeneralTab.Controls.Add(this.MiniHideImg);
@@ -212,9 +219,9 @@
             this.SettingsTopBox.BackColor = System.Drawing.Color.Transparent;
             this.SettingsTopBox.Checked = true;
             this.SettingsTopBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SettingsTopBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsTopBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsTopBox.ForeColor = System.Drawing.Color.Black;
-            this.SettingsTopBox.Location = new System.Drawing.Point(43, 167);
+            this.SettingsTopBox.Location = new System.Drawing.Point(43, 198);
             this.SettingsTopBox.Name = "SettingsTopBox";
             this.SettingsTopBox.Size = new System.Drawing.Size(175, 25);
             this.SettingsTopBox.TabIndex = 29;
@@ -224,9 +231,9 @@
             // NightBox
             // 
             this.NightBox.BackColor = System.Drawing.Color.Transparent;
-            this.NightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NightBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NightBox.ForeColor = System.Drawing.Color.Black;
-            this.NightBox.Location = new System.Drawing.Point(43, 198);
+            this.NightBox.Location = new System.Drawing.Point(43, 229);
             this.NightBox.Name = "NightBox";
             this.NightBox.Size = new System.Drawing.Size(185, 25);
             this.NightBox.TabIndex = 30;
@@ -236,9 +243,9 @@
             // BrankTopBox
             // 
             this.BrankTopBox.BackColor = System.Drawing.Color.Transparent;
-            this.BrankTopBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BrankTopBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BrankTopBox.ForeColor = System.Drawing.Color.Black;
-            this.BrankTopBox.Location = new System.Drawing.Point(43, 136);
+            this.BrankTopBox.Location = new System.Drawing.Point(43, 167);
             this.BrankTopBox.Name = "BrankTopBox";
             this.BrankTopBox.Size = new System.Drawing.Size(175, 25);
             this.BrankTopBox.TabIndex = 28;
@@ -248,7 +255,7 @@
             // NightImg
             // 
             this.NightImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.NightImg.Location = new System.Drawing.Point(12, 198);
+            this.NightImg.Location = new System.Drawing.Point(12, 229);
             this.NightImg.Name = "NightImg";
             this.NightImg.Size = new System.Drawing.Size(25, 25);
             this.NightImg.TabIndex = 27;
@@ -257,7 +264,7 @@
             // BrankTopImg
             // 
             this.BrankTopImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BrankTopImg.Location = new System.Drawing.Point(12, 136);
+            this.BrankTopImg.Location = new System.Drawing.Point(12, 167);
             this.BrankTopImg.Name = "BrankTopImg";
             this.BrankTopImg.Size = new System.Drawing.Size(25, 25);
             this.BrankTopImg.TabIndex = 25;
@@ -275,7 +282,7 @@
             // SettingsTopImg
             // 
             this.SettingsTopImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.SettingsTopImg.Location = new System.Drawing.Point(12, 167);
+            this.SettingsTopImg.Location = new System.Drawing.Point(12, 198);
             this.SettingsTopImg.Name = "SettingsTopImg";
             this.SettingsTopImg.Size = new System.Drawing.Size(25, 25);
             this.SettingsTopImg.TabIndex = 26;
@@ -286,7 +293,7 @@
             this.AutoUpdateBox.BackColor = System.Drawing.Color.Transparent;
             this.AutoUpdateBox.Checked = true;
             this.AutoUpdateBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoUpdateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoUpdateBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoUpdateBox.ForeColor = System.Drawing.Color.Black;
             this.AutoUpdateBox.Location = new System.Drawing.Point(43, 12);
             this.AutoUpdateBox.Name = "AutoUpdateBox";
@@ -298,7 +305,7 @@
             // MiniStartupImg
             // 
             this.MiniStartupImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MiniStartupImg.Location = new System.Drawing.Point(12, 74);
+            this.MiniStartupImg.Location = new System.Drawing.Point(12, 105);
             this.MiniStartupImg.Name = "MiniStartupImg";
             this.MiniStartupImg.Size = new System.Drawing.Size(25, 25);
             this.MiniStartupImg.TabIndex = 23;
@@ -307,7 +314,7 @@
             // MiniHideImg
             // 
             this.MiniHideImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MiniHideImg.Location = new System.Drawing.Point(12, 105);
+            this.MiniHideImg.Location = new System.Drawing.Point(12, 136);
             this.MiniHideImg.Name = "MiniHideImg";
             this.MiniHideImg.Size = new System.Drawing.Size(25, 25);
             this.MiniHideImg.TabIndex = 24;
@@ -316,7 +323,7 @@
             // StartupImg
             // 
             this.StartupImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.StartupImg.Location = new System.Drawing.Point(12, 43);
+            this.StartupImg.Location = new System.Drawing.Point(12, 74);
             this.StartupImg.Name = "StartupImg";
             this.StartupImg.Size = new System.Drawing.Size(25, 25);
             this.StartupImg.TabIndex = 22;
@@ -325,14 +332,12 @@
             // InjectorTab
             // 
             this.InjectorTab.Controls.Add(this.AutoInjectBox);
-            this.InjectorTab.Controls.Add(this.WarningsBox);
             this.InjectorTab.Controls.Add(this.SafeBox);
             this.InjectorTab.Controls.Add(this.ManualBox);
             this.InjectorTab.Controls.Add(this.TimerBox);
             this.InjectorTab.Controls.Add(this.TimerLbl);
             this.InjectorTab.Controls.Add(this.TimeoutBox);
             this.InjectorTab.Controls.Add(this.TimerImg);
-            this.InjectorTab.Controls.Add(this.WarningsImg);
             this.InjectorTab.Controls.Add(this.SafeModeImg);
             this.InjectorTab.Controls.Add(this.AutoInjectImg);
             this.InjectorTab.Controls.Add(this.ManualImg);
@@ -348,8 +353,8 @@
             // AutoInjectBox
             // 
             this.AutoInjectBox.Enabled = false;
-            this.AutoInjectBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoInjectBox.Location = new System.Drawing.Point(43, 74);
+            this.AutoInjectBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoInjectBox.Location = new System.Drawing.Point(43, 43);
             this.AutoInjectBox.Name = "AutoInjectBox";
             this.AutoInjectBox.Size = new System.Drawing.Size(165, 25);
             this.AutoInjectBox.TabIndex = 26;
@@ -358,8 +363,8 @@
             // 
             // ManualBox
             // 
-            this.ManualBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManualBox.Location = new System.Drawing.Point(43, 136);
+            this.ManualBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManualBox.Location = new System.Drawing.Point(43, 105);
             this.ManualBox.Name = "ManualBox";
             this.ManualBox.Size = new System.Drawing.Size(165, 25);
             this.ManualBox.TabIndex = 13;
@@ -370,12 +375,12 @@
             // 
             this.TimerBox.BackColor = System.Drawing.Color.White;
             this.TimerBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TimerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimerBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimerBox.ForeColor = System.Drawing.Color.Black;
-            this.TimerBox.Location = new System.Drawing.Point(153, 170);
+            this.TimerBox.Location = new System.Drawing.Point(153, 139);
             this.TimerBox.MaxLength = 999999;
             this.TimerBox.Name = "TimerBox";
-            this.TimerBox.Size = new System.Drawing.Size(139, 22);
+            this.TimerBox.Size = new System.Drawing.Size(139, 25);
             this.TimerBox.TabIndex = 17;
             this.TimerBox.Text = "2500";
             this.TimerBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimerBox_KeyPress);
@@ -383,8 +388,8 @@
             // TimeoutBox
             // 
             this.TimeoutBox.Checked = true;
-            this.TimeoutBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeoutBox.Location = new System.Drawing.Point(43, 105);
+            this.TimeoutBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeoutBox.Location = new System.Drawing.Point(43, 74);
             this.TimeoutBox.Name = "TimeoutBox";
             this.TimeoutBox.Size = new System.Drawing.Size(165, 25);
             this.TimeoutBox.TabIndex = 14;
@@ -395,7 +400,7 @@
             // TimerImg
             // 
             this.TimerImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.TimerImg.Location = new System.Drawing.Point(12, 167);
+            this.TimerImg.Location = new System.Drawing.Point(12, 136);
             this.TimerImg.Name = "TimerImg";
             this.TimerImg.Size = new System.Drawing.Size(25, 25);
             this.TimerImg.TabIndex = 24;
@@ -422,7 +427,7 @@
             // AutoInjectImg
             // 
             this.AutoInjectImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AutoInjectImg.Location = new System.Drawing.Point(12, 74);
+            this.AutoInjectImg.Location = new System.Drawing.Point(12, 43);
             this.AutoInjectImg.Name = "AutoInjectImg";
             this.AutoInjectImg.Size = new System.Drawing.Size(25, 25);
             this.AutoInjectImg.TabIndex = 25;
@@ -431,7 +436,7 @@
             // ManualImg
             // 
             this.ManualImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ManualImg.Location = new System.Drawing.Point(12, 136);
+            this.ManualImg.Location = new System.Drawing.Point(12, 105);
             this.ManualImg.Name = "ManualImg";
             this.ManualImg.Size = new System.Drawing.Size(25, 25);
             this.ManualImg.TabIndex = 23;
@@ -440,7 +445,7 @@
             // TimeoutImg
             // 
             this.TimeoutImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.TimeoutImg.Location = new System.Drawing.Point(12, 105);
+            this.TimeoutImg.Location = new System.Drawing.Point(12, 74);
             this.TimeoutImg.Name = "TimeoutImg";
             this.TimeoutImg.Size = new System.Drawing.Size(25, 25);
             this.TimeoutImg.TabIndex = 22;
@@ -448,10 +453,7 @@
             // 
             // PluginsTab
             // 
-            this.PluginsTab.Controls.Add(this.PluginsListview);
-            this.PluginsTab.Controls.Add(this.PluginSettingsBtn);
-            this.PluginsTab.Controls.Add(this.PluginAddBtn);
-            this.PluginsTab.Controls.Add(this.PluginRemoveBtn);
+            this.PluginsTab.Controls.Add(this.PluginsList);
             this.PluginsTab.Location = new System.Drawing.Point(4, 22);
             this.PluginsTab.Name = "PluginsTab";
             this.PluginsTab.Size = new System.Drawing.Size(400, 281);
@@ -459,70 +461,20 @@
             this.PluginsTab.Text = "Plugins";
             this.PluginsTab.UseVisualStyleBackColor = true;
             // 
-            // PluginsListview
+            // PluginsList
             // 
-            this.PluginsListview.BackColor = System.Drawing.Color.White;
-            this.PluginsListview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PluginsListview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginsListview.ForeColor = System.Drawing.Color.Black;
-            this.PluginsListview.LabelWrap = false;
-            this.PluginsListview.Location = new System.Drawing.Point(3, 3);
-            this.PluginsListview.Name = "PluginsListview";
-            this.PluginsListview.Size = new System.Drawing.Size(394, 235);
-            this.PluginsListview.TabIndex = 0;
-            this.PluginsListview.UseCompatibleStateImageBehavior = false;
-            this.PluginsListview.View = System.Windows.Forms.View.List;
-            // 
-            // PluginSettingsBtn
-            // 
-            this.PluginSettingsBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginSettingsBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PluginSettingsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginSettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginSettingsBtn.ForeColor = System.Drawing.Color.Black;
-            this.PluginSettingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PluginSettingsBtn.Location = new System.Drawing.Point(263, 247);
-            this.PluginSettingsBtn.Name = "PluginSettingsBtn";
-            this.PluginSettingsBtn.Size = new System.Drawing.Size(115, 25);
-            this.PluginSettingsBtn.TabIndex = 16;
-            this.PluginSettingsBtn.Text = "Settings";
-            this.PluginSettingsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PluginSettingsBtn.Visible = false;
-            this.PluginSettingsBtn.Click += new System.EventHandler(this.PluginSettingsBtn_Click);
-            // 
-            // PluginAddBtn
-            // 
-            this.PluginAddBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginAddBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PluginAddBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginAddBtn.ForeColor = System.Drawing.Color.Black;
-            this.PluginAddBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PluginAddBtn.Location = new System.Drawing.Point(21, 247);
-            this.PluginAddBtn.Name = "PluginAddBtn";
-            this.PluginAddBtn.Size = new System.Drawing.Size(115, 25);
-            this.PluginAddBtn.TabIndex = 14;
-            this.PluginAddBtn.Text = "Add";
-            this.PluginAddBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PluginAddBtn.Visible = false;
-            this.PluginAddBtn.Click += new System.EventHandler(this.PluginAddBtn_Click);
-            // 
-            // PluginRemoveBtn
-            // 
-            this.PluginRemoveBtn.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PluginRemoveBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PluginRemoveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PluginRemoveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PluginRemoveBtn.ForeColor = System.Drawing.Color.Black;
-            this.PluginRemoveBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PluginRemoveBtn.Location = new System.Drawing.Point(142, 247);
-            this.PluginRemoveBtn.Name = "PluginRemoveBtn";
-            this.PluginRemoveBtn.Size = new System.Drawing.Size(115, 25);
-            this.PluginRemoveBtn.TabIndex = 15;
-            this.PluginRemoveBtn.Text = "Remove";
-            this.PluginRemoveBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PluginRemoveBtn.Visible = false;
-            this.PluginRemoveBtn.Click += new System.EventHandler(this.PluginRemoveBtn_Click);
+            this.PluginsList.BackColor = System.Drawing.Color.White;
+            this.PluginsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PluginsList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PluginsList.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginsList.ForeColor = System.Drawing.Color.Black;
+            this.PluginsList.LabelWrap = false;
+            this.PluginsList.Location = new System.Drawing.Point(0, 0);
+            this.PluginsList.Name = "PluginsList";
+            this.PluginsList.Size = new System.Drawing.Size(400, 281);
+            this.PluginsList.TabIndex = 0;
+            this.PluginsList.UseCompatibleStateImageBehavior = false;
+            this.PluginsList.View = System.Windows.Forms.View.List;
             // 
             // AboutTab
             // 
@@ -543,7 +495,7 @@
             // 
             // DiscordLink
             // 
-            this.DiscordLink.BackgroundImage = global::BranksMod.Properties.Resources.Invite;
+            this.DiscordLink.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DiscordLink.BackgroundImage")));
             this.DiscordLink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DiscordLink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DiscordLink.Location = new System.Drawing.Point(24, 189);
@@ -556,7 +508,7 @@
             // DiscordLbl
             // 
             this.DiscordLbl.BackColor = System.Drawing.Color.Transparent;
-            this.DiscordLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DiscordLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DiscordLbl.Location = new System.Drawing.Point(24, 161);
             this.DiscordLbl.Name = "DiscordLbl";
             this.DiscordLbl.Size = new System.Drawing.Size(350, 25);
@@ -568,9 +520,9 @@
             // 
             this.Icons8Link.BackColor = System.Drawing.Color.Transparent;
             this.Icons8Link.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Icons8Link.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icons8Link.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icons8Link.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Icons8Link.Location = new System.Drawing.Point(123, 87);
+            this.Icons8Link.Location = new System.Drawing.Point(123, 112);
             this.Icons8Link.Name = "Icons8Link";
             this.Icons8Link.Size = new System.Drawing.Size(70, 25);
             this.Icons8Link.TabIndex = 21;
@@ -581,7 +533,7 @@
             // RLVersionLbl
             // 
             this.RLVersionLbl.BackColor = System.Drawing.Color.Transparent;
-            this.RLVersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RLVersionLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RLVersionLbl.Location = new System.Drawing.Point(12, 12);
             this.RLVersionLbl.Name = "RLVersionLbl";
             this.RLVersionLbl.Size = new System.Drawing.Size(375, 25);
@@ -592,8 +544,8 @@
             // Icons8Lbl
             // 
             this.Icons8Lbl.BackColor = System.Drawing.Color.Transparent;
-            this.Icons8Lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icons8Lbl.Location = new System.Drawing.Point(12, 87);
+            this.Icons8Lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icons8Lbl.Location = new System.Drawing.Point(12, 112);
             this.Icons8Lbl.Name = "Icons8Lbl";
             this.Icons8Lbl.Size = new System.Drawing.Size(105, 25);
             this.Icons8Lbl.TabIndex = 19;
@@ -603,8 +555,8 @@
             // DevelopersLbl
             // 
             this.DevelopersLbl.BackColor = System.Drawing.Color.Transparent;
-            this.DevelopersLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DevelopersLbl.Location = new System.Drawing.Point(12, 112);
+            this.DevelopersLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DevelopersLbl.Location = new System.Drawing.Point(12, 87);
             this.DevelopersLbl.Name = "DevelopersLbl";
             this.DevelopersLbl.Size = new System.Drawing.Size(375, 25);
             this.DevelopersLbl.TabIndex = 17;
@@ -614,7 +566,7 @@
             // ModVersionLbl
             // 
             this.ModVersionLbl.BackColor = System.Drawing.Color.Transparent;
-            this.ModVersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModVersionLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModVersionLbl.Location = new System.Drawing.Point(12, 62);
             this.ModVersionLbl.Name = "ModVersionLbl";
             this.ModVersionLbl.Size = new System.Drawing.Size(375, 25);
@@ -625,7 +577,7 @@
             // InjectorVersionLbl
             // 
             this.InjectorVersionLbl.BackColor = System.Drawing.Color.Transparent;
-            this.InjectorVersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InjectorVersionLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InjectorVersionLbl.Location = new System.Drawing.Point(12, 37);
             this.InjectorVersionLbl.Name = "InjectorVersionLbl";
             this.InjectorVersionLbl.Size = new System.Drawing.Size(375, 25);
@@ -637,7 +589,7 @@
             // 
             this.GeneralBtn.BackColor = System.Drawing.Color.White;
             this.GeneralBtn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.GeneralBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GeneralBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GeneralBtn.ForeColor = System.Drawing.Color.Black;
             this.GeneralBtn.Location = new System.Drawing.Point(0, 0);
             this.GeneralBtn.Name = "GeneralBtn";
@@ -651,7 +603,7 @@
             // 
             this.InjectorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.InjectorBtn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.InjectorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InjectorBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InjectorBtn.ForeColor = System.Drawing.Color.Black;
             this.InjectorBtn.Location = new System.Drawing.Point(100, 0);
             this.InjectorBtn.Name = "InjectorBtn";
@@ -665,7 +617,7 @@
             // 
             this.AboutBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.AboutBtn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.AboutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutBtn.ForeColor = System.Drawing.Color.Black;
             this.AboutBtn.Location = new System.Drawing.Point(300, 0);
             this.AboutBtn.Name = "AboutBtn";
@@ -679,7 +631,7 @@
             // 
             this.PluginsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.PluginsBtn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PluginsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PluginsBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PluginsBtn.ForeColor = System.Drawing.Color.Black;
             this.PluginsBtn.Location = new System.Drawing.Point(200, 0);
             this.PluginsBtn.Name = "PluginsBtn";
@@ -693,12 +645,65 @@
             // 
             this.PluginDialog.Filter = "DLL Files (*.dll)|*.dll|Set Files (*set.*)|*set.*";
             // 
+            // PluginsIcon
+            // 
+            this.PluginsIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PluginsIcon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PluginsIcon.Location = new System.Drawing.Point(205, 5);
+            this.PluginsIcon.Name = "PluginsIcon";
+            this.PluginsIcon.Size = new System.Drawing.Size(15, 15);
+            this.PluginsIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PluginsIcon.TabIndex = 18;
+            this.PluginsIcon.TabStop = false;
+            this.PluginsIcon.Click += new System.EventHandler(this.PluginsIcon_Click);
+            // 
+            // AboutIcon
+            // 
+            this.AboutIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AboutIcon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.AboutIcon.Location = new System.Drawing.Point(305, 5);
+            this.AboutIcon.Name = "AboutIcon";
+            this.AboutIcon.Size = new System.Drawing.Size(15, 15);
+            this.AboutIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AboutIcon.TabIndex = 19;
+            this.AboutIcon.TabStop = false;
+            this.AboutIcon.Click += new System.EventHandler(this.AboutIcon_Click);
+            // 
+            // InjectorIcon
+            // 
+            this.InjectorIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.InjectorIcon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.InjectorIcon.Location = new System.Drawing.Point(105, 5);
+            this.InjectorIcon.Name = "InjectorIcon";
+            this.InjectorIcon.Size = new System.Drawing.Size(15, 15);
+            this.InjectorIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.InjectorIcon.TabIndex = 20;
+            this.InjectorIcon.TabStop = false;
+            this.InjectorIcon.Click += new System.EventHandler(this.InjectorIcon_Click);
+            // 
+            // GeneralIcon
+            // 
+            this.GeneralIcon.BackColor = System.Drawing.Color.White;
+            this.GeneralIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GeneralIcon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.GeneralIcon.Location = new System.Drawing.Point(5, 5);
+            this.GeneralIcon.Name = "GeneralIcon";
+            this.GeneralIcon.Size = new System.Drawing.Size(15, 15);
+            this.GeneralIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GeneralIcon.TabIndex = 21;
+            this.GeneralIcon.TabStop = false;
+            this.GeneralIcon.Click += new System.EventHandler(this.GeneralIcon_Click);
+            // 
             // SettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(400, 306);
+            this.Controls.Add(this.GeneralIcon);
+            this.Controls.Add(this.InjectorIcon);
+            this.Controls.Add(this.AboutIcon);
+            this.Controls.Add(this.PluginsIcon);
             this.Controls.Add(this.AboutBtn);
             this.Controls.Add(this.PluginsBtn);
             this.Controls.Add(this.InjectorBtn);
@@ -735,6 +740,10 @@
             this.PluginsTab.ResumeLayout(false);
             this.AboutTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PluginsIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AboutIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InjectorIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GeneralIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -785,11 +794,12 @@
         private System.Windows.Forms.CheckBox NightBox;
         private System.Windows.Forms.CheckBox BrankTopBox;
         private System.Windows.Forms.PictureBox StartupImg;
-        private System.Windows.Forms.ListView PluginsListview;
-        private System.Windows.Forms.Label PluginRemoveBtn;
-        private System.Windows.Forms.Label PluginAddBtn;
-        private System.Windows.Forms.Label PluginSettingsBtn;
+        private System.Windows.Forms.ListView PluginsList;
         private System.Windows.Forms.OpenFileDialog PluginDialog;
+        private System.Windows.Forms.PictureBox PluginsIcon;
+        private System.Windows.Forms.PictureBox AboutIcon;
+        private System.Windows.Forms.PictureBox InjectorIcon;
+        private System.Windows.Forms.PictureBox GeneralIcon;
     }
 }
 

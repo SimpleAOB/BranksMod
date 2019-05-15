@@ -2,11 +2,11 @@
 
 BranksMod is a complete rewrite of the original BakkesModInjector with new and improved features.
 
-![](preview.png)
+![](Preview.png)
 
 ## Contact
 
-If you notice any problems or have a suggestion feel free to message me on Discord - ItsBranK#4095
+Message me on Discord if you have any suggestions or want to test out beta releases - ItsBranK#4095
 
 Also be sure to join our Discord server.
 

@@ -12,9 +12,36 @@ namespace BranksMod
 {
     public partial class HelpFrm : Form
     {
+        string SelectedDoc = "Dollycam";
+
         public HelpFrm()
         {
             InitializeComponent();
+        }
+
+        private void HelpFrm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TroubleshootingBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConsoleBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DollycamBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CurveballBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

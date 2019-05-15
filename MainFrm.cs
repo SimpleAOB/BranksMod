@@ -21,7 +21,7 @@ namespace BranksMod
     public partial class MainFrm : Form
     {
         string Time = DateTime.Now.ToString("[HH:mm:ss] ");
-        string LogPath = Properties.Settings.Default.FolderPath + "\\bakkesmod\\branksmod.log";
+        string LogPath = Path.GetTempPath() + "branksmod.log";
         Color ThemeBackground = Color.FromArgb(0, 0, 0);
         Color ThemeHighlight = Color.FromArgb(0, 0, 0);
         Color ThemeFontColor = Color.Black;
@@ -32,18 +32,27 @@ namespace BranksMod
             InitializeComponent();
         }
 
+        private void MainFrm_Shown(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.MinimizeStartup == true)
+            {
+                TrayIcon.Visible = true;
+                this.Visible = false;
+            }
+            else
+            {
+               
+            }
+        }
+
         private void MainFrm_Load(object sender, EventArgs e)
         {
             GetFolderPath();
-            CheckVersion();
-            CheckInstall();
-            CheckAutoUpdates();
-            //CheckSafeMode();
+            LoadVersions();
             CheckWarnings();
+            CheckSafeMode();
             CheckTopmost();
-            CheckInstall();
             CheckTheme();
-            ProcessTmr.Start();
         }
 
         private void MainFrm_Resize(object sender, EventArgs e)
@@ -51,6 +60,7 @@ namespace BranksMod
             CheckMiniHide();
         }
 
+        #region "Injector & Timers"
         private void ProcessTmr_Tick(object sender, EventArgs e)
         {
             Process[] Name = Process.GetProcessesByName("RocketLeague");
@@ -105,7 +115,7 @@ namespace BranksMod
             {
                 case InjectionResult.DLL_NOT_FOUND:
                     Controller.WriteToLog(LogPath, Time + "[InjectDLL] Could not find DLL.");
-                    StatusLbl.Text = "Status: Could Not Find DLL File.";
+                    StatusLbl.Text = "Status: Could not find DLL file.";
                     IsInjected = false;
                     break;
                 case InjectionResult.GAME_PROCESS_NOT_FOUND:
@@ -114,17 +124,18 @@ namespace BranksMod
                     StatusLbl.Text = "Status: Uninjected.";
                     break;
                 case InjectionResult.INJECTION_FAILED:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Injection Failed.");
-                    StatusLbl.Text = "Status: Injection Failed.";
+                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Injection failed.");
+                    StatusLbl.Text = "Status: Injection failed.";
                     IsInjected = false;
                     break;
                 case InjectionResult.SUCCESS:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Successfully Injected.");
-                    StatusLbl.Text = "Status: Successfully Injected.";
+                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Successfully injected.");
+                    StatusLbl.Text = "Status: Successfully injected.";
                     IsInjected = true;
                     break;
             }
         }
+        #endregion
 
         #region "Installers & Updaters"
         public static string HttpDownloader(String URL, String Pattern, String Contents)
@@ -145,47 +156,6 @@ namespace BranksMod
             return Return;
         }
 
-        public void CheckForUpdates()
-        {
-            Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Checking injector version.");
-            string InjectorVersion = HttpDownloader("https://pastebin.com/raw/91j3JaZM", "(\"([^ \"]|\"\")*\")", "InjectorVersion");
-            Controller.WriteToLog(LogPath, Time + "[CheckInjectorUpdate] Latest Injector Version: " + InjectorVersion);
-
-            StatusLbl.Text = "Status: Checking Injector Version...";
-            if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
-            {
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No injector update found.");
-            }
-            else
-            {
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Injector Update Found.");
-                DialogResult Result = MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (Result == DialogResult.Yes)
-                {
-                    InstallInjector();
-                }
-            }
-
-            Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Checking for updates.");
-            string ModVersion = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
-            Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Latest Mod Version: " + ModVersion);
-
-            StatusLbl.Text = "Status: Checking Mod Version...";
-            if (Properties.Settings.Default.ModVersion == ModVersion)
-            {
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No Mod Update Found.");
-            }
-            else
-            {
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Mod Update Found.");
-                DialogResult Result = MessageBox.Show("A new version of BakkesMod.dll was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (Result == DialogResult.Yes)
-                {
-                    InstallUpdate();
-                }
-            }
-        }
-
         public void CheckInstall()
         {
             string Path = (Properties.Settings.Default.FolderPath);
@@ -193,8 +163,7 @@ namespace BranksMod
             if (!Directory.Exists(Path))
             {
                 Controller.WriteToLog(LogPath, Time + "[CheckInstall] Could not find Win32 folder.");
-                MessageBox.Show("Error: Could not find Win32 folder, do you have Rocket League installed on another drive?", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.Close();
+                GetFolderPathOverride();
             }
             else if (Directory.Exists(Path))
             {
@@ -213,6 +182,7 @@ namespace BranksMod
             else if (Directory.Exists(Path + "\\bakkesmod"))
             {
                 Controller.WriteToLog(LogPath, Time + "[CheckInstall] Found BakkesMod folder.");
+                CheckAutoUpdates();
             }
         }
 
@@ -248,6 +218,47 @@ namespace BranksMod
             }
         }
 
+        public void CheckForUpdates()
+        {
+            Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Checking injector version.");
+            string InjectorVersion = HttpDownloader("https://pastebin.com/raw/91j3JaZM", "(\"([^ \"]|\"\")*\")", "InjectorVersion");
+            Controller.WriteToLog(LogPath, Time + "[CheckInjectorUpdate] Latest Injector Version: " + InjectorVersion);
+
+            StatusLbl.Text = "Status: Checking injector version...";
+            if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
+            {
+                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No injector update found.");
+            }
+            else
+            {
+                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Injector Update Found.");
+                DialogResult Result = MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (Result == DialogResult.Yes)
+                {
+                    InstallInjector();
+                }
+            }
+
+            Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Checking for updates.");
+            string ModVersion = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
+            Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Latest Mod Version: " + ModVersion);
+
+            StatusLbl.Text = "Status: Checking mod version...";
+            if (Properties.Settings.Default.ModVersion == ModVersion)
+            {
+                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No Mod Update Found.");
+            }
+            else
+            {
+                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Mod Update Found.");
+                DialogResult Result = MessageBox.Show("A new version of BakkesMod.dll was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (Result == DialogResult.Yes)
+                {
+                    InstallUpdate();
+                }
+            }
+        }
+
         public void InstallInjector()
         {
             Process.Start("https://github.com/ItsBranK/BranksMod/releases");
@@ -265,7 +276,7 @@ namespace BranksMod
                 Client.DownloadFile(URL, "bakkesmod.zip");
             }
 
-            StatusLbl.Text = "Status: Installing Update...";
+            StatusLbl.Text = "Status: Installing update...";
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip"))
             {
                 try
@@ -311,8 +322,160 @@ namespace BranksMod
         }
         #endregion
 
+        #region "Uninstaller"
+            Boolean DirectoryError = false;
+            Boolean RegistryError = false;
+            Boolean LogError = false;
+            Boolean PickDirectory = false;
+            string DirectoryPath;
+            string DirectoryEx;
+            string RegistryEx;
+            string LogEx;
+
+            public void GetDirectory()
+            {
+                string MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string LogDir = MyDocuments + "\\My Games\\Rocket League\\TAGame\\Logs\\";
+                string LogFile = LogDir + "launch.log";
+                if (PickDirectory == true)
+                {
+                    OpenFileDialog OFD = new OpenFileDialog
+                    {
+                        Title = "Select RocketLeague.exe",
+                        Filter = "EXE Files (*.exe)|*.exe"
+                    };
+
+                    if (OFD.ShowDialog() == DialogResult.OK)
+                    {
+                        string FilePath = OFD.FileName;
+                        FilePath = FilePath.Replace("RocketLeague.exe", "");
+                        DirectoryPath = FilePath;
+                    }
+                }
+                else
+                {
+                    if (File.Exists(LogFile))
+                    {
+                        string Line;
+                        using (FileStream Stream = File.Open(LogFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                        {
+                            StreamReader File = new StreamReader(Stream);
+                            while ((Line = File.ReadLine()) != null)
+                            {
+                                if (Line.Contains("Init: Base directory: "))
+                                {
+                                    Line = Line.Replace("Init: Base directory: ", "");
+                                    DirectoryPath = Line;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                RemoveDirectory();
+            }
+
+            public void RemoveDirectory()
+            {
+                string FolderPath = DirectoryPath + "bakkesmod";
+                if (!Directory.Exists(FolderPath))
+                {
+                    MessageBox.Show("Could not find the directory, please manually point to where your RocketLeague.exe is located.", "BakkesMod Uninstaller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    PickDirectory = true;
+                    GetDirectory();
+                }
+                else
+                {
+                    try
+                    {
+                        Directory.Delete(FolderPath, true);
+                    }
+                    catch (Exception Ex)
+                    {
+                        DirectoryError = true;
+                        DirectoryEx = Ex.ToString();
+                    }
+                }
+                RemoveLog();
+            }
+
+            public void RemoveLog()
+            {
+                string LogPath = Path.GetTempPath() + "branksmod.log";
+                if (File.Exists(LogPath))
+                {
+                    try
+                    {
+                        File.Delete(LogPath);
+                    }
+                    catch (Exception Ex)
+                    {
+                        LogError = true;
+                        LogEx = Ex.ToString();
+                    }
+                }
+                RemoveRegistry();
+            }
+
+            public void RemoveRegistry()
+            {
+                RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                try
+                {
+                    Key.DeleteValue("BranksMod", false);
+                }
+                catch (Exception Ex)
+                {
+                    RegistryError = true;
+                    RegistryEx = Ex.ToString();
+                }
+                ConfirmUninstall();
+            }
+
+            public void ConfirmUninstall()
+            {
+                if (DirectoryError == true || RegistryError == true || LogError == true)
+                {
+                    if (DirectoryError == true)
+                    {
+                        DialogResult DirectoryResult = MessageBox.Show("There was an error trying to remove the directory, would you like to try again?", "BakkesMod Uninstaller", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        if (DirectoryResult == DialogResult.Yes)
+                        {
+                            RemoveDirectory();
+                        }
+                    }
+                    else if (RegistryError == true)
+                    {
+                        DialogResult RegistryResult = MessageBox.Show("There was an error trying to remove the startup registry, would you like to try again?", "BakkesMod Uninstaller", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        if (RegistryResult == DialogResult.Yes)
+                        {
+                            RemoveRegistry();
+                        }
+                    }
+                    else if (LogError == true)
+                    {
+                        DialogResult RegistryResult = MessageBox.Show("There was an error trying to remove the log files, would you like to try again?", "BakkesMod Uninstaller", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        if (RegistryResult == DialogResult.Yes)
+                        {
+                            RemoveLog();
+                        }
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("BranksMod has successfully been uninstalled.", "BakkesMod Uninstaller", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+
+    #endregion
+
         #region "Form Events"
-        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+    private void TrayIcon_DoubleClick(object sender, EventArgs e)
         {
             this.Show();
         }
@@ -362,16 +525,14 @@ namespace BranksMod
 
         private void UninstallMenuBtn_Click(object sender, EventArgs e)
         {
-            DialogResult Result = MessageBox.Show("This will fully remove all BakkesMod files, are you sure you want to continue?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult Result = MessageBox.Show("Are you sure you want to uninstall BakkesMod? This will remove all BakkesMod & BranksMod files and registry keys.", "Uninstaller", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (Result == DialogResult.Yes)
             {
-                string Path = Properties.Settings.Default.FolderPath + "\\bakkesmod";
-                if (Directory.Exists(Path))
-                {
-                    Directory.Delete(Path, true);
-                    MessageBox.Show("BakkesMod has successfully been uninstalled, BranksMod will now close.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
+                GetDirectory();
+            }
+            else if (Result == DialogResult.No)
+            {
+                
             }
         }
 
@@ -384,12 +545,11 @@ namespace BranksMod
         {
             SettingsFrm Settings = new SettingsFrm();
             Settings.Show();
-
         }
 
         private void TroubleshootingMenuBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Help is not complete yet.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Process.Start("https://bakkesmod.fandom.com/wiki/Troubleshooting");
             //HelpFrm HF = new HelpFrm();
             //HF.Show();
         }
@@ -402,6 +562,57 @@ namespace BranksMod
         #endregion
 
         #region "Loading Events"
+        public void GetFolderPath()
+        {
+            string Return = Controller.GetDirFromLog();
+            if (Return == "Null")
+            {
+                Controller.WriteToLog(LogPath, Time + "[GetFolderPath] Return Null.");
+                GetFolderPathOverride();
+            }
+            else
+            {
+                Controller.WriteToLog(LogPath, Time + "[GetFolderPath] Return " + Return);
+                Properties.Settings.Default.FolderPath = Return;
+                Properties.Settings.Default.Save();
+            }
+            CreateLogger();
+            CheckInstall();
+        }
+        
+        public void GetFolderPathOverride()
+        {
+            MessageBox.Show("Error: Could not find Win32 folder, please manually select where your RocketLeague.exe is located.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            OpenFileDialog OFD = new OpenFileDialog
+            {
+                Title = "Select RocketLeague.exe",
+                Filter = "EXE Files (*.exe)|*.exe"
+            };
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                string FilePath = OFD.FileName;
+                FilePath = FilePath.Replace("RocketLeague.exe", "");
+                Properties.Settings.Default.FolderPath = FilePath;
+                Properties.Settings.Default.Save();
+                CreateLogger();
+                CheckInstall();
+            }
+        }
+
+        public void CreateLogger()
+        {
+            try
+            {
+                StreamWriter LogFile = new StreamWriter(LogPath);
+                LogFile.Close();
+                Controller.WriteToLog(LogPath, Time + "[CreateLogger] Initialized logging.");
+            }
+            catch
+            {
+               
+            }
+        }
+
         public void CheckMiniHide()
         {
             if (Properties.Settings.Default.MinimizeHide == true)
@@ -427,27 +638,6 @@ namespace BranksMod
             }
         }
 
-        public void GetFolderPath()
-        {
-            string Path = Controller.GetDirFromLog();
-            Properties.Settings.Default.FolderPath = Path;
-            Properties.Settings.Default.Save();
-            CreateLogger();
-        }
-
-        public void CreateLogger()
-        {
-            try
-            {
-                StreamWriter LogFile = new StreamWriter(LogPath);
-                LogFile.Close();
-                Controller.WriteToLog(LogPath, Time + "[CreateLogger] Initialized logging.");
-            } catch
-            {
-                CheckInstall();
-            }
-        }
-
         public void CheckAutoUpdates()
         {
             if (Properties.Settings.Default.AutoUpdate == true)
@@ -464,11 +654,11 @@ namespace BranksMod
         {
             if (Properties.Settings.Default.EnableSafeMode == true)
             {
-                CheckVersion();
+                CheckRL();
             }
             else if (Properties.Settings.Default.EnableSafeMode == false)
             {
-
+                ProcessTmr.Start();
             }
         }
 
@@ -484,7 +674,7 @@ namespace BranksMod
             }
         }
 
-        public void CheckVersion()
+        public void LoadVersions()
         {
             Properties.Settings.Default.RLVersion = Controller.GetRLVersion(Properties.Settings.Default.FolderPath + "/../../../../");
             Properties.Settings.Default.ModVersion = Controller.GetModVersion(Properties.Settings.Default.FolderPath);
@@ -510,6 +700,32 @@ namespace BranksMod
                 }
             }
         }
+
+        public void CheckRL()
+        {
+            string Path = Properties.Settings.Default.FolderPath;
+            string Version = HttpDownloader("https://pastebin.com/raw/Hs2e6nM1", "(\"([^ \"]|\"\")*\")", "RL");
+
+            if (Properties.Settings.Default.RLVersion == Version)
+            {
+                Controller.WriteToLog(LogPath, Time + "[CheckRL] Latest Rocket League build.");
+                ProcessTmr.Start();
+            }
+            else
+            {
+                Controller.WriteToLog(LogPath, Time + "[CheckRL] Incorrect Rocket League build.");
+                if (Properties.Settings.Default.EnableSafeMode == true)
+                {
+                    ActivateSafeMode();
+                }
+            }
+        }
+        public void ActivateSafeMode()
+        {
+            Controller.WriteToLog(LogPath, Time + "[ActivateSafeMode] Loading into SafeMode.");
+            RLLbl.Text = "Mod out of date, please wait for an update.";
+            StatusLbl.Text = "Status: SafeMode enabled.";
+        }
         #endregion
 
         #region "Theme Events"
@@ -519,15 +735,15 @@ namespace BranksMod
             {
                 ThemeBackground = Color.FromArgb(240, 240, 240);
                 ThemeHighlight = Color.FromArgb(255, 255, 255);
-                ThemeFontColor = Color.Black;
+                ThemeFontColor = Color.FromArgb(5, 5, 5);
                 LoadLight();
                 Controller.WriteToLog(LogPath, Time + "[CheckTheme] Loaded Light Theme. ");
             }
             else if (Properties.Settings.Default.Theme == "Night")
             {
-                ThemeBackground = Color.FromArgb(25, 25, 25);
-                ThemeHighlight = Color.FromArgb(35, 35, 35);
-                ThemeFontColor = Color.White;
+                ThemeBackground = Color.FromArgb(35, 35, 35);
+                ThemeHighlight = Color.FromArgb(45, 45, 45);
+                ThemeFontColor = Color.FromArgb(235, 235, 235);
                 LoadNight();
                 Controller.WriteToLog(LogPath, Time + "[CheckTheme] Loaded Night Theme. ");
             }
@@ -578,6 +794,5 @@ namespace BranksMod
             HelpMenuBtn.Image = Properties.Resources.Help_Dark;
         }
         #endregion
-
     }
 }

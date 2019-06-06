@@ -26,24 +26,24 @@ namespace BranksMod.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool EnableSafeMode {
+        public bool SafeMode {
             get {
-                return ((bool)(this["EnableSafeMode"]));
+                return ((bool)(this["SafeMode"]));
             }
             set {
-                this["EnableSafeMode"] = value;
+                this["SafeMode"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DisableWarnings {
+        public bool Warnings {
             get {
-                return ((bool)(this["DisableWarnings"]));
+                return ((bool)(this["Warnings"]));
             }
             set {
-                this["DisableWarnings"] = value;
+                this["Warnings"] = value;
             }
         }
         
@@ -109,7 +109,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool RunOnStart {
             get {
                 return ((bool)(this["RunOnStart"]));
@@ -133,19 +133,7 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoInject {
-            get {
-                return ((bool)(this["AutoInject"]));
-            }
-            set {
-                this["AutoInject"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("v1.0.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("v1.0.6")]
         public string InjectorVersion {
             get {
                 return ((string)(this["InjectorVersion"]));
@@ -181,25 +169,13 @@ namespace BranksMod.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SettingsTopmost {
-            get {
-                return ((bool)(this["SettingsTopmost"]));
-            }
-            set {
-                this["SettingsTopmost"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool BrankTopmost {
+        public bool Topmost {
             get {
-                return ((bool)(this["BrankTopmost"]));
+                return ((bool)(this["Topmost"]));
             }
             set {
-                this["BrankTopmost"] = value;
+                this["Topmost"] = value;
             }
         }
         
@@ -212,6 +188,54 @@ namespace BranksMod.Properties {
             }
             set {
                 this["Theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OfflineMode {
+            get {
+                return ((bool)(this["OfflineMode"]));
+            }
+            set {
+                this["OfflineMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DoubleBuffered {
+            get {
+                return ((bool)(this["DoubleBuffered"]));
+            }
+            set {
+                this["DoubleBuffered"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Collapsed {
+            get {
+                return ((bool)(this["Collapsed"]));
+            }
+            set {
+                this["Collapsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool JustUpdated {
+            get {
+                return ((bool)(this["JustUpdated"]));
+            }
+            set {
+                this["JustUpdated"] = value;
             }
         }
     }

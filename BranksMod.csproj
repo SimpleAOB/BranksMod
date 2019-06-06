@@ -51,13 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Injector.cs" />
-    <Compile Include="HelpFrm.cs">
+    <Compile Include="DocFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HelpFrm.Designer.cs">
-      <DependentUpon>HelpFrm.cs</DependentUpon>
+    <Compile Include="DocFrm.Designer.cs">
+      <DependentUpon>DocFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Injector.cs" />
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,27 +65,13 @@
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsFrm.Designer.cs">
-      <DependentUpon>SettingsFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HelpFrm.resx">
-      <DependentUpon>HelpFrm.cs</DependentUpon>
+    <EmbeddedResource Include="DocFrm.resx">
+      <DependentUpon>DocFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsFrm.resx">
-      <DependentUpon>SettingsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,6 +82,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -107,72 +98,68 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
-    <None Include="Resources\Plugins_Dark.png" />
-    <None Include="Resources\Settings_Light.png" />
-    <None Include="Resources\Settings_Dark.png" />
-    <None Include="Resources\Plugins_Light1.png" />
-    <None Include="Resources\Invite1.png" />
-    <None Include="Resources\Right_Arrow.png" />
-    <None Include="Resources\Left_Arrow.png" />
-    <None Include="Resources\Plugins_Light.png" />
-    <None Include="Resources\Warning_Light.png" />
-    <None Include="Resources\Update_Light.png" />
-    <None Include="Resources\Topmost_Light.png" />
-    <None Include="Resources\Timeout_Light.png" />
-    <None Include="Resources\Status_Light.png" />
-    <None Include="Resources\Save_Light.png" />
-    <None Include="Resources\Safe_Light.png" />
-    <None Include="Resources\Run_Light.png" />
-    <None Include="Resources\RL_Light.png" />
-    <None Include="Resources\Reinstall_Light.png" />
-    <None Include="Resources\Open_Light.png" />
-    <None Include="Resources\Night_Light.png" />
-    <None Include="Resources\Minimize_Light.png" />
-    <None Include="Resources\Menu_Light.png" />
-    <None Include="Resources\Manual_Light.png" />
-    <None Include="Resources\Warning_Dark.png" />
-    <None Include="Resources\Update_Dark.png" />
-    <None Include="Resources\Topmost_Dark.png" />
-    <None Include="Resources\Timeout_Dark.png" />
-    <None Include="Resources\Status_Dark.png" />
-    <None Include="Resources\Save_Dark.png" />
-    <None Include="Resources\Safe_Dark.png" />
-    <None Include="Resources\Run_Dark.png" />
-    <None Include="Resources\RL_Dark.png" />
-    <None Include="Resources\Reinstall_Dark.png" />
-    <None Include="Resources\Open_Dark.png" />
-    <None Include="Resources\Night_Dark.png" />
-    <None Include="Resources\Minimize_Dark.png" />
-    <None Include="Resources\Menu_Dark.png" />
-    <None Include="Resources\Manual_Dark.png" />
-    <None Include="Resources\Add_Dark.png" />
-    <None Include="Resources\Automatic_Dark.png" />
-    <None Include="Resources\Delete_Dark.png" />
-    <None Include="Resources\Documentation_Dark.png" />
-    <None Include="Resources\Exit_Dark.png" />
-    <None Include="Resources\Help_Dark.png" />
-    <None Include="Resources\Hide_Dark.png" />
-    <None Include="Resources\Inject_Dark.png" />
-    <None Include="Resources\Add_Light.png" />
-    <None Include="Resources\Automatic_Light.png" />
-    <None Include="Resources\Delete_Light.png" />
-    <None Include="Resources\Documentation_Light.png" />
-    <None Include="Resources\Exit_Light.png" />
-    <None Include="Resources\Help_Light.png" />
-    <None Include="Resources\Hide_Light.png" />
-    <None Include="Resources\Inject_Light.png" />
-    <None Include="Resources\Dollycam_1.png" />
-    <None Include="Resources\Dollycam_3.png" />
-    <None Include="Resources\Dollycam_4.png" />
-    <None Include="Resources\Dollycam_5.png" />
-    <None Include="Resources\Dollycam_6.png" />
-    <None Include="Resources\Dollycam_7.png" />
-    <None Include="Resources\Dollycam_2.png" />
-    <None Include="Resources\Download_Light.png" />
-    <None Include="Resources\Download_Dark.png" />
-    <None Include="Resources\Home_Dark.png" />
-    <None Include="Resources\Home_Light.png" />
-    <Content Include="Resources\Invite.png" />
+    <None Include="Resources\BranksModUpdater.exe" />
+    <None Include="Resources\Experiment_White.png" />
+    <None Include="Resources\Experiment_Black.png" />
+    <None Include="Resources\Double_Black.png" />
+    <None Include="Resources\Double_White.png" />
+    <None Include="Resources\Arrow_Right.png" />
+    <None Include="Resources\Arrow_Left.png" />
+    <None Include="Resources\hitboxplugin.png" />
+    <None Include="Resources\mrsuluplugin.png" />
+    <None Include="Resources\GravityPlugin.png" />
+    <None Include="Resources\DiscordRPCPlugin.png" />
+    <None Include="Resources\CirclePlugin.png" />
+    <None Include="Resources\benditplugin.png" />
+    <None Include="Resources\AirRecoveryPlugin.png" />
+    <None Include="Resources\scienceplugin.png" />
+    <None Include="Resources\ReplayStatsBox.png" />
+    <None Include="Resources\Warning_White.png" />
+    <None Include="Resources\Update_White.png" />
+    <None Include="Resources\Top_White.png" />
+    <None Include="Resources\Stopwatch_White.png" />
+    <None Include="Resources\Status_White.png" />
+    <None Include="Resources\Settings_White.png" />
+    <None Include="Resources\Safe_White.png" />
+    <None Include="Resources\Run_White.png" />
+    <None Include="Resources\Rocket_White.png" />
+    <None Include="Resources\Plugin_White.png" />
+    <None Include="Resources\Offline_White.png" />
+    <None Include="Resources\Night_White.png" />
+    <None Include="Resources\Minimize_White.png" />
+    <None Include="Resources\Inject_White.png" />
+    <None Include="Resources\Icons8_White.png" />
+    <None Include="Resources\Hourglass_White.png" />
+    <None Include="Resources\Home_White.png" />
+    <None Include="Resources\Hide_White.png" />
+    <None Include="Resources\Crown_White.png" />
+    <None Include="Resources\Console_White.png" />
+    <None Include="Resources\Click_White.png" />
+    <None Include="Resources\About_White.png" />
+    <None Include="Resources\Invite.png" />
+    <None Include="Resources\Warning_Black.png" />
+    <None Include="Resources\Update_Black.png" />
+    <None Include="Resources\Top_Black.png" />
+    <None Include="Resources\Stopwatch_Black.png" />
+    <None Include="Resources\Status_Black.png" />
+    <None Include="Resources\Settings_Black.png" />
+    <None Include="Resources\Safe_Black.png" />
+    <None Include="Resources\Run_Black.png" />
+    <None Include="Resources\Rocket_Black.png" />
+    <None Include="Resources\Plugin_Black.png" />
+    <None Include="Resources\Offline_Black.png" />
+    <None Include="Resources\Night_Black.png" />
+    <None Include="Resources\Minimize_Black.png" />
+    <None Include="Resources\Inject_Black.png" />
+    <None Include="Resources\Icons8_Black.png" />
+    <None Include="Resources\Hourglass_Black.png" />
+    <None Include="Resources\Home_Black.png" />
+    <None Include="Resources\Hide_Black.png" />
+    <None Include="Resources\Crown_Black.png" />
+    <None Include="Resources\Console_Black.png" />
+    <None Include="Resources\Click_Black.png" />
+    <None Include="Resources\About_Black.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

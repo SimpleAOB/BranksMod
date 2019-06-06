@@ -63,9 +63,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add_Dark {
+        internal static System.Drawing.Bitmap About_Black {
             get {
-                object obj = ResourceManager.GetObject("Add_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("About_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,29 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add_Light {
+        internal static System.Drawing.Bitmap About_White {
             get {
-                object obj = ResourceManager.GetObject("Add_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("About_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BranksModUpdater {
+            get {
+                object obj = ResourceManager.GetObject("BranksModUpdater", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Click_Black {
+            get {
+                object obj = ResourceManager.GetObject("Click_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +103,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Automatic_Dark {
+        internal static System.Drawing.Bitmap Click_White {
             get {
-                object obj = ResourceManager.GetObject("Automatic_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Click_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +113,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Automatic_Light {
+        internal static System.Drawing.Bitmap Console_Black {
             get {
-                object obj = ResourceManager.GetObject("Automatic_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Console_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +123,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Delete_Dark {
+        internal static System.Drawing.Bitmap Console_White {
             get {
-                object obj = ResourceManager.GetObject("Delete_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Console_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Delete_Light {
+        internal static System.Drawing.Bitmap Crown_Black {
             get {
-                object obj = ResourceManager.GetObject("Delete_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Crown_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Documentation_Dark {
+        internal static System.Drawing.Bitmap Crown_White {
             get {
-                object obj = ResourceManager.GetObject("Documentation_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Crown_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +153,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Documentation_Light {
+        internal static System.Drawing.Bitmap Double_Black {
             get {
-                object obj = ResourceManager.GetObject("Documentation_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Double_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +163,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_1 {
+        internal static System.Drawing.Bitmap Double_White {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_1", resourceCulture);
+                object obj = ResourceManager.GetObject("Double_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +173,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_2 {
+        internal static System.Drawing.Bitmap Experiment_Black {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_2", resourceCulture);
+                object obj = ResourceManager.GetObject("Experiment_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +183,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_3 {
+        internal static System.Drawing.Bitmap Experiment_White {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_3", resourceCulture);
+                object obj = ResourceManager.GetObject("Experiment_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +193,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_4 {
+        internal static System.Drawing.Bitmap Hide_Black {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_4", resourceCulture);
+                object obj = ResourceManager.GetObject("Hide_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +203,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_5 {
+        internal static System.Drawing.Bitmap Hide_White {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_5", resourceCulture);
+                object obj = ResourceManager.GetObject("Hide_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +213,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_6 {
+        internal static System.Drawing.Bitmap Home_Black {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_6", resourceCulture);
+                object obj = ResourceManager.GetObject("Home_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +223,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dollycam_7 {
+        internal static System.Drawing.Bitmap Home_White {
             get {
-                object obj = ResourceManager.GetObject("Dollycam_7", resourceCulture);
+                object obj = ResourceManager.GetObject("Home_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +233,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Download_Dark {
+        internal static System.Drawing.Bitmap Hourglass_Black {
             get {
-                object obj = ResourceManager.GetObject("Download_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Hourglass_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +243,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Download_Light {
+        internal static System.Drawing.Bitmap Hourglass_White {
             get {
-                object obj = ResourceManager.GetObject("Download_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Hourglass_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +253,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Exit_Dark {
+        internal static System.Drawing.Bitmap Icons8_Black {
             get {
-                object obj = ResourceManager.GetObject("Exit_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Icons8_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +263,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Exit_Light {
+        internal static System.Drawing.Bitmap Icons8_White {
             get {
-                object obj = ResourceManager.GetObject("Exit_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Icons8_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +273,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Help_Dark {
+        internal static System.Drawing.Bitmap Inject_Black {
             get {
-                object obj = ResourceManager.GetObject("Help_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Inject_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,69 +283,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Help_Light {
+        internal static System.Drawing.Bitmap Inject_White {
             get {
-                object obj = ResourceManager.GetObject("Help_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Hide_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Hide_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Hide_Light {
-            get {
-                object obj = ResourceManager.GetObject("Hide_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Home_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home_Light {
-            get {
-                object obj = ResourceManager.GetObject("Home_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Inject_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Inject_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Inject_Light {
-            get {
-                object obj = ResourceManager.GetObject("Inject_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Inject_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,9 +303,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Left_Arrow {
+        internal static System.Drawing.Bitmap Minimize_Black {
             get {
-                object obj = ResourceManager.GetObject("Left_Arrow", resourceCulture);
+                object obj = ResourceManager.GetObject("Minimize_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -353,9 +313,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Manual_Dark {
+        internal static System.Drawing.Bitmap Minimize_White {
             get {
-                object obj = ResourceManager.GetObject("Manual_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Minimize_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,9 +323,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Manual_Light {
+        internal static System.Drawing.Bitmap Night_Black {
             get {
-                object obj = ResourceManager.GetObject("Manual_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Night_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,9 +333,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Menu_Dark {
+        internal static System.Drawing.Bitmap Night_White {
             get {
-                object obj = ResourceManager.GetObject("Menu_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Night_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -383,9 +343,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Menu_Light {
+        internal static System.Drawing.Bitmap Offline_Black {
             get {
-                object obj = ResourceManager.GetObject("Menu_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Offline_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -393,9 +353,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize_Dark {
+        internal static System.Drawing.Bitmap Offline_White {
             get {
-                object obj = ResourceManager.GetObject("Minimize_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Offline_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,9 +363,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize_Light {
+        internal static System.Drawing.Bitmap Plugin_Black {
             get {
-                object obj = ResourceManager.GetObject("Minimize_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Plugin_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,9 +373,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Night_Dark {
+        internal static System.Drawing.Bitmap Plugin_White {
             get {
-                object obj = ResourceManager.GetObject("Night_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Plugin_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,9 +383,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Night_Light {
+        internal static System.Drawing.Bitmap Rocket_Black {
             get {
-                object obj = ResourceManager.GetObject("Night_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Rocket_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,9 +393,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Open_Dark {
+        internal static System.Drawing.Bitmap Rocket_White {
             get {
-                object obj = ResourceManager.GetObject("Open_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Rocket_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -443,9 +403,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Open_Light {
+        internal static System.Drawing.Bitmap Run_Black {
             get {
-                object obj = ResourceManager.GetObject("Open_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Run_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,9 +413,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Plugins_Dark {
+        internal static System.Drawing.Bitmap Run_White {
             get {
-                object obj = ResourceManager.GetObject("Plugins_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Run_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,9 +423,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Plugins_Light {
+        internal static System.Drawing.Bitmap Safe_Black {
             get {
-                object obj = ResourceManager.GetObject("Plugins_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Safe_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,9 +433,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Reinstall_Dark {
+        internal static System.Drawing.Bitmap Safe_White {
             get {
-                object obj = ResourceManager.GetObject("Reinstall_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Safe_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -483,9 +443,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Reinstall_Light {
+        internal static System.Drawing.Bitmap Settings_Black {
             get {
-                object obj = ResourceManager.GetObject("Reinstall_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Settings_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,9 +453,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Right_Arrow {
+        internal static System.Drawing.Bitmap Settings_White {
             get {
-                object obj = ResourceManager.GetObject("Right_Arrow", resourceCulture);
+                object obj = ResourceManager.GetObject("Settings_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -503,9 +463,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RL_Dark {
+        internal static System.Drawing.Bitmap Status_Black {
             get {
-                object obj = ResourceManager.GetObject("RL_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Status_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,9 +473,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RL_Light {
+        internal static System.Drawing.Bitmap Status_White {
             get {
-                object obj = ResourceManager.GetObject("RL_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Status_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -523,9 +483,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Run_Dark {
+        internal static System.Drawing.Bitmap Stopwatch_Black {
             get {
-                object obj = ResourceManager.GetObject("Run_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Stopwatch_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,9 +493,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Run_Light {
+        internal static System.Drawing.Bitmap Stopwatch_White {
             get {
-                object obj = ResourceManager.GetObject("Run_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Stopwatch_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -543,9 +503,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Safe_Dark {
+        internal static System.Drawing.Bitmap Top_Black {
             get {
-                object obj = ResourceManager.GetObject("Safe_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Top_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -553,9 +513,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Safe_Light {
+        internal static System.Drawing.Bitmap Top_White {
             get {
-                object obj = ResourceManager.GetObject("Safe_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Top_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -563,9 +523,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Settings_Dark {
+        internal static System.Drawing.Bitmap Update_Black {
             get {
-                object obj = ResourceManager.GetObject("Settings_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Update_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -573,9 +533,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Settings_Light {
+        internal static System.Drawing.Bitmap Update_White {
             get {
-                object obj = ResourceManager.GetObject("Settings_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Update_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -583,9 +543,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Status_Dark {
+        internal static System.Drawing.Bitmap Warning_Black {
             get {
-                object obj = ResourceManager.GetObject("Status_Dark", resourceCulture);
+                object obj = ResourceManager.GetObject("Warning_Black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -593,89 +553,9 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Status_Light {
+        internal static System.Drawing.Bitmap Warning_White {
             get {
-                object obj = ResourceManager.GetObject("Status_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Timeout_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Timeout_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Timeout_Light {
-            get {
-                object obj = ResourceManager.GetObject("Timeout_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Topmost_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Topmost_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Topmost_Light {
-            get {
-                object obj = ResourceManager.GetObject("Topmost_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Update_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Update_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Update_Light {
-            get {
-                object obj = ResourceManager.GetObject("Update_Light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Warning_Dark {
-            get {
-                object obj = ResourceManager.GetObject("Warning_Dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Warning_Light {
-            get {
-                object obj = ResourceManager.GetObject("Warning_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("Warning_White", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

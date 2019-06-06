@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
     class Controller
     {
-        public static void WriteToLog(String Path, String Data)
-        {
+    public static string Documentation;
+    public static string[] Plugins = { "AirRecoveryPlugin", "benditplugin", "CirclePlugin", "DiscordRPCPlugin", "GravityPlugin", "hitboxplugin", "InstantTraining", "mrsuluplugin", "ReplayStatsBox", "scienceplugin" };
+
+    public static void WriteToLog(String Path, String Data)
+    {
         if (File.Exists(Path))
         {
             File.AppendAllText(Path, Environment.NewLine + Data);
@@ -22,7 +25,7 @@ using System.Windows.Forms;
     {
         string MyDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         string LogDir = MyDocuments + @"\My Games\Rocket League\TAGame\Logs\";
-         string LogFile = LogDir + "launch.log";
+        string LogFile = LogDir + "launch.log";
         string ReturnDir = "";
 
         if (File.Exists(LogFile))

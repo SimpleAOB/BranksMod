@@ -99,6 +99,8 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <None Include="Resources\BranksModUpdater.exe" />
+    <None Include="Resources\Heart_White.png" />
+    <None Include="Resources\Heart_Black.png" />
     <None Include="Resources\Experiment_White.png" />
     <None Include="Resources\Experiment_Black.png" />
     <None Include="Resources\Double_Black.png" />

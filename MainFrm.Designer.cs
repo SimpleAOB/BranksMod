@@ -63,7 +63,6 @@
             this.SettingsTab = new System.Windows.Forms.TabPage();
             this.TimerBox = new System.Windows.Forms.NumericUpDown();
             this.BufferedBox = new System.Windows.Forms.CheckBox();
-            this.BufferedImg = new System.Windows.Forms.PictureBox();
             this.ResetBtn = new System.Windows.Forms.Label();
             this.OfflinemodeBox = new System.Windows.Forms.CheckBox();
             this.UpdateBtn = new System.Windows.Forms.Label();
@@ -81,6 +80,7 @@
             this.AutoupdateBox = new System.Windows.Forms.CheckBox();
             this.MinihideBox = new System.Windows.Forms.CheckBox();
             this.StartupBox = new System.Windows.Forms.CheckBox();
+            this.BufferedImg = new System.Windows.Forms.PictureBox();
             this.OfflinemodeImg = new System.Windows.Forms.PictureBox();
             this.TimerImg = new System.Windows.Forms.PictureBox();
             this.SafemodeImg = new System.Windows.Forms.PictureBox();
@@ -94,6 +94,8 @@
             this.MinihideImg = new System.Windows.Forms.PictureBox();
             this.StartupImg = new System.Windows.Forms.PictureBox();
             this.AboutTab = new System.Windows.Forms.TabPage();
+            this.HeartImg = new System.Windows.Forms.PictureBox();
+            this.HeartLbl = new System.Windows.Forms.Label();
             this.DevelopersImg = new System.Windows.Forms.PictureBox();
             this.ModversionImg = new System.Windows.Forms.PictureBox();
             this.RocketversionImg = new System.Windows.Forms.PictureBox();
@@ -128,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinihideImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupImg)).BeginInit();
             this.AboutTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HeartImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DevelopersImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModversionImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketversionImg)).BeginInit();
@@ -487,7 +490,6 @@
             // 
             this.SettingsTab.Controls.Add(this.TimerBox);
             this.SettingsTab.Controls.Add(this.BufferedBox);
-            this.SettingsTab.Controls.Add(this.BufferedImg);
             this.SettingsTab.Controls.Add(this.ResetBtn);
             this.SettingsTab.Controls.Add(this.OfflinemodeBox);
             this.SettingsTab.Controls.Add(this.UpdateBtn);
@@ -505,6 +507,7 @@
             this.SettingsTab.Controls.Add(this.AutoupdateBox);
             this.SettingsTab.Controls.Add(this.MinihideBox);
             this.SettingsTab.Controls.Add(this.StartupBox);
+            this.SettingsTab.Controls.Add(this.BufferedImg);
             this.SettingsTab.Controls.Add(this.OfflinemodeImg);
             this.SettingsTab.Controls.Add(this.TimerImg);
             this.SettingsTab.Controls.Add(this.SafemodeImg);
@@ -564,15 +567,6 @@
             this.BufferedBox.Text = "Window Double Buffered";
             this.BufferedBox.UseVisualStyleBackColor = false;
             this.BufferedBox.CheckedChanged += new System.EventHandler(this.BufferedBox_CheckedChanged);
-            // 
-            // BufferedImg
-            // 
-            this.BufferedImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BufferedImg.Location = new System.Drawing.Point(12, 260);
-            this.BufferedImg.Name = "BufferedImg";
-            this.BufferedImg.Size = new System.Drawing.Size(25, 25);
-            this.BufferedImg.TabIndex = 66;
-            this.BufferedImg.TabStop = false;
             // 
             // ResetBtn
             // 
@@ -793,6 +787,15 @@
             this.StartupBox.UseVisualStyleBackColor = false;
             this.StartupBox.CheckedChanged += new System.EventHandler(this.StartupBox_CheckedChanged);
             // 
+            // BufferedImg
+            // 
+            this.BufferedImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BufferedImg.Location = new System.Drawing.Point(12, 260);
+            this.BufferedImg.Name = "BufferedImg";
+            this.BufferedImg.Size = new System.Drawing.Size(25, 25);
+            this.BufferedImg.TabIndex = 66;
+            this.BufferedImg.TabStop = false;
+            // 
             // OfflinemodeImg
             // 
             this.OfflinemodeImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -903,11 +906,8 @@
             // 
             // AboutTab
             // 
-            this.AboutTab.Controls.Add(this.DevelopersImg);
-            this.AboutTab.Controls.Add(this.ModversionImg);
-            this.AboutTab.Controls.Add(this.RocketversionImg);
-            this.AboutTab.Controls.Add(this.Icons8Img);
-            this.AboutTab.Controls.Add(this.InjectorversionImg);
+            this.AboutTab.Controls.Add(this.HeartImg);
+            this.AboutTab.Controls.Add(this.HeartLbl);
             this.AboutTab.Controls.Add(this.Icons8Link);
             this.AboutTab.Controls.Add(this.Icons8Lbl);
             this.AboutTab.Controls.Add(this.DiscordLbl);
@@ -915,6 +915,11 @@
             this.AboutTab.Controls.Add(this.DevelopersLbl);
             this.AboutTab.Controls.Add(this.ModversionLbl);
             this.AboutTab.Controls.Add(this.InjectorversionLbl);
+            this.AboutTab.Controls.Add(this.DevelopersImg);
+            this.AboutTab.Controls.Add(this.ModversionImg);
+            this.AboutTab.Controls.Add(this.RocketversionImg);
+            this.AboutTab.Controls.Add(this.Icons8Img);
+            this.AboutTab.Controls.Add(this.InjectorversionImg);
             this.AboutTab.Controls.Add(this.DiscordLink);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
@@ -922,6 +927,27 @@
             this.AboutTab.TabIndex = 3;
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
+            // 
+            // HeartImg
+            // 
+            this.HeartImg.BackColor = System.Drawing.Color.Transparent;
+            this.HeartImg.Cursor = System.Windows.Forms.Cursors.Default;
+            this.HeartImg.Location = new System.Drawing.Point(12, 167);
+            this.HeartImg.Name = "HeartImg";
+            this.HeartImg.Size = new System.Drawing.Size(25, 25);
+            this.HeartImg.TabIndex = 39;
+            this.HeartImg.TabStop = false;
+            // 
+            // HeartLbl
+            // 
+            this.HeartLbl.BackColor = System.Drawing.Color.Transparent;
+            this.HeartLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeartLbl.Location = new System.Drawing.Point(43, 167);
+            this.HeartLbl.Name = "HeartLbl";
+            this.HeartLbl.Size = new System.Drawing.Size(545, 25);
+            this.HeartLbl.TabIndex = 37;
+            this.HeartLbl.Text = "Special Thanks To: jstr, megasplat, MDK, and lies for testing out beta releases.";
+            this.HeartLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DevelopersImg
             // 
@@ -1091,6 +1117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinihideImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupImg)).EndInit();
             this.AboutTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.HeartImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DevelopersImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModversionImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketversionImg)).EndInit();
@@ -1181,5 +1208,7 @@
         private System.Windows.Forms.PictureBox BufferedImg;
         private System.Windows.Forms.NumericUpDown TimerBox;
         private System.Windows.Forms.RichTextBox ChangelogBox;
+        private System.Windows.Forms.PictureBox HeartImg;
+        private System.Windows.Forms.Label HeartLbl;
     }
 }

@@ -193,6 +193,26 @@ namespace BranksMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Heart_Black {
+            get {
+                object obj = ResourceManager.GetObject("Heart_Black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heart_White {
+            get {
+                object obj = ResourceManager.GetObject("Heart_White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hide_Black {
             get {
                 object obj = ResourceManager.GetObject("Hide_Black", resourceCulture);

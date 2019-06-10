@@ -30,7 +30,7 @@
       <Value Profile="(Default)">Null</Value>
     </Setting>
     <Setting Name="InjectorVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">v1.0.6</Value>
+      <Value Profile="(Default)">v1.0.7</Value>
     </Setting>
     <Setting Name="ModVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>

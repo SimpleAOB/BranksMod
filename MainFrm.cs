@@ -36,7 +36,6 @@ namespace BranksMod
         {
             GetFolderPath();
             CheckUpdaterFile();
-            CheckWarnings();
             CheckSafeMode();
             CheckTopmost();
             CheckBuffered();
@@ -60,9 +59,17 @@ namespace BranksMod
                 RLLbl.Text = "Rocket League is running.";
                 if (IsInjected == false)
                 {
-                    StatusLbl.Text = "Process found, attempting injection.";
-                    InjectionTmr.Interval = Properties.Settings.Default.Timeout;
-                    InjectionTmr.Start();
+                    if (Properties.Settings.Default.InjectionType == "Manual")
+                    {
+                        InjectionTmr.Interval = Properties.Settings.Default.Timeout;
+                        InjectionTmr.Start();
+                    }
+                    else
+                    {
+                        StatusLbl.Text = "Process found, attempting injection.";
+                        InjectionTmr.Interval = Properties.Settings.Default.Timeout;
+                        InjectionTmr.Start();
+                    }
                 }
             }
         }
@@ -88,33 +95,33 @@ namespace BranksMod
 
         private void InjectBtn_Click(object sender, EventArgs e)
         {
-            Controller.WriteToLog(LogPath, Time + "[InjectDLL] Manually injecting DLL.");
+            Controller.WriteToLog(LogPath, Time + "(InjectDLL) Manually Injecting DLL.");
             InjectDLL();
         }
 
         void InjectDLL()
         {
-            Controller.WriteToLog(LogPath, Time + "[InjectDLL] Attempting injection.");
+            Controller.WriteToLog(LogPath, Time + "(InjectDLL) Attempting injection.");
             InjectionResult Result = Injector.Instance.Inject("RocketLeague", Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
             switch (Result)
             {
                 case InjectionResult.DLL_NOT_FOUND:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Could not find DLL.");
-                    StatusLbl.Text = "Status: Could not find DLL file.";
+                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) DLL Not Found.");
+                    StatusLbl.Text = "Uninjected, could not locate DLL.";
                     IsInjected = false;
                     break;
                 case InjectionResult.GAME_PROCESS_NOT_FOUND:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Rocket League is not running.");
+                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) Process Not Found.");
                     IsInjected = false;
                     StatusLbl.Text = "Uninjected, waiting for user to start Rocket League.";
                     break;
                 case InjectionResult.INJECTION_FAILED:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Injection failed.");
+                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) Injection Failed.");
                     StatusLbl.Text = "Injection failed, possible data corruption.";
                     IsInjected = false;
                     break;
                 case InjectionResult.SUCCESS:
-                    Controller.WriteToLog(LogPath, Time + "[InjectDLL] Successfully injected.");
+                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) Successfully Injected.");
                     StatusLbl.Text = "Successfully injected, changes applied in-game.";
                     IsInjected = true;
                     break;
@@ -125,6 +132,7 @@ namespace BranksMod
         #region "Installers & Updaters"
         public static string HttpDownloader(String URL, String Pattern, String Contents)
         {
+
             string Return = "";
             string Download = "";
 
@@ -141,24 +149,62 @@ namespace BranksMod
             return Return;
         }
 
+        public static Boolean UpdateRequired()
+        {
+            string Download = "";
+            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create("http://149.210.150.107/updater/" + Properties.Settings.Default.ModVersion);
+            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+            StreamReader SR = new StreamReader(Response.GetResponseStream());
+            Download = SR.ReadToEnd();
+            SR.Close();
+
+            if (Download.Contains("true"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static Boolean LatestBuildID()
+        {
+            string Download = "";
+            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create("http://149.210.150.107/updater/" + Properties.Settings.Default.ModVersion);
+            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+            StreamReader SR = new StreamReader(Response.GetResponseStream());
+            Download = SR.ReadToEnd();
+            SR.Close();
+
+            if (Download.Contains(Properties.Settings.Default.RLVersion))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void CheckUpdaterFile()
         {
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\BranksModUpdater.exe"))
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckUpdaterFile] File found.");
+                Controller.WriteToLog(LogPath, Time + "(CheckUpdaterFile) BranksModUpdater.exe has been located.");
                 try
                 {
                     File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\BranksModUpdater.exe");
-                    Controller.WriteToLog(LogPath, Time + "[CheckUpdaterFile] Successfully deleted BranksModUpdater.");
+                    Controller.WriteToLog(LogPath, Time + "(CheckUpdaterFile) BranksModUpdater.exe has successfully been deleted.");
                 }
-                catch (Exception)
+                catch (Exception Ex)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[CheckUpdaterFile] Failed to delete BranksModUpdater.exe");
+                    Controller.WriteToLog(LogPath, Time + "(CheckUpdaterFile) " + Ex.ToString());
                 }
             }
             else
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckUpdaterFile] No file found.");
+                Controller.WriteToLog(LogPath, Time + "(CheckUpdaterFile) BranksModUpdater.exe does not exist.");
             }
         }
 
@@ -168,18 +214,18 @@ namespace BranksMod
 
             if (!Directory.Exists(Path))
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckInstall] Could not find Win32 folder.");
+                Controller.WriteToLog(LogPath, Time + "(CheckInstall) Failed to locate the Win32 folder.");
                 GetFolderPathOverride();
             }
             else if (Directory.Exists(Path))
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckInstall] Found Win32 folder.");
+                Controller.WriteToLog(LogPath, Time + "(CheckInstall) Successfully located the Win32 folder.");
             }
 
             if (!Directory.Exists(Path + "\\bakkesmod"))
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckInstall] Could not find BakkesMod folder.");
-                DialogResult DialogResult = MessageBox.Show("Error: Could not find BakkesMod folder, would you like to install it?", "BakkesMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                Controller.WriteToLog(LogPath, Time + "(CheckInstall) Failed to locate the BakkesMod folder.");
+                DialogResult DialogResult = MessageBox.Show("Error: Could not find the BakkesMod folder, would you like to install it?", "BakkesMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (DialogResult == DialogResult.Yes)
                 {
                     Install();
@@ -187,8 +233,9 @@ namespace BranksMod
             }
             else if (Directory.Exists(Path + "\\bakkesmod"))
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckInstall] Found BakkesMod folder.");
+                Controller.WriteToLog(LogPath, Time + "(CheckInstall) Successfully located the BakkesMod folder.");
                 LoadVersions();
+                CheckWarnings();
             }
         }
 
@@ -200,19 +247,20 @@ namespace BranksMod
 
             if (!Directory.Exists(Path + "\\bakkesmod"))
             {
+                Controller.WriteToLog(LogPath, Time + "(Install) Creating BakkesMod folder.");
                 Directory.CreateDirectory(Path + "\\bakkesmod");
             }
 
             using (WebClient Client = new WebClient())
             {
-                Controller.WriteToLog(LogPath, Time + "[Install] Downloading Archive.");
                 try
                 {
-                    Client.DownloadFile(URL, "bakkesmod.zip");
-                } catch (Exception Ex)
+                    Controller.WriteToLog(LogPath, Time + "(Install) Downloading BakkesMod Archive.");
+                    Client.DownloadFile(URL, AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
+                }
+                catch (Exception Ex)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[Install] Downloading Failed.");
-                    Controller.WriteToLog(LogPath, Time + "[Install] " + Ex.ToString());
+                    Controller.WriteToLog(LogPath, Time + "(Install) " + Ex.ToString());
                 }
             }
 
@@ -220,14 +268,20 @@ namespace BranksMod
             {
                 try
                 {
+                    Controller.WriteToLog(LogPath, Time + "(Install) Extracting Archive.");
                     ZipFile.ExtractToDirectory(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip", Path + "\\bakkesmod\\");
+                    Controller.WriteToLog(LogPath, Time + "(Install) Deleting Archive.");
                     File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
                 }
                 catch (Exception Ex)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[Install] " + Ex.ToString());
+                    Controller.WriteToLog(LogPath, Time + "(Install) " + Ex.ToString());
                     MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                Controller.WriteToLog(LogPath, Time + "(Install) No Archive Found, Cannot Extract File");
             }
         }
 
@@ -235,18 +289,18 @@ namespace BranksMod
         {
             if (Properties.Settings.Default.OfflineMode == false)
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Checking injector version.");
                 string InjectorVersion = HttpDownloader("https://pastebin.com/raw/91j3JaZM", "(\"([^ \"]|\"\")*\")", "InjectorVersion");
-                Controller.WriteToLog(LogPath, Time + "[CheckInjectorUpdate] Latest Injector Version: " + InjectorVersion);
-
                 StatusLbl.Text = "Checking for updates...";
+                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Checking Injector Version.");
+                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Current Injector Version: " + Properties.Settings.Default.InjectorVersion);
+                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Latest Injector Version: " + InjectorVersion);
                 if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No injector update found.");
+                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Version Match, No Injector Update Found.");
                 }
                 else
                 {
-                    Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Injector Update Found.");
+                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Version Mismatch, Injector Update Found.");
                     DialogResult Result = MessageBox.Show("A new version of BranksMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (Result == DialogResult.Yes)
                     {
@@ -254,18 +308,16 @@ namespace BranksMod
                     }
                 }
 
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Checking for updates.");
-                string ModVersion = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Latest Mod Version: " + ModVersion);
-
-                if (Properties.Settings.Default.ModVersion == ModVersion)
+                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Checking BakkesMod Version.");
+                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Current BakkesMod Version: " + Properties.Settings.Default.ModVersion);
+                if (UpdateRequired() == false)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] No Mod Update Found.");
+                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) No BakkesMod Update Detected. ");
                 }
                 else
                 {
-                    Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Mod Update Found.");
-                    DialogResult Result = MessageBox.Show("A new version of BakkesMod.dll was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) BakkesMod Update Found. ");
+                    DialogResult Result = MessageBox.Show("A new version of BakkesMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (Result == DialogResult.Yes)
                     {
                         InstallUpdate();
@@ -274,7 +326,7 @@ namespace BranksMod
             }
             else
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckForUpdates] Offline Mode Enabled, aborting.");
+                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Offline Mode Enabled, Cannot Check for Updates.");
                 MessageBox.Show("Offline Mode is enabled, cannot check for updates at this time.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -283,8 +335,10 @@ namespace BranksMod
         {
             try
             {
+                Controller.WriteToLog(LogPath, Time + "(InstallInjector) Writing BranksModUpdater.");
                 byte[] BMU = Properties.Resources.BranksModUpdater;
                 File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "\\BranksModUpdater.exe", BMU);
+                Controller.WriteToLog(LogPath, Time + "(InstallInjector) Opening BranksModUpdater.");
                 Process P = new Process();
                 P.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BranksModUpdater.exe";
                 P.Start();
@@ -292,7 +346,7 @@ namespace BranksMod
             }
             catch (Exception Ex)
             {
-                Controller.WriteToLog(LogPath, Time + "[InstallInjector] " + Ex.ToString());
+                Controller.WriteToLog(LogPath, Time + "(InstallInjector) " + Ex.ToString());
             }
         }
 
@@ -303,18 +357,16 @@ namespace BranksMod
 
             using (WebClient Client = new WebClient())
             {
-                Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Downloading Archive.");
                 try
                 {
-                    Client.DownloadFile(URL, "bakkesmod.zip");
+                    Controller.WriteToLog(LogPath, Time + "(InstallUpdate) Downloading Archive.");
+                    Client.DownloadFile(URL, AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
                 }
                 catch (Exception Ex)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Download Failed.");
-                    Controller.WriteToLog(LogPath, Time + "[InstallUpdate] " + Ex.ToString());
+                    Controller.WriteToLog(LogPath, Time + "(InstallUpdate) " + Ex.ToString());
                     MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                Client.DownloadFile(URL, "bakkesmod.zip");
             }
 
             StatusLbl.Text = "Update found, installing updates...";
@@ -332,33 +384,32 @@ namespace BranksMod
                                 Directory.CreateDirectory(Path.GetDirectoryName(DestinationPath));
                                 continue;
                             }
-                            Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Checking existing installed files.");
+                            Controller.WriteToLog(LogPath, Time + "(InstallUpdate) Checking Existing Installed Files.");
                             if (DestinationPath.ToLower().EndsWith(".cfg") || DestinationPath.ToLower().EndsWith(".json"))
                             {
                                 if (File.Exists(DestinationPath))
                                     continue;
                             }
-                            Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Extracting files.");
+                            Controller.WriteToLog(LogPath, Time + "(InstallUpdate) Extracting Archive.");
                             Entry.ExtractToFile(DestinationPath, true);
                         }
                     }
                 }
                 catch (Exception Ex)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Installation Failed.");
-                    Controller.WriteToLog(LogPath, Time + "[InstallUpdate] " + Ex.ToString());
+                    Controller.WriteToLog(LogPath, Time + "(InstallUpdate) " + Ex.ToString());
                     MessageBox.Show(Ex.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             try
             {
-                Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Removing Archive.");
+                Controller.WriteToLog(LogPath, Time + "(InstallUpdate) Removing Archive.");
                 File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\bakkesmod.zip");
             }
             catch
             {
-                Controller.WriteToLog(LogPath, Time + "[InstallUpdate] Failed to remove Archive.");
-                MessageBox.Show("Failed to remove bakkesmod.zip, try running as administrator if you aren't arlready.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Controller.WriteToLog(LogPath, Time + "(InstallUpdate) Failed to Remove Archive.");
+                MessageBox.Show("Failed to remove bakkesmod.zip, try running as administrator if you haven't arlready.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             StatusLbl.Text = "Uninjected, waiting for user to start Rocket League.";
         }
@@ -368,14 +419,14 @@ namespace BranksMod
         public void GetFolderPath()
         {
             string Return = Controller.GetDirFromLog();
-            if (Return == "Null")
+            if (Return == null)
             {
-                Controller.WriteToLog(LogPath, Time + "[GetFolderPath] Return Null, calling GetFolderPathOverride.");
+                Controller.WriteToLog(LogPath, Time + "(GetFolderPath) Return Null, Calling GetFolderPathOverride.");
                 GetFolderPathOverride();
             }
             else
             {
-                Controller.WriteToLog(LogPath, Time + "[GetFolderPath] Return " + Return);
+                Controller.WriteToLog(LogPath, Time + "(GetFolderPath) Return: " + Return);
                 Properties.Settings.Default.FolderPath = Return;
                 Properties.Settings.Default.Save();
                 CreateLogger();
@@ -386,8 +437,8 @@ namespace BranksMod
         
         public void GetFolderPathOverride()
         {
-            Controller.WriteToLog(LogPath, Time + "[GetFolderPathOverride] ");
             MessageBox.Show("Error: Could not find Win32 folder, please manually select where your RocketLeague.exe is located.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            Controller.WriteToLog(LogPath, Time + "(GetFolderPathOverride) Opening OpenFileDialog.");
             OpenFileDialog OFD = new OpenFileDialog
             {
                 Title = "Select RocketLeague.exe",
@@ -399,14 +450,14 @@ namespace BranksMod
                 FilePath = FilePath.Replace("RocketLeague.exe", "");
                 Properties.Settings.Default.FolderPath = FilePath;
                 Properties.Settings.Default.Save();
-                Controller.WriteToLog(LogPath, Time + "[GetFolderPathOverride] User selected location " + FilePath);
+                Controller.WriteToLog(LogPath, Time + "(GetFolderPathOverride) Return: " + FilePath);
                 CreateLogger();
                 CheckInstall();
                 LoadPlugins();
             }
             else
             {
-                Controller.WriteToLog(LogPath, Time + "[GetFolderPathOverride] Canceled by user.");
+                Controller.WriteToLog(LogPath, Time + "(GetFolderPathOverride) Cancled by User.");
             }
         }
 
@@ -416,7 +467,7 @@ namespace BranksMod
             {
                 StreamWriter LogFile = new StreamWriter(LogPath);
                 LogFile.Close();
-                Controller.WriteToLog(LogPath, Time + "[CreateLogger] Initialized logging.");
+                Controller.WriteToLog(LogPath, Time + "(CreateLogger) Initialized Logging.");
             }
             catch
             {
@@ -470,10 +521,6 @@ namespace BranksMod
                     CheckForUpdates();
                 }
             }
-            else
-            {
-                
-            }
         }
 
         public void CheckSafeMode()
@@ -492,7 +539,7 @@ namespace BranksMod
         {
             if (Properties.Settings.Default.Warnings == true)
             {
-
+                
             }
             else if (Properties.Settings.Default.Warnings == false)
             {
@@ -502,38 +549,47 @@ namespace BranksMod
 
         public void CheckD3D9()
         {
-            if (File.Exists(Properties.Settings.Default.FolderPath + "d3d9.dll"))
+            if (File.Exists(Properties.Settings.Default.FolderPath + "\\d3d9.dll"))
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckD3D9] D3D9.dll found.");
+                Controller.WriteToLog(LogPath, Time + "(CheckD3D9) D3D9.dll has been located.");
                 DialogResult DialogResult = MessageBox.Show("Warning: d3d9.dll detected. This file is used by ReShade/uMod and might prevent the GUI from working. Would you like BranksMod to remove this file?", "BakkesMod", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (DialogResult == DialogResult.Yes)
                 {
-                    File.Delete(Properties.Settings.Default.FolderPath + "d3d9.dll");
-                    Controller.WriteToLog(LogPath, Time + "[CheckD3D9] Deleted D3D9.dll.");
+                    File.Delete(Properties.Settings.Default.FolderPath + "\\d3d9.dll");
+                    Controller.WriteToLog(LogPath, Time + "(CheckD3D9) D3D9.dll has successfully been deleted.");
                 }
-                else if (DialogResult == DialogResult.No)
-                {
-                    Controller.WriteToLog(LogPath, Time + "[CheckD3D9] D3D9.dll not found.");
-                }
+            }
+            else
+            {
+                Controller.WriteToLog(LogPath, Time + "(CheckD3D9) D3D9.dll does not exist.");
             }
         }
 
         public void CheckRL()
         {
-            string Path = Properties.Settings.Default.FolderPath;
-            string Version = HttpDownloader("https://pastebin.com/raw/Hs2e6nM1", "(\"([^ \"]|\"\")*\")", "RL");
-
-            if (Properties.Settings.Default.RLVersion == Version)
+            if (Properties.Settings.Default.OfflineMode == false)
             {
-                Controller.WriteToLog(LogPath, Time + "[CheckRL] Latest Rocket League build.");
-                ProcessTmr.Start();
-            }
-            else
-            {
-                Controller.WriteToLog(LogPath, Time + "[CheckRL] Incorrect Rocket League build.");
-                if (Properties.Settings.Default.SafeMode == true)
+                Controller.WriteToLog(LogPath, Time + "(CheckRL) Checking Build ID.");
+                Controller.WriteToLog(LogPath, Time + "(CheckRL) Current Build ID: " + Properties.Settings.Default.RLVersion);
+                if (LatestBuildID() == false)
                 {
-                    ActivateSafeMode();
+                    if (Properties.Settings.Default.RLVersion == null)
+                    {
+                        Controller.WriteToLog(LogPath, Time + "(CheckRL) Corrupted Appmanifest Detected.");
+                    }
+                    else
+                    {
+                        Controller.WriteToLog(LogPath, Time + "(CheckRL) Build ID Mismatch, Activating Safe Mode.");
+                        if (Properties.Settings.Default.SafeMode == true)
+                        {
+                            ActivateSafeMode();
+                        }
+                    }
+                }
+                else
+                {
+                    Controller.WriteToLog(LogPath, Time + "(CheckRL) Build ID Match.");
+                    ProcessTmr.Start();
                 }
             }
         }
@@ -543,8 +599,6 @@ namespace BranksMod
             Properties.Settings.Default.RLVersion = Controller.GetRLVersion(Properties.Settings.Default.FolderPath + "/../../../../");
             Properties.Settings.Default.ModVersion = Controller.GetModVersion(Properties.Settings.Default.FolderPath);
             Properties.Settings.Default.Save();
-            Controller.WriteToLog(LogPath, Time + "[CheckVersion] Rocket League Version: " + Properties.Settings.Default.RLVersion);
-            Controller.WriteToLog(LogPath, Time + "[CheckVersion] Mod Version: " + Properties.Settings.Default.ModVersion);
             RocketversionLbl.Text = "Rocket League Build: " + Properties.Settings.Default.RLVersion;
             InjectorversionLbl.Text = "Injector Version: " + Properties.Settings.Default.InjectorVersion;
             ModversionLbl.Text = "Mod Version: " + Properties.Settings.Default.ModVersion;
@@ -553,12 +607,12 @@ namespace BranksMod
 
         public void LoadChangelog()
         {
-            string Changelog = new WebClient().DownloadString("https://pastebin.com/raw/6bHkFtWp");
-            if (Properties.Settings.Default.JustUpdated == true)
+            if (Properties.Settings.Default.OfflineMode == false)
             {
-                if (OfflinemodeBox.Checked == false)
+                string Changelog = new WebClient().DownloadString("https://pastebin.com/raw/6bHkFtWp");
+                if (Properties.Settings.Default.JustUpdated == true)
                 {
-                    Controller.WriteToLog(LogPath, Time + "[LoadChangelog] Downloading latest Changelog.");
+                    Controller.WriteToLog(LogPath, Time + "(LoadChangelog) Downloading latest Changelog.");
                     ChangelogBox.Visible = true;
                     TitleLbl.Location = new Point(12, 72);
                     ChangelogBox.Text = Changelog;
@@ -567,32 +621,32 @@ namespace BranksMod
                 }
                 else
                 {
-                    Controller.WriteToLog(LogPath, Time + "[LoadChangelog] Offline Mode Eanbled, canceled download.");
-                    ChangelogBox.Visible = false;
-                    TitleLbl.Location = new Point(12, 292);
-                    ChangelogBox.Text = "Offline Mode Enabled";
+                    if (Properties.Settings.Default.Collapsed == true)
+                    {
+                        ChangelogBox.Visible = false;
+                        TitleLbl.Location = new Point(12, 292);
+                        ChangelogBox.Text = Changelog;
+                    }
+                    else
+                    {
+                        ChangelogBox.Visible = true;
+                        TitleLbl.Location = new Point(12, 72);
+                        ChangelogBox.Text = Changelog;
+                    }
                 }
             }
             else
             {
-                if (Properties.Settings.Default.Collapsed == true)
-                {
-                    ChangelogBox.Visible = false;
-                    TitleLbl.Location = new Point(12, 292);
-                    ChangelogBox.Text = Changelog;
-                }
-                else
-                {
-                    ChangelogBox.Visible = true;
-                    TitleLbl.Location = new Point(12, 72);
-                    ChangelogBox.Text = Changelog;
-                }
+                Controller.WriteToLog(LogPath, Time + "(LoadChangelog) Offline Mode Enabled, Cannot Download Changelog.");
+                ChangelogBox.Visible = false;
+                TitleLbl.Location = new Point(12, 292);
+                ChangelogBox.Text = "Offline Mode Enabled";
             }
         }
 
         public void ActivateSafeMode()
         {
-            Controller.WriteToLog(LogPath, Time + "[ActivateSafeMode] Loading into Safe Mode.");
+            Controller.WriteToLog(LogPath, Time + "(ActivateSafeMode) Safe Mode Activated.");
             RLLbl.Text = "Safe Mode Enabled.";
             StatusLbl.Text = "Mod out of date, please wait for an update.";
         }
@@ -608,13 +662,13 @@ namespace BranksMod
 
                 foreach (string File in Files)
                 {
+                    Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] All Plugins Loaded.");
                     PluginsList.Items.Add(Path.GetFileName(File));
                 }
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] All plugins loaded.");
             }
             catch (Exception)
             {
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] Failed to load plugins.");
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] Failed to Load Plugins.");
             }
             PluginsList.Items[0].Selected = true;
             PluginsList.Select();
@@ -646,17 +700,21 @@ namespace BranksMod
                 string Settings = Properties.Settings.Default.FolderPath + "bakkesmod\\plugins\\settings\\" + Set;
                 try
                 {
-                    Controller.WriteToLog(LogPath, Time + "[UninstallpluginBtn] Attemping to delete " + Dll + "&" + Set);
                     if (File.Exists(Dll))
                     {
+                        Controller.WriteToLog(LogPath, Time + "(UninstallpluginBtn) " + Dll + " has successfully been deleted.");
                         File.Delete(Dll);
+                        Controller.WriteToLog(LogPath, Time + "(UninstallpluginBtn) " + Set + " has successfully been deleted.");
                         File.Delete(Settings);
                     }
-                } catch (Exception Ex)
-                {
-                    Controller.WriteToLog(LogPath, Time + "[UninstallpluginBtn] " + Ex.ToString());
                 }
-                LoadPlugins();
+                catch (Exception Ex)
+                {
+                    Controller.WriteToLog(LogPath, Time + "(UninstallpluginBtn) " + Ex.ToString());
+                }
+                Controller.WriteToLog(LogPath, Time + "(UninstallpluginBtn) Reloading Plugins.");
+
+               LoadPlugins();
             }
         }
 
@@ -784,7 +842,7 @@ namespace BranksMod
                 ManualBox.Checked = true;
             }
             TimerBox.Text = Properties.Settings.Default.Timeout.ToString();
-            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadSettings] All settings loaded.");
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(LoadSettings) All Settings Loaded.");
         }
 
         public void ResetSettings()
@@ -801,7 +859,7 @@ namespace BranksMod
             Properties.Settings.Default.Theme = "Light";
             Properties.Settings.Default.InjectionType = "Timeout";
             Properties.Settings.Default.Timeout = 2500;
-            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[ResetSettings] Reset settings to default.");
+            Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(ResetSettings) Reset settings to default.");
             Properties.Settings.Default.Save();
             LoadSettings();
         }
@@ -944,12 +1002,13 @@ namespace BranksMod
             string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod";
             if (!Directory.Exists(BranksModDirectory))
             {
+                Controller.WriteToLog(LogPath, Time + "(OpenFolder) Directory Not Found.");
                 CheckInstall();
             }
             else
             {
-                Controller.WriteToLog(LogPath, Time + "[OpenFolder] Found BakkesMod folder.");
                 Process.Start(BranksModDirectory);
+                Controller.WriteToLog(LogPath, Time + "(OpenFolder) Opened: " + BranksModDirectory);
             }
         }
 
@@ -978,10 +1037,6 @@ namespace BranksMod
             if (Result == DialogResult.Yes)
             {
                 GetDirectory();
-            }
-            else if (Result == DialogResult.No)
-            {
-
             }
         }
         #endregion
@@ -1192,11 +1247,13 @@ namespace BranksMod
         private void Icons8Link_Click(object sender, EventArgs e)
         {
             Process.Start("https://icons8.com/");
+            Controller.WriteToLog(LogPath, Time + "(Icons8Link) Opened Icons8 Link.");
         }
 
         private void DiscordLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://discordapp.com/invite/HsM6kAR");
+            Controller.WriteToLog(LogPath, Time + "(DiscordLink) Opened Discord Link.");
         }
 
             #endregion
@@ -1210,7 +1267,7 @@ namespace BranksMod
                 ThemeHighlight = Color.FromArgb(255, 255, 255);
                 ThemeFontColor = Color.FromArgb(5, 5, 5);
                 LoadLight();
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckTheme] Loaded Light Theme. ");
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(CheckTheme) Loaded Light Theme. ");
             }
             else if (Properties.Settings.Default.Theme == "Night")
             {
@@ -1218,7 +1275,7 @@ namespace BranksMod
                 ThemeHighlight = Color.FromArgb(55, 55, 55);
                 ThemeFontColor = Color.FromArgb(250, 250, 250);
                 LoadNight();
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[CheckTheme] Loaded Night Theme. ");
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(CheckTheme) Loaded Night Theme. ");
             }
 
             this.BackColor = ThemeBackground;
@@ -1313,6 +1370,7 @@ namespace BranksMod
             ModversionImg.BackgroundImage = Properties.Resources.Console_Black;
             DevelopersImg.BackgroundImage = Properties.Resources.Crown_Black;
             Icons8Img.BackgroundImage = Properties.Resources.Icons8_Black;
+            HeartImg.BackgroundImage = Properties.Resources.Heart_Black;
         }
 
         public void LoadNight()
@@ -1342,6 +1400,7 @@ namespace BranksMod
             ModversionImg.BackgroundImage = Properties.Resources.Console_White;
             DevelopersImg.BackgroundImage = Properties.Resources.Crown_White;
             Icons8Img.BackgroundImage = Properties.Resources.Icons8_White;
+            HeartImg.BackgroundImage = Properties.Resources.Heart_White;
         }
 
         public void ResetTabs()

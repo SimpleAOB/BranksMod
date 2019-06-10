@@ -44,7 +44,7 @@ using System.Windows.Forms;
                     }
                     else
                     {
-                        ReturnDir = "Null";
+                        ReturnDir = null;
                     }
                 }
             }
@@ -53,29 +53,33 @@ using System.Windows.Forms;
     }
 
     public static string GetRLVersion(String Path)
-        {
-            string AppInfo = Path + "\\appmanifest_252950.acf";
-            string Version = "0";
-            string Pattern = "(\"([^ \"]|\"\")*\")";
+    {
+        string AppInfo = Path + "\\appmanifest_252950.acf";
+        string Version = "0";
+        string Pattern = "(\"([^ \"]|\"\")*\")";
 
-            if (File.Exists(AppInfo))
+        if (File.Exists(AppInfo))
+        {
+            string Line;
+            using (FileStream Stream = File.Open(AppInfo, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                string Line;
-                using (FileStream Stream = File.Open(AppInfo, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                StreamReader File = new StreamReader(Stream);
+                while ((Line = File.ReadLine()) != null)
                 {
-                    StreamReader File = new StreamReader(Stream);
-                    while ((Line = File.ReadLine()) != null)
+                    if (Line.Contains("buildid"))
                     {
-                        if (Line.Contains("buildid"))
-                        {
-                            Version = Regex.Match(Line, Pattern, RegexOptions.IgnoreCase | RegexOptions.RightToLeft).Groups[1].Value.Replace("\"", "");
-                            break;
-                        }
+                        Version = Regex.Match(Line, Pattern, RegexOptions.IgnoreCase | RegexOptions.RightToLeft).Groups[1].Value.Replace("\"", "");
+                        break;
+                    }
+                    else
+                    {
+                        Version = null;
                     }
                 }
             }
-            return Version;
         }
+        return Version;
+    }
 
     public static string GetModVersion(String Path)
     {

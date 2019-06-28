@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranksMod", "BranksMod\BranksMod.csproj", "{EF63A9B9-E7EB-484E-A65F-990FB49345EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranksMod", "BranksMod.csproj", "{EF63A9B9-E7EB-484E-A65F-990FB49345EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0346281C-B1AD-42A1-A1B7-A6E10803DCE6}
+		SolutionGuid = {24777D82-4A08-40BC-B096-29963679B43D}
 	EndGlobalSection
 EndGlobal

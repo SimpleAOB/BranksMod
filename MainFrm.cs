@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace BranksMod
 {
@@ -670,8 +671,15 @@ namespace BranksMod
             {
                 Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] Failed to Load Plugins.");
             }
-            PluginsList.Items[0].Selected = true;
-            PluginsList.Select();
+            if (PluginsList.Items.Count < 1)
+            {
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] No plugins loaded to select");
+            }
+            else
+            {
+                PluginsList.Items[0].Selected = true;
+                PluginsList.Select();
+            }
         }
 
         private void ReinstallpluginBtn_Click(object sender, EventArgs e)
@@ -1025,7 +1033,14 @@ namespace BranksMod
                 string Path = Properties.Settings.Default.FolderPath + "bakkesmod";
                 if (Directory.Exists(Path))
                 {
-                    Directory.Delete(Path, true);
+                    try
+                    {
+                        Directory.Delete(Path, true);
+                    } catch (UnauthorizedAccessException uae)
+                    {
+                        MessageBox.Show("Unable to fully remove BakkesMod files due to opened files. Make sure all files and programs are closed before reinstalling", "BranksMod");
+                        return;
+                    }
                     Install();
                 }
             }
@@ -1037,6 +1052,56 @@ namespace BranksMod
             if (Result == DialogResult.Yes)
             {
                 GetDirectory();
+            }
+        }
+
+        private void CrashLogBtn_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "C:\\";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                if (!Directory.Exists(Path.GetTempPath() + "branksmod"))
+                {
+                    Directory.CreateDirectory(Path.GetTempPath() + "branksmod");
+                }
+                List<string> FilesToExport = new List<string>();
+
+                string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath);
+                foreach (string File in Files)
+                {
+                    if (File.IndexOf(".mdump") > 0 || File.IndexOf(".mdmp") > 0)
+                    {
+                        FilesToExport.Add(File);
+                    }
+                }
+                if (File.Exists(Properties.Settings.Default.FolderPath + "bakkesmod\\bakkesmod.log"))
+                {
+                    FilesToExport.Add(Properties.Settings.Default.FolderPath + "bakkesmod\\bakkesmod.log");
+                }
+                if (File.Exists(Path.GetTempPath() + "branksmod.log"))
+                {
+                    FilesToExport.Add(Path.GetTempPath() + "branksmod.log");
+                }
+
+                string tempFileName = "crash_export_" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+                string tempDir = Path.GetTempPath() + "branksmod\\" + tempFileName;
+                Directory.CreateDirectory(tempDir);
+                Console.WriteLine(tempDir);
+                FilesToExport.All((string x) =>
+                {
+                    FileInfo fi = new FileInfo(x);
+                    File.Copy(x, tempDir + "\\" + fi.Name);
+                    return true;
+                });
+
+                ZipFile.CreateFromDirectory(tempDir, tempDir + ".zip");
+                File.Move(tempDir + ".zip", dialog.FileName + "\\" + tempFileName + ".zip");
+                Directory.Delete(tempDir, true);
+                
+                //MessageBox.Show("You selected: " + dialog.FileName);
+                //Directory.CreateDirectory()
             }
         }
         #endregion
@@ -1488,6 +1553,5 @@ namespace BranksMod
             AboutImg.BackColor = ThemeHighlight;
         }
         #endregion
-
     }
 }

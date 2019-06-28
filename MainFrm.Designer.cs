@@ -107,6 +107,7 @@
             this.SettingsImg = new System.Windows.Forms.PictureBox();
             this.PluginsImg = new System.Windows.Forms.PictureBox();
             this.HomeImg = new System.Windows.Forms.PictureBox();
+            this.CrashLogBtn = new System.Windows.Forms.Label();
             this.TrayMenuStrip.SuspendLayout();
             this.ControlTabs.SuspendLayout();
             this.HomeTab.SuspendLayout();
@@ -488,6 +489,7 @@
             // 
             // SettingsTab
             // 
+            this.SettingsTab.Controls.Add(this.CrashLogBtn);
             this.SettingsTab.Controls.Add(this.TimerBox);
             this.SettingsTab.Controls.Add(this.BufferedBox);
             this.SettingsTab.Controls.Add(this.ResetBtn);
@@ -599,7 +601,7 @@
             this.UpdateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.UpdateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateBtn.Location = new System.Drawing.Point(312, 182);
+            this.UpdateBtn.Location = new System.Drawing.Point(312, 146);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(276, 30);
             this.UpdateBtn.TabIndex = 59;
@@ -1069,6 +1071,19 @@
             this.HomeImg.TabStop = false;
             this.HomeImg.Click += new System.EventHandler(this.HomeImg_Click);
             // 
+            // CrashLogBtn
+            // 
+            this.CrashLogBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CrashLogBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CrashLogBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CrashLogBtn.Location = new System.Drawing.Point(312, 182);
+            this.CrashLogBtn.Name = "CrashLogBtn";
+            this.CrashLogBtn.Size = new System.Drawing.Size(276, 30);
+            this.CrashLogBtn.TabIndex = 69;
+            this.CrashLogBtn.Text = "Export Crash Logs";
+            this.CrashLogBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CrashLogBtn.Click += new System.EventHandler(this.CrashLogBtn_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1210,5 +1225,6 @@
         private System.Windows.Forms.RichTextBox ChangelogBox;
         private System.Windows.Forms.PictureBox HeartImg;
         private System.Windows.Forms.Label HeartLbl;
+        private System.Windows.Forms.Label CrashLogBtn;
     }
 }

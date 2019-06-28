@@ -1099,9 +1099,6 @@ namespace BranksMod
                 ZipFile.CreateFromDirectory(tempDir, tempDir + ".zip");
                 File.Move(tempDir + ".zip", dialog.FileName + "\\" + tempFileName + ".zip");
                 Directory.Delete(tempDir, true);
-                
-                //MessageBox.Show("You selected: " + dialog.FileName);
-                //Directory.CreateDirectory()
             }
         }
         #endregion

@@ -8,19 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-    public enum InjectionResult
-    {
-        DLL_NOT_FOUND,
-        GAME_PROCESS_NOT_FOUND,
-        INJECTION_FAILED,
+    public enum Feedback
+{
+        FILE_NOT_FOUND,
+        PROCESS_NOT_FOUND,
+        FAIL,
         SUCCESS
     }
 
-    public sealed class Injector
-    {
+    public sealed class Objector
+{
         static readonly IntPtr IntPtr_Zero = IntPtr.Zero;
         static readonly uint desiredAccess = (0x2 | 0x8 | 0x10 | 0x20 | 0x400);
-        static Injector instance;
+        static Objector instance;
 
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, int lpNumberOfBytesWritten);
@@ -44,25 +44,25 @@ using System.Windows.Forms;
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern int CloseHandle(IntPtr hObject);
 
-        public static Injector Instance
+        public static Objector Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Injector();
+                    instance = new Objector();
                 }
                 return instance;
             }
         }
 
-        private Injector() { }
+        private Objector() { }
 
-        public InjectionResult Inject(string Name, string Path)
+        public Feedback Object(string Name, string Path)
         {
             if (!File.Exists(Path))
             {
-                return InjectionResult.DLL_NOT_FOUND;
+                return Feedback.FILE_NOT_FOUND;
             }
 
             uint ProcessID = 0;
@@ -75,12 +75,12 @@ using System.Windows.Forms;
                     ProcessID = (uint)p.Id;
                 }
             }
-            if (ProcessID == 0) return InjectionResult.GAME_PROCESS_NOT_FOUND;
-            if (!InjectDLL(ProcessID, Path)) return InjectionResult.INJECTION_FAILED;
-            return InjectionResult.SUCCESS;
+            if (ProcessID == 0) return Feedback.PROCESS_NOT_FOUND;
+            if (!ObjectDLL(ProcessID, Path)) return Feedback.FAIL;
+            return Feedback.SUCCESS;
         }
 
-        bool InjectDLL(uint processToInject, string dllPath)
+        bool ObjectDLL(uint processToInject, string dllPath)
         {
             IntPtr processHandle = OpenProcess(desiredAccess, 1, processToInject);
 

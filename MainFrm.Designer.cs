@@ -35,7 +35,7 @@
             this.TrayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OpenTrayBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitTrayBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.InjectionTmr = new System.Windows.Forms.Timer(this.components);
+            this.ObjectionTmr = new System.Windows.Forms.Timer(this.components);
             this.Icons8Link = new System.Windows.Forms.Label();
             this.RocketversionLbl = new System.Windows.Forms.Label();
             this.DevelopersLbl = new System.Windows.Forms.Label();
@@ -61,6 +61,7 @@
             this.ReinstallpluginBtn = new System.Windows.Forms.Label();
             this.PluginsList = new System.Windows.Forms.ListView();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.ExportBtn = new System.Windows.Forms.Label();
             this.TimerBox = new System.Windows.Forms.NumericUpDown();
             this.BufferedBox = new System.Windows.Forms.CheckBox();
             this.ResetBtn = new System.Windows.Forms.Label();
@@ -94,6 +95,9 @@
             this.MinihideImg = new System.Windows.Forms.PictureBox();
             this.StartupImg = new System.Windows.Forms.PictureBox();
             this.AboutTab = new System.Windows.Forms.TabPage();
+            this.CommunityLbl = new System.Windows.Forms.Label();
+            this.DiscordLink = new System.Windows.Forms.PictureBox();
+            this.CommunityImg = new System.Windows.Forms.PictureBox();
             this.HeartImg = new System.Windows.Forms.PictureBox();
             this.HeartLbl = new System.Windows.Forms.Label();
             this.DevelopersImg = new System.Windows.Forms.PictureBox();
@@ -101,13 +105,11 @@
             this.RocketversionImg = new System.Windows.Forms.PictureBox();
             this.Icons8Img = new System.Windows.Forms.PictureBox();
             this.InjectorversionImg = new System.Windows.Forms.PictureBox();
-            this.DiscordLink = new System.Windows.Forms.PictureBox();
             this.HomeBtn = new System.Windows.Forms.Label();
             this.AboutImg = new System.Windows.Forms.PictureBox();
             this.SettingsImg = new System.Windows.Forms.PictureBox();
             this.PluginsImg = new System.Windows.Forms.PictureBox();
             this.HomeImg = new System.Windows.Forms.PictureBox();
-            this.CrashLogBtn = new System.Windows.Forms.Label();
             this.TrayMenuStrip.SuspendLayout();
             this.ControlTabs.SuspendLayout();
             this.HomeTab.SuspendLayout();
@@ -131,13 +133,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinihideImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupImg)).BeginInit();
             this.AboutTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommunityImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeartImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DevelopersImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModversionImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketversionImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Icons8Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InjectorversionImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AboutImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingsImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PluginsImg)).BeginInit();
@@ -180,10 +183,10 @@
             this.ExitTrayBtn.Text = "Exit BranksMod";
             this.ExitTrayBtn.Click += new System.EventHandler(this.ExitTrayBtn_Click);
             // 
-            // InjectionTmr
+            // ObjectionTmr
             // 
-            this.InjectionTmr.Interval = 2500;
-            this.InjectionTmr.Tick += new System.EventHandler(this.InjectionTmr_Tick);
+            this.ObjectionTmr.Interval = 2500;
+            this.ObjectionTmr.Tick += new System.EventHandler(this.InjectionTmr_Tick);
             // 
             // Icons8Link
             // 
@@ -191,12 +194,12 @@
             this.Icons8Link.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Icons8Link.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icons8Link.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Icons8Link.Location = new System.Drawing.Point(155, 136);
+            this.Icons8Link.Location = new System.Drawing.Point(145, 198);
             this.Icons8Link.Name = "Icons8Link";
             this.Icons8Link.Size = new System.Drawing.Size(70, 25);
             this.Icons8Link.TabIndex = 29;
             this.Icons8Link.Text = "Icons8.com";
-            this.Icons8Link.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Icons8Link.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Icons8Link.Click += new System.EventHandler(this.Icons8Link_Click);
             // 
             // RocketversionLbl
@@ -218,7 +221,7 @@
             this.DevelopersLbl.Name = "DevelopersLbl";
             this.DevelopersLbl.Size = new System.Drawing.Size(545, 25);
             this.DevelopersLbl.TabIndex = 26;
-            this.DevelopersLbl.Text = "Developed by: ItsBranK && Bakkes";
+            this.DevelopersLbl.Text = "Created by: ItsBranK && Bakkes";
             this.DevelopersLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ModversionLbl
@@ -247,7 +250,7 @@
             // 
             this.Icons8Lbl.BackColor = System.Drawing.Color.Transparent;
             this.Icons8Lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icons8Lbl.Location = new System.Drawing.Point(43, 136);
+            this.Icons8Lbl.Location = new System.Drawing.Point(43, 198);
             this.Icons8Lbl.Name = "Icons8Lbl";
             this.Icons8Lbl.Size = new System.Drawing.Size(110, 25);
             this.Icons8Lbl.TabIndex = 27;
@@ -258,11 +261,11 @@
             // 
             this.DiscordLbl.BackColor = System.Drawing.Color.Transparent;
             this.DiscordLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DiscordLbl.Location = new System.Drawing.Point(125, 211);
+            this.DiscordLbl.Location = new System.Drawing.Point(12, 237);
             this.DiscordLbl.Name = "DiscordLbl";
-            this.DiscordLbl.Size = new System.Drawing.Size(350, 25);
+            this.DiscordLbl.Size = new System.Drawing.Size(220, 80);
             this.DiscordLbl.TabIndex = 30;
-            this.DiscordLbl.Text = "Join the BakkesMod Discord!";
+            this.DiscordLbl.Text = "Join the BakkesMod Discord community if you have any questions or need help.";
             this.DiscordLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AboutBtn
@@ -398,7 +401,7 @@
             // StatusLbl
             // 
             this.StatusLbl.BackColor = System.Drawing.Color.Transparent;
-            this.StatusLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLbl.ForeColor = System.Drawing.Color.Black;
             this.StatusLbl.Location = new System.Drawing.Point(43, 37);
             this.StatusLbl.Name = "StatusLbl";
@@ -489,7 +492,7 @@
             // 
             // SettingsTab
             // 
-            this.SettingsTab.Controls.Add(this.CrashLogBtn);
+            this.SettingsTab.Controls.Add(this.ExportBtn);
             this.SettingsTab.Controls.Add(this.TimerBox);
             this.SettingsTab.Controls.Add(this.BufferedBox);
             this.SettingsTab.Controls.Add(this.ResetBtn);
@@ -529,6 +532,19 @@
             this.SettingsTab.TabIndex = 1;
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // ExportBtn
+            // 
+            this.ExportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ExportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExportBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportBtn.Location = new System.Drawing.Point(311, 215);
+            this.ExportBtn.Name = "ExportBtn";
+            this.ExportBtn.Size = new System.Drawing.Size(276, 30);
+            this.ExportBtn.TabIndex = 70;
+            this.ExportBtn.Text = "Export Crash Logs";
+            this.ExportBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
             // 
             // TimerBox
             // 
@@ -575,7 +591,7 @@
             this.ResetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ResetBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ResetBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResetBtn.Location = new System.Drawing.Point(312, 254);
+            this.ResetBtn.Location = new System.Drawing.Point(311, 251);
             this.ResetBtn.Name = "ResetBtn";
             this.ResetBtn.Size = new System.Drawing.Size(276, 30);
             this.ResetBtn.TabIndex = 65;
@@ -601,7 +617,7 @@
             this.UpdateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.UpdateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateBtn.Location = new System.Drawing.Point(312, 146);
+            this.UpdateBtn.Location = new System.Drawing.Point(311, 144);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(276, 30);
             this.UpdateBtn.TabIndex = 59;
@@ -614,7 +630,7 @@
             this.FolderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.FolderBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FolderBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FolderBtn.Location = new System.Drawing.Point(312, 218);
+            this.FolderBtn.Location = new System.Drawing.Point(311, 179);
             this.FolderBtn.Name = "FolderBtn";
             this.FolderBtn.Size = new System.Drawing.Size(276, 30);
             this.FolderBtn.TabIndex = 58;
@@ -627,7 +643,7 @@
             this.UninstallBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.UninstallBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UninstallBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UninstallBtn.Location = new System.Drawing.Point(453, 290);
+            this.UninstallBtn.Location = new System.Drawing.Point(452, 287);
             this.UninstallBtn.Name = "UninstallBtn";
             this.UninstallBtn.Size = new System.Drawing.Size(135, 30);
             this.UninstallBtn.TabIndex = 57;
@@ -640,7 +656,7 @@
             this.ReinstallBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ReinstallBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ReinstallBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReinstallBtn.Location = new System.Drawing.Point(312, 290);
+            this.ReinstallBtn.Location = new System.Drawing.Point(311, 287);
             this.ReinstallBtn.Name = "ReinstallBtn";
             this.ReinstallBtn.Size = new System.Drawing.Size(135, 30);
             this.ReinstallBtn.TabIndex = 56;
@@ -908,6 +924,9 @@
             // 
             // AboutTab
             // 
+            this.AboutTab.Controls.Add(this.CommunityLbl);
+            this.AboutTab.Controls.Add(this.DiscordLink);
+            this.AboutTab.Controls.Add(this.CommunityImg);
             this.AboutTab.Controls.Add(this.HeartImg);
             this.AboutTab.Controls.Add(this.HeartLbl);
             this.AboutTab.Controls.Add(this.Icons8Link);
@@ -922,13 +941,45 @@
             this.AboutTab.Controls.Add(this.RocketversionImg);
             this.AboutTab.Controls.Add(this.Icons8Img);
             this.AboutTab.Controls.Add(this.InjectorversionImg);
-            this.AboutTab.Controls.Add(this.DiscordLink);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
             this.AboutTab.Size = new System.Drawing.Size(600, 329);
             this.AboutTab.TabIndex = 3;
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
+            // 
+            // CommunityLbl
+            // 
+            this.CommunityLbl.BackColor = System.Drawing.Color.Transparent;
+            this.CommunityLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CommunityLbl.Location = new System.Drawing.Point(43, 136);
+            this.CommunityLbl.Name = "CommunityLbl";
+            this.CommunityLbl.Size = new System.Drawing.Size(545, 25);
+            this.CommunityLbl.TabIndex = 41;
+            this.CommunityLbl.Text = "Contributors: SimpleAOB, Aberinkula/Megasplat";
+            this.CommunityLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // DiscordLink
+            // 
+            this.DiscordLink.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DiscordLink.BackgroundImage")));
+            this.DiscordLink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DiscordLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DiscordLink.Location = new System.Drawing.Point(238, 237);
+            this.DiscordLink.Name = "DiscordLink";
+            this.DiscordLink.Size = new System.Drawing.Size(350, 80);
+            this.DiscordLink.TabIndex = 31;
+            this.DiscordLink.TabStop = false;
+            this.DiscordLink.Click += new System.EventHandler(this.DiscordLink_Click);
+            // 
+            // CommunityImg
+            // 
+            this.CommunityImg.BackColor = System.Drawing.Color.Transparent;
+            this.CommunityImg.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CommunityImg.Location = new System.Drawing.Point(12, 136);
+            this.CommunityImg.Name = "CommunityImg";
+            this.CommunityImg.Size = new System.Drawing.Size(25, 25);
+            this.CommunityImg.TabIndex = 40;
+            this.CommunityImg.TabStop = false;
             // 
             // HeartImg
             // 
@@ -948,7 +999,7 @@
             this.HeartLbl.Name = "HeartLbl";
             this.HeartLbl.Size = new System.Drawing.Size(545, 25);
             this.HeartLbl.TabIndex = 37;
-            this.HeartLbl.Text = "Special Thanks To: jstr, megasplat, MDK, and lies for testing out beta releases.";
+            this.HeartLbl.Text = "Special thanks to: jstr, megasplat, MDK, and lies for testing out beta releases.";
             this.HeartLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DevelopersImg
@@ -985,7 +1036,7 @@
             // 
             this.Icons8Img.BackColor = System.Drawing.Color.Transparent;
             this.Icons8Img.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Icons8Img.Location = new System.Drawing.Point(12, 136);
+            this.Icons8Img.Location = new System.Drawing.Point(12, 198);
             this.Icons8Img.Name = "Icons8Img";
             this.Icons8Img.Size = new System.Drawing.Size(25, 25);
             this.Icons8Img.TabIndex = 33;
@@ -1000,18 +1051,6 @@
             this.InjectorversionImg.Size = new System.Drawing.Size(25, 25);
             this.InjectorversionImg.TabIndex = 32;
             this.InjectorversionImg.TabStop = false;
-            // 
-            // DiscordLink
-            // 
-            this.DiscordLink.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DiscordLink.BackgroundImage")));
-            this.DiscordLink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DiscordLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DiscordLink.Location = new System.Drawing.Point(125, 239);
-            this.DiscordLink.Name = "DiscordLink";
-            this.DiscordLink.Size = new System.Drawing.Size(350, 80);
-            this.DiscordLink.TabIndex = 31;
-            this.DiscordLink.TabStop = false;
-            this.DiscordLink.Click += new System.EventHandler(this.DiscordLink_Click);
             // 
             // HomeBtn
             // 
@@ -1071,19 +1110,6 @@
             this.HomeImg.TabStop = false;
             this.HomeImg.Click += new System.EventHandler(this.HomeImg_Click);
             // 
-            // CrashLogBtn
-            // 
-            this.CrashLogBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.CrashLogBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CrashLogBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CrashLogBtn.Location = new System.Drawing.Point(312, 182);
-            this.CrashLogBtn.Name = "CrashLogBtn";
-            this.CrashLogBtn.Size = new System.Drawing.Size(276, 30);
-            this.CrashLogBtn.TabIndex = 69;
-            this.CrashLogBtn.Text = "Export Crash Logs";
-            this.CrashLogBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CrashLogBtn.Click += new System.EventHandler(this.CrashLogBtn_Click);
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1132,13 +1158,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinihideImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartupImg)).EndInit();
             this.AboutTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommunityImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeartImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DevelopersImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModversionImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketversionImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Icons8Img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InjectorversionImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscordLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AboutImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingsImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PluginsImg)).EndInit();
@@ -1150,7 +1177,7 @@
         #endregion
         private System.Windows.Forms.Timer ProcessTmr;
         private System.Windows.Forms.NotifyIcon TrayIcon;
-        private System.Windows.Forms.Timer InjectionTmr;
+        private System.Windows.Forms.Timer ObjectionTmr;
         private System.Windows.Forms.Label Icons8Link;
         private System.Windows.Forms.Label RocketversionLbl;
         private System.Windows.Forms.Label DevelopersLbl;
@@ -1225,6 +1252,8 @@
         private System.Windows.Forms.RichTextBox ChangelogBox;
         private System.Windows.Forms.PictureBox HeartImg;
         private System.Windows.Forms.Label HeartLbl;
-        private System.Windows.Forms.Label CrashLogBtn;
+        private System.Windows.Forms.Label ExportBtn;
+        private System.Windows.Forms.Label CommunityLbl;
+        private System.Windows.Forms.PictureBox CommunityImg;
     }
 }

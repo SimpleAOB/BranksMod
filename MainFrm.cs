@@ -1,21 +1,14 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Threading;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace BranksMod
 {
@@ -23,10 +16,10 @@ namespace BranksMod
     {
         string Time = DateTime.Now.ToString("[HH:mm:ss] ");
         string LogPath = Path.GetTempPath() + "branksmod.log";
-        Color ThemeBackground = Color.FromArgb(0, 0, 0);
-        Color ThemeHighlight = Color.FromArgb(0, 0, 0);
-        Color ThemeFontColor = Color.FromArgb(0, 0, 0);
-        Boolean IsInjected = false;
+        Color ThemeBackground = Color.FromArgb(240, 240, 240);
+        Color ThemeHighlight = Color.FromArgb(255, 255, 255);
+        Color ThemeFontColor = Color.FromArgb(5, 5, 5);
+        Boolean IsObjected = false;
 
         public MainFrm()
         {
@@ -45,7 +38,7 @@ namespace BranksMod
             LoadChangelog();
         }
 
-        #region "Injector & Timers"
+        #region "Objectors & Timers"
         private void ProcessTmr_Tick(object sender, EventArgs e)
         {
             Process[] Name = Process.GetProcessesByName("RocketLeague");
@@ -53,23 +46,23 @@ namespace BranksMod
             {
                 RLLbl.Text = "Rocket League is not running.";
                 StatusLbl.Text = "Uninjected, waiting for user to start Rocket League.";
-                IsInjected = false;
+                IsObjected = false;
             }
             else
             {
                 RLLbl.Text = "Rocket League is running.";
-                if (IsInjected == false)
+                if (IsObjected == false)
                 {
                     if (Properties.Settings.Default.InjectionType == "Manual")
                     {
-                        InjectionTmr.Interval = Properties.Settings.Default.Timeout;
-                        InjectionTmr.Start();
+                        ObjectionTmr.Interval = Properties.Settings.Default.Timeout;
+                        ObjectionTmr.Start();
                     }
                     else
                     {
                         StatusLbl.Text = "Process found, attempting injection.";
-                        InjectionTmr.Interval = Properties.Settings.Default.Timeout;
-                        InjectionTmr.Start();
+                        ObjectionTmr.Interval = Properties.Settings.Default.Timeout;
+                        ObjectionTmr.Start();
                     }
                 }
             }
@@ -77,18 +70,18 @@ namespace BranksMod
 
         private void InjectionTmr_Tick(object sender, EventArgs e)
         {
-            if (IsInjected == false)
+            if (IsObjected == false)
             {
                 if (Properties.Settings.Default.InjectionType == "Timeout")
                 {
                     InjectBtn.Visible = false;
-                    InjectionTmr.Stop();
-                    InjectDLL();
+                    ObjectionTmr.Stop();
+                    ObjectDLL();
                 }
                 else if (Properties.Settings.Default.InjectionType == "Manual")
                 {
                     StatusLbl.Text = "Process found, waiting for user to manually inject.";
-                    InjectionTmr.Stop();
+                    ObjectionTmr.Stop();
                     InjectBtn.Visible = true;
                 }
             }
@@ -96,35 +89,35 @@ namespace BranksMod
 
         private void InjectBtn_Click(object sender, EventArgs e)
         {
-            Controller.WriteToLog(LogPath, Time + "(InjectDLL) Manually Injecting DLL.");
-            InjectDLL();
+            Controller.WriteToLog(LogPath, Time + "(InjectBtn) Manually Injecting DLL.");
+            ObjectDLL();
         }
 
-        void InjectDLL()
+        void ObjectDLL()
         {
-            Controller.WriteToLog(LogPath, Time + "(InjectDLL) Attempting injection.");
-            InjectionResult Result = Injector.Instance.Inject("RocketLeague", Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
+            Controller.WriteToLog(LogPath, Time + "(ObjectDLL) Attempting injection.");
+            Feedback Result = Objector.Instance.Object("RocketLeague", Properties.Settings.Default.FolderPath + "\\BakkesMod\\bakkesmod.dll");
             switch (Result)
             {
-                case InjectionResult.DLL_NOT_FOUND:
-                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) DLL Not Found.");
+                case Feedback.FILE_NOT_FOUND:
+                    Controller.WriteToLog(LogPath, Time + "(ObjectDLL) DLL Not Found.");
                     StatusLbl.Text = "Uninjected, could not locate DLL.";
-                    IsInjected = false;
+                    IsObjected = false;
                     break;
-                case InjectionResult.GAME_PROCESS_NOT_FOUND:
-                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) Process Not Found.");
-                    IsInjected = false;
+                case Feedback.PROCESS_NOT_FOUND:
+                    Controller.WriteToLog(LogPath, Time + "(ObjectDLL) Process Not Found.");
+                    IsObjected = false;
                     StatusLbl.Text = "Uninjected, waiting for user to start Rocket League.";
                     break;
-                case InjectionResult.INJECTION_FAILED:
-                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) Injection Failed.");
+                case Feedback.FAIL:
+                    Controller.WriteToLog(LogPath, Time + "(ObjectDLL) Injection Failed.");
                     StatusLbl.Text = "Injection failed, possible data corruption.";
-                    IsInjected = false;
+                    IsObjected = false;
                     break;
-                case InjectionResult.SUCCESS:
-                    Controller.WriteToLog(LogPath, Time + "(InjectDLL) Successfully Injected.");
+                case Feedback.SUCCESS:
+                    Controller.WriteToLog(LogPath, Time + "(ObjectDLL) Successfully Injected.");
                     StatusLbl.Text = "Successfully injected, changes applied in-game.";
-                    IsInjected = true;
+                    IsObjected = true;
                     break;
             }
         }
@@ -133,10 +126,8 @@ namespace BranksMod
         #region "Installers & Updaters"
         public static string HttpDownloader(String URL, String Pattern, String Contents)
         {
-
             string Return = "";
             string Download = "";
-
             HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             StreamReader SR = new StreamReader(Response.GetResponseStream());
@@ -221,22 +212,21 @@ namespace BranksMod
             else if (Directory.Exists(Path))
             {
                 Controller.WriteToLog(LogPath, Time + "(CheckInstall) Successfully located the Win32 folder.");
-            }
-
-            if (!Directory.Exists(Path + "\\bakkesmod"))
-            {
-                Controller.WriteToLog(LogPath, Time + "(CheckInstall) Failed to locate the BakkesMod folder.");
-                DialogResult DialogResult = MessageBox.Show("Error: Could not find the BakkesMod folder, would you like to install it?", "BakkesMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (DialogResult == DialogResult.Yes)
+                if (!Directory.Exists(Path + "\\bakkesmod"))
                 {
-                    Install();
+                    Controller.WriteToLog(LogPath, Time + "(CheckInstall) Failed to locate the BakkesMod folder.");
+                    DialogResult DialogResult = MessageBox.Show("Error: Could not find the BakkesMod folder, would you like to install it?", "BakkesMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (DialogResult == DialogResult.Yes)
+                    {
+                        Install();
+                    }
                 }
-            }
-            else if (Directory.Exists(Path + "\\bakkesmod"))
-            {
-                Controller.WriteToLog(LogPath, Time + "(CheckInstall) Successfully located the BakkesMod folder.");
-                LoadVersions();
-                CheckWarnings();
+                else if (Directory.Exists(Path + "\\bakkesmod"))
+                {
+                    Controller.WriteToLog(LogPath, Time + "(CheckInstall) Successfully located the BakkesMod folder.");
+                    LoadVersions();
+                    CheckWarnings();
+                }
             }
         }
 
@@ -448,7 +438,7 @@ namespace BranksMod
             if (OFD.ShowDialog() == DialogResult.OK)
             {
                 string FilePath = OFD.FileName;
-                FilePath = FilePath.Replace("RocketLeague.exe", "");
+                FilePath = FilePath.Replace("\\RocketLeague.exe", "");
                 Properties.Settings.Default.FolderPath = FilePath;
                 Properties.Settings.Default.Save();
                 Controller.WriteToLog(LogPath, Time + "(GetFolderPathOverride) Return: " + FilePath);
@@ -648,6 +638,7 @@ namespace BranksMod
         public void ActivateSafeMode()
         {
             Controller.WriteToLog(LogPath, Time + "(ActivateSafeMode) Safe Mode Activated.");
+            ProcessTmr.Stop();
             RLLbl.Text = "Safe Mode Enabled.";
             StatusLbl.Text = "Mod out of date, please wait for an update.";
         }
@@ -657,45 +648,30 @@ namespace BranksMod
         public void LoadPlugins()
         {
             PluginsList.Clear();
-            try
+            if (Directory.Exists(Properties.Settings.Default.FolderPath + "\\bakkesmod\\plugins"))
             {
-                string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath + "\\bakkesmod\\plugins");
-
-                foreach (string File in Files)
+                try
                 {
-                    Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] All Plugins Loaded.");
-                    PluginsList.Items.Add(Path.GetFileName(File));
+                    string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath + "\\bakkesmod\\plugins");
+                    foreach (string File in Files)
+                    {
+                        Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(LoadPlugins) All Plugins Loaded.");
+                        PluginsList.Items.Add(Path.GetFileName(File));
+                    }
                 }
-            }
-            catch (Exception)
+                catch (Exception)
+                {
+                    Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(LoadPlugins) Failed to Load Plugins.");
+                }
+            } else
             {
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] Failed to Load Plugins.");
-            }
-            if (PluginsList.Items.Count < 1)
-            {
-                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "[LoadPlugins] No plugins loaded to select");
-            }
-            else
-            {
-                PluginsList.Items[0].Selected = true;
-                PluginsList.Select();
+                Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(LoadPlugins) Could not find plugins folder.");
             }
         }
 
         private void ReinstallpluginBtn_Click(object sender, EventArgs e)
         {
-            //DialogResult Result = MessageBox.Show("Are you sure you want to reinstall this plugin? This will reset all settings you may have changed.", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            //if (Result == DialogResult.Yes)
-            //{
-            //    string Dll = Properties.Settings.Default.FolderPath + "bakkesmod\\plugins\\" + PluginsList.SelectedItems[0].Text;
-            //    string Set = PluginsList.SelectedItems[0].Text.Replace(".dll", ".set");
-            //    string Settings = Properties.Settings.Default.FolderPath + "bakkesmod\\plugins\\settings\\" + Set;
-            //    if (File.Exists(Dll))
-            //    {
 
-            //    }
-            //    LoadPlugins();
-            //}
         }
 
         private void UninstallpluginBtn_Click(object sender, EventArgs e)
@@ -728,24 +704,31 @@ namespace BranksMod
 
         private void DocumentationBtn_Click(object sender, EventArgs e)
         {
-            string SelectedItem = PluginsList.SelectedItems[0].Text.Replace(".dll", "");
-            bool DocAvalible = Controller.Plugins.Contains<String>(SelectedItem);
-            if (DocAvalible == true)
+            if (PluginsList.SelectedItems.Count > 0)
             {
-                try
+                string SelectedItem = PluginsList.SelectedItems[0].Text.Replace(".dll", "");
+                bool DocAvalible = Controller.Plugins.Contains<String>(SelectedItem);
+                if (DocAvalible == true)
                 {
-                    Controller.Documentation = SelectedItem;
-                    DocFrm DF = new DocFrm();
-                    DF.Show();
+                    try
+                    {
+                        Controller.Documentation = SelectedItem;
+                        DocFrm DF = new DocFrm();
+                        DF.Show();
+                    }
+                    catch (Exception Ex)
+                    {
+                        Controller.WriteToLog(LogPath, Time + "(DocumentationBtn) " + Ex.ToString());
+                    }
                 }
-                catch
+                else
                 {
-
+                    MessageBox.Show("Sorry, it seems I have not yet implemented the documentation for this plugin yet.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Sorry, it seems I have not yet implemented the documentation for this plugin yet.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Controller.WriteToLog(LogPath, Time + "(DocumentationBtn) No plugin was selected, cannot view documentation.");
             }
         }
         #endregion
@@ -882,6 +865,7 @@ namespace BranksMod
         {
             Properties.Settings.Default.SafeMode = SafemodeBox.Checked;
             Properties.Settings.Default.Save();
+            CheckSafeMode();
         }
 
         private void OfflinemodeBox_CheckedChanged(object sender, EventArgs e)
@@ -1010,13 +994,13 @@ namespace BranksMod
             string BranksModDirectory = Properties.Settings.Default.FolderPath + "bakkesmod";
             if (!Directory.Exists(BranksModDirectory))
             {
-                Controller.WriteToLog(LogPath, Time + "(OpenFolder) Directory Not Found.");
+                Controller.WriteToLog(LogPath, Time + "(FolderBtn) Directory Not Found.");
                 CheckInstall();
             }
             else
             {
                 Process.Start(BranksModDirectory);
-                Controller.WriteToLog(LogPath, Time + "(OpenFolder) Opened: " + BranksModDirectory);
+                Controller.WriteToLog(LogPath, Time + "(FolderBtn) Opened: " + BranksModDirectory);
             }
         }
 
@@ -1033,14 +1017,7 @@ namespace BranksMod
                 string Path = Properties.Settings.Default.FolderPath + "bakkesmod";
                 if (Directory.Exists(Path))
                 {
-                    try
-                    {
-                        Directory.Delete(Path, true);
-                    } catch (UnauthorizedAccessException uae)
-                    {
-                        MessageBox.Show("Unable to fully remove BakkesMod files due to opened files. Make sure all files and programs are closed before reinstalling", "BranksMod");
-                        return;
-                    }
+                    Directory.Delete(Path, true);
                     Install();
                 }
             }
@@ -1055,27 +1032,30 @@ namespace BranksMod
             }
         }
 
-        private void CrashLogBtn_Click(object sender, EventArgs e)
+        private void ExportBtn_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = "C:\\";
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+            if (FBD.ShowDialog() == DialogResult.OK)
             {
                 if (!Directory.Exists(Path.GetTempPath() + "branksmod"))
                 {
+                    Controller.WriteToLog(LogPath, Time + "(ExportBtn) Creating temp folder.");
                     Directory.CreateDirectory(Path.GetTempPath() + "branksmod");
+                    Controller.WriteToLog(LogPath, Time + "(ExportBtn) Folder Location: " + Path.GetTempPath());
                 }
-                List<string> FilesToExport = new List<string>();
 
+                List<string> FilesToExport = new List<string>();
                 string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath);
                 foreach (string File in Files)
                 {
                     if (File.IndexOf(".mdump") > 0 || File.IndexOf(".mdmp") > 0)
                     {
+                        Controller.WriteToLog(LogPath, Time + "(ExportBtn) Adding minidump files.");
                         FilesToExport.Add(File);
                     }
                 }
+
+                Controller.WriteToLog(LogPath, Time + "(ExportBtn) Adding log files.");
                 if (File.Exists(Properties.Settings.Default.FolderPath + "bakkesmod\\bakkesmod.log"))
                 {
                     FilesToExport.Add(Properties.Settings.Default.FolderPath + "bakkesmod\\bakkesmod.log");
@@ -1085,20 +1065,21 @@ namespace BranksMod
                     FilesToExport.Add(Path.GetTempPath() + "branksmod.log");
                 }
 
-                string tempFileName = "crash_export_" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
-                string tempDir = Path.GetTempPath() + "branksmod\\" + tempFileName;
-                Directory.CreateDirectory(tempDir);
-                Console.WriteLine(tempDir);
+                string TempName = "crash_logs_" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+                string TempDir = Path.GetTempPath() + "branksmod\\" + TempName;
+                Directory.CreateDirectory(TempDir);
                 FilesToExport.All((string x) =>
                 {
                     FileInfo fi = new FileInfo(x);
-                    File.Copy(x, tempDir + "\\" + fi.Name);
+                    File.Copy(x, TempDir + "\\" + fi.Name);
                     return true;
                 });
-
-                ZipFile.CreateFromDirectory(tempDir, tempDir + ".zip");
-                File.Move(tempDir + ".zip", dialog.FileName + "\\" + tempFileName + ".zip");
-                Directory.Delete(tempDir, true);
+                Controller.WriteToLog(LogPath, Time + "(ExportBtn) Creating zip file.");
+                ZipFile.CreateFromDirectory(TempDir, TempDir + ".zip");
+                File.Move(TempDir + ".zip", FBD.SelectedPath + "\\" + TempName + ".zip");
+                Controller.WriteToLog(LogPath, Time + "(ExportBtn) Deleting temp folder.");
+                Directory.Delete(TempDir, true);
+                MessageBox.Show("Successfully exported crash logs to: " + FBD.SelectedPath.ToString(), "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion
@@ -1109,9 +1090,6 @@ namespace BranksMod
         Boolean LogError = false;
         Boolean PickDirectory = false;
         string DirectoryPath;
-        string DirectoryEx;
-        string RegistryEx;
-        string LogEx;
 
         public void GetDirectory()
         {
@@ -1174,7 +1152,7 @@ namespace BranksMod
                 catch (Exception Ex)
                 {
                     DirectoryError = true;
-                    DirectoryEx = Ex.ToString();
+                    Controller.WriteToLog(LogPath, Time + "(RemoveDirectory) " + Ex.ToString());
                 }
             }
             RemoveLog();
@@ -1182,17 +1160,29 @@ namespace BranksMod
 
         public void RemoveLog()
         {
-            string LogPath = Path.GetTempPath() + "branksmod.log";
-            if (File.Exists(LogPath))
+            string BakkesLog = Path.GetTempPath() + "injectorlog.log";
+            string BranksLog = Path.GetTempPath() + "branksmod.log";
+            if (File.Exists(BakkesLog))
             {
                 try
                 {
-                    File.Delete(LogPath);
+                    File.Delete(BakkesLog);
                 }
                 catch (Exception Ex)
                 {
                     LogError = true;
-                    LogEx = Ex.ToString();
+                    Controller.WriteToLog(LogPath, Time + "(RemoveLog) " + Ex.ToString());
+                }
+            }
+            if (File.Exists(BranksLog))
+            {
+                try
+                {
+                    File.Delete(BranksLog);
+                }
+                catch (Exception Ex)
+                {
+                    Controller.WriteToLog(LogPath, Time + "(RemoveLog) " + Ex.ToString());
                 }
             }
             RemoveRegistry();
@@ -1208,7 +1198,7 @@ namespace BranksMod
             catch (Exception Ex)
             {
                 RegistryError = true;
-                RegistryEx = Ex.ToString();
+                Controller.WriteToLog(LogPath, Time + "(RemoveRegistry) " + Ex.ToString());
             }
             ConfirmUninstall();
         }
@@ -1289,6 +1279,11 @@ namespace BranksMod
             this.Show();
         }
 
+        float Lerp(float firstFloat, float secondFloat, float by)
+        {
+            return firstFloat * (1 - by) + secondFloat * by;
+        }
+
         private void TitleLbl_Click(object sender, EventArgs e)
         {
             if (TitleLbl.Top == 72)
@@ -1321,8 +1316,8 @@ namespace BranksMod
             #endregion
 
         #region "Theme Events"
-            public void CheckTheme()
-        {
+         public void CheckTheme()
+         {
             if (Properties.Settings.Default.Theme == "Light")
             {
                 ThemeBackground = Color.FromArgb(240, 240, 240);
@@ -1334,7 +1329,7 @@ namespace BranksMod
             else if (Properties.Settings.Default.Theme == "Night")
             {
                 ThemeBackground = Color.FromArgb(40, 40, 40);
-                ThemeHighlight = Color.FromArgb(55, 55, 55);
+                ThemeHighlight = Color.FromArgb(50, 50, 50);
                 ThemeFontColor = Color.FromArgb(250, 250, 250);
                 LoadNight();
                 Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(CheckTheme) Loaded Night Theme. ");
@@ -1389,11 +1384,13 @@ namespace BranksMod
             TimerBox.ForeColor = ThemeFontColor;
             UpdateBtn.BackColor = ThemeBackground;
             FolderBtn.BackColor = ThemeBackground;
+            ExportBtn.BackColor = ThemeBackground;
             ResetBtn.BackColor = ThemeBackground;
             ReinstallBtn.BackColor = ThemeBackground;
             UninstallBtn.BackColor = ThemeBackground;
             UpdateBtn.ForeColor = ThemeFontColor;
             FolderBtn.ForeColor = ThemeFontColor;
+            ExportBtn.ForeColor = ThemeFontColor;
             ResetBtn.ForeColor = ThemeFontColor;
             ReinstallBtn.ForeColor = ThemeFontColor;
             UninstallBtn.ForeColor = ThemeFontColor;
@@ -1401,6 +1398,8 @@ namespace BranksMod
             InjectorversionLbl.ForeColor = ThemeFontColor;
             ModversionLbl.ForeColor = ThemeFontColor;
             DevelopersLbl.ForeColor = ThemeFontColor;
+            CommunityLbl.ForeColor = ThemeFontColor;
+            HeartLbl.ForeColor = ThemeFontColor;
             Icons8Lbl.ForeColor = ThemeFontColor;
             DiscordLbl.ForeColor = ThemeFontColor;
         }
@@ -1431,6 +1430,7 @@ namespace BranksMod
             InjectorversionImg.BackgroundImage = Properties.Resources.Inject_Black;
             ModversionImg.BackgroundImage = Properties.Resources.Console_Black;
             DevelopersImg.BackgroundImage = Properties.Resources.Crown_Black;
+            CommunityImg.BackgroundImage = Properties.Resources.Github_Black;
             Icons8Img.BackgroundImage = Properties.Resources.Icons8_Black;
             HeartImg.BackgroundImage = Properties.Resources.Heart_Black;
         }
@@ -1461,6 +1461,7 @@ namespace BranksMod
             InjectorversionImg.BackgroundImage = Properties.Resources.Inject_White;
             ModversionImg.BackgroundImage = Properties.Resources.Console_White;
             DevelopersImg.BackgroundImage = Properties.Resources.Crown_White;
+            CommunityImg.BackgroundImage = Properties.Resources.Github_White;
             Icons8Img.BackgroundImage = Properties.Resources.Icons8_White;
             HeartImg.BackgroundImage = Properties.Resources.Heart_White;
         }
@@ -1517,7 +1518,6 @@ namespace BranksMod
         {
             ResetTabs();
             ControlTabs.SelectedTab = HomeTab;
-            //Lol this is the 1337th line
             HomeBtn.BackColor = ThemeHighlight;
             HomeTab.BackColor = ThemeHighlight;
             HomeImg.BackColor = ThemeHighlight;
@@ -1550,5 +1550,6 @@ namespace BranksMod
             AboutImg.BackColor = ThemeHighlight;
         }
         #endregion
+
     }
 }

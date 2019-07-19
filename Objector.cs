@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
     public enum Feedback
-{
+    {
         FILE_NOT_FOUND,
         PROCESS_NOT_FOUND,
         FAIL,

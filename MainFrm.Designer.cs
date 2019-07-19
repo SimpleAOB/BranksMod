@@ -48,7 +48,6 @@
             this.PluginsBtn = new System.Windows.Forms.Label();
             this.ControlTabs = new System.Windows.Forms.TabControl();
             this.HomeTab = new System.Windows.Forms.TabPage();
-            this.ChangelogBox = new System.Windows.Forms.RichTextBox();
             this.TitleLbl = new System.Windows.Forms.Label();
             this.InjectBtn = new System.Windows.Forms.PictureBox();
             this.StatusImg = new System.Windows.Forms.PictureBox();
@@ -110,6 +109,7 @@
             this.SettingsImg = new System.Windows.Forms.PictureBox();
             this.PluginsImg = new System.Windows.Forms.PictureBox();
             this.HomeImg = new System.Windows.Forms.PictureBox();
+            this.ChangelogBox = new System.Windows.Forms.RichTextBox();
             this.TrayMenuStrip.SuspendLayout();
             this.ControlTabs.SuspendLayout();
             this.HomeTab.SuspendLayout();
@@ -338,22 +338,6 @@
             this.HomeTab.TabIndex = 0;
             this.HomeTab.Text = "Home";
             this.HomeTab.UseVisualStyleBackColor = true;
-            // 
-            // ChangelogBox
-            // 
-            this.ChangelogBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.ChangelogBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ChangelogBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ChangelogBox.DetectUrls = false;
-            this.ChangelogBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangelogBox.ForeColor = System.Drawing.Color.Black;
-            this.ChangelogBox.Location = new System.Drawing.Point(12, 97);
-            this.ChangelogBox.Name = "ChangelogBox";
-            this.ChangelogBox.ReadOnly = true;
-            this.ChangelogBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.ChangelogBox.Size = new System.Drawing.Size(576, 220);
-            this.ChangelogBox.TabIndex = 20;
-            this.ChangelogBox.Text = "";
             // 
             // TitleLbl
             // 
@@ -1110,6 +1094,22 @@
             this.HomeImg.TabStop = false;
             this.HomeImg.Click += new System.EventHandler(this.HomeImg_Click);
             // 
+            // ChangelogBox
+            // 
+            this.ChangelogBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ChangelogBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChangelogBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ChangelogBox.DetectUrls = false;
+            this.ChangelogBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangelogBox.ForeColor = System.Drawing.Color.Black;
+            this.ChangelogBox.Location = new System.Drawing.Point(12, 97);
+            this.ChangelogBox.Name = "ChangelogBox";
+            this.ChangelogBox.ReadOnly = true;
+            this.ChangelogBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.ChangelogBox.Size = new System.Drawing.Size(576, 220);
+            this.ChangelogBox.TabIndex = 20;
+            this.ChangelogBox.Text = "";
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1249,11 +1249,11 @@
         private System.Windows.Forms.CheckBox BufferedBox;
         private System.Windows.Forms.PictureBox BufferedImg;
         private System.Windows.Forms.NumericUpDown TimerBox;
-        private System.Windows.Forms.RichTextBox ChangelogBox;
         private System.Windows.Forms.PictureBox HeartImg;
         private System.Windows.Forms.Label HeartLbl;
         private System.Windows.Forms.Label ExportBtn;
         private System.Windows.Forms.Label CommunityLbl;
         private System.Windows.Forms.PictureBox CommunityImg;
+        private System.Windows.Forms.RichTextBox ChangelogBox;
     }
 }

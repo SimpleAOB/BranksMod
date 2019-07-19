@@ -14,6 +14,7 @@ namespace BranksMod
 {
     public partial class MainFrm : Form
     {
+        string UpdaterURL = "http://149.210.150.107/updater/" + Properties.Settings.Default.ModVersion;
         string Time = DateTime.Now.ToString("[HH:mm:ss] ");
         string LogPath = Path.GetTempPath() + "branksmod.log";
         Color ThemeBackground = Color.FromArgb(240, 240, 240);
@@ -141,29 +142,41 @@ namespace BranksMod
             return Return;
         }
 
-        public static Boolean UpdateRequired()
+        public static Boolean UpdateRequired(string URL)
         {
             string Download = "";
-            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create("http://149.210.150.107/updater/" + Properties.Settings.Default.ModVersion);
+            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             StreamReader SR = new StreamReader(Response.GetResponseStream());
             Download = SR.ReadToEnd();
             SR.Close();
 
-            if (Download.Contains("true"))
+            if (Download.Contains("\"update_required\": true"))
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
-        public static Boolean LatestBuildID()
+        public static string DownloadURL(string URL)
         {
             string Download = "";
-            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create("http://149.210.150.107/updater/" + Properties.Settings.Default.ModVersion);
+            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
+            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+            StreamReader SR = new StreamReader(Response.GetResponseStream());
+            Download = SR.ReadToEnd();
+            SR.Close();
+
+            Download = Download.Substring(Download.IndexOf("\"download_url\": \"") + 17);
+            Download = Download.Substring(0, Download.IndexOf("\""));
+
+            return Download;
+        }
+
+        public static Boolean LatestBuild(string URL)
+        {
+            string Download = "";
+            HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(URL);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             StreamReader SR = new StreamReader(Response.GetResponseStream());
             Download = SR.ReadToEnd();
@@ -173,10 +186,7 @@ namespace BranksMod
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public void CheckUpdaterFile()
@@ -225,6 +235,7 @@ namespace BranksMod
                 {
                     Controller.WriteToLog(LogPath, Time + "(CheckInstall) Successfully located the BakkesMod folder.");
                     LoadVersions();
+                    CheckAutoUpdates();
                     CheckWarnings();
                 }
             }
@@ -233,8 +244,7 @@ namespace BranksMod
         public void Install()
         {
             string Path = Properties.Settings.Default.FolderPath;
-            string Version = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
-            string URL = "http://149.210.150.107/static/versions/bakkesmod_" + Version + ".zip";
+            string URL = DownloadURL(UpdaterURL);
 
             if (!Directory.Exists(Path + "\\bakkesmod"))
             {
@@ -276,7 +286,7 @@ namespace BranksMod
             }
         }
 
-        public void CheckForUpdates()
+        public void CheckForUpdates(Boolean DisplayResult)
         {
             if (Properties.Settings.Default.OfflineMode == false)
             {
@@ -288,6 +298,25 @@ namespace BranksMod
                 if (Properties.Settings.Default.InjectorVersion == InjectorVersion)
                 {
                     Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Version Match, No Injector Update Found.");
+                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Checking BakkesMod Version.");
+                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Current BakkesMod Version: " + Properties.Settings.Default.ModVersion);
+                    if (UpdateRequired(UpdaterURL) == false)
+                    {
+                        Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) No BakkesMod Update Detected. ");
+                        if (DisplayResult == true)
+                        {
+                            MessageBox.Show("No BranksMod or BakkesMod updates were detected.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) BakkesMod Update Found. ");
+                        DialogResult Result = MessageBox.Show("A new version of BakkesMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (Result == DialogResult.Yes)
+                        {
+                            InstallUpdate();
+                        }
+                    }
                 }
                 else
                 {
@@ -296,22 +325,6 @@ namespace BranksMod
                     if (Result == DialogResult.Yes)
                     {
                         InstallInjector();
-                    }
-                }
-
-                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Checking BakkesMod Version.");
-                Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) Current BakkesMod Version: " + Properties.Settings.Default.ModVersion);
-                if (UpdateRequired() == false)
-                {
-                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) No BakkesMod Update Detected. ");
-                }
-                else
-                {
-                    Controller.WriteToLog(LogPath, Time + "(CheckForUpdates) BakkesMod Update Found. ");
-                    DialogResult Result = MessageBox.Show("A new version of BakkesMod was detected, would you like to download it?", "BranksMod", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (Result == DialogResult.Yes)
-                    {
-                        InstallUpdate();
                     }
                 }
             }
@@ -343,8 +356,7 @@ namespace BranksMod
 
         public void InstallUpdate()
         {
-            string Version = HttpDownloader("https://pastebin.com/raw/BzZiKdZh", "(\"([^ \"]|\"\")*\")", "ModVersion");
-            string URL = "http://149.210.150.107/static/versions/bakkesmod_" + Version + ".zip";
+            string URL = DownloadURL(UpdaterURL);
 
             using (WebClient Client = new WebClient())
             {
@@ -402,6 +414,7 @@ namespace BranksMod
                 Controller.WriteToLog(LogPath, Time + "(InstallUpdate) Failed to Remove Archive.");
                 MessageBox.Show("Failed to remove bakkesmod.zip, try running as administrator if you haven't arlready.", "BranksMod", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            LoadVersions();
             StatusLbl.Text = "Uninjected, waiting for user to start Rocket League.";
         }
         #endregion
@@ -509,7 +522,7 @@ namespace BranksMod
             {
                 if (Properties.Settings.Default.AutoUpdate == true)
                 {
-                    CheckForUpdates();
+                    CheckForUpdates(false);
                 }
             }
         }
@@ -562,7 +575,7 @@ namespace BranksMod
             {
                 Controller.WriteToLog(LogPath, Time + "(CheckRL) Checking Build ID.");
                 Controller.WriteToLog(LogPath, Time + "(CheckRL) Current Build ID: " + Properties.Settings.Default.RLVersion);
-                if (LatestBuildID() == false)
+                if (LatestBuild(UpdaterURL) == false)
                 {
                     if (Properties.Settings.Default.RLVersion == null)
                     {
@@ -593,7 +606,6 @@ namespace BranksMod
             RocketversionLbl.Text = "Rocket League Build: " + Properties.Settings.Default.RLVersion;
             InjectorversionLbl.Text = "Injector Version: " + Properties.Settings.Default.InjectorVersion;
             ModversionLbl.Text = "Mod Version: " + Properties.Settings.Default.ModVersion;
-            CheckAutoUpdates();
         }
 
         public void LoadChangelog()
@@ -986,7 +998,7 @@ namespace BranksMod
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            CheckForUpdates();
+            CheckForUpdates(true);
         }
 
         private void FolderBtn_Click(object sender, EventArgs e)
@@ -1328,9 +1340,9 @@ namespace BranksMod
             }
             else if (Properties.Settings.Default.Theme == "Night")
             {
-                ThemeBackground = Color.FromArgb(40, 40, 40);
-                ThemeHighlight = Color.FromArgb(50, 50, 50);
-                ThemeFontColor = Color.FromArgb(250, 250, 250);
+                ThemeBackground = Color.FromArgb(41, 42, 45);
+                ThemeHighlight = Color.FromArgb(50, 54, 57);
+                ThemeFontColor = Color.FromArgb(225, 225, 225);
                 LoadNight();
                 Controller.WriteToLog(Properties.Settings.Default.FolderPath, Time + "(CheckTheme) Loaded Night Theme. ");
             }

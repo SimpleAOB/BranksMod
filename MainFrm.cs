@@ -1069,11 +1069,15 @@ namespace BranksMod
                 List<string> FilesToExport = new List<string>();
 
                 string[] Files = Directory.GetFiles(Properties.Settings.Default.FolderPath);
-                foreach (string File in Files)
+                foreach (string FilePath in Files)
                 {
-                    if (File.IndexOf(".mdump") > 0 || File.IndexOf(".mdmp") > 0)
+                    if (FilePath.IndexOf(".mdump") > 0 || FilePath.IndexOf(".mdmp") > 0)
                     {
-                        FilesToExport.Add(File);
+                        DateTime dateTimeCreated = File.GetCreationTime(FilePath);
+                        if (dateTimeCreated > DateTime.Today.AddDays(-7))
+                        {
+                            FilesToExport.Add(FilePath);
+                        }
                     }
                 }
                 if (File.Exists(Properties.Settings.Default.FolderPath + "bakkesmod\\bakkesmod.log"))
@@ -1083,6 +1087,35 @@ namespace BranksMod
                 if (File.Exists(Path.GetTempPath() + "branksmod.log"))
                 {
                     FilesToExport.Add(Path.GetTempPath() + "branksmod.log");
+                }
+
+                string Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                if (Directory.Exists(Documents + @"\my games\Rocket League\TAGame\Logs"))
+                {
+                    string[] rlFiles = Directory.GetFiles(Documents + @"\my games\Rocket League\TAGame\Logs");
+                    foreach (string FilePath in rlFiles)
+                    {
+                        DateTime dateTimeCreated = File.GetCreationTime(FilePath);
+                        if (dateTimeCreated > DateTime.Today.AddDays(-7))
+                        {
+                            FilesToExport.Add(FilePath);
+                        }
+                    }
+                }
+
+                string AppDataLocal = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                if (Directory.Exists(AppDataLocal + @"\CrashDumps"))
+                {
+                    string[] rlCrashFiles = Directory.GetFiles(AppDataLocal + @"\CrashDumps");
+                    foreach (string FilePath in rlCrashFiles)
+                    {
+                        string fileName = FilePath.Substring(FilePath.LastIndexOf("\\")+1);
+                        DateTime dateTimeCreated = File.GetCreationTime(FilePath);
+                        if (fileName.StartsWith("RocketLeague") && dateTimeCreated > DateTime.Today.AddDays(-7))
+                        {
+                            FilesToExport.Add(FilePath);
+                        }
+                    }
                 }
 
                 string tempFileName = "crash_export_" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
@@ -1099,6 +1132,9 @@ namespace BranksMod
                 ZipFile.CreateFromDirectory(tempDir, tempDir + ".zip");
                 File.Move(tempDir + ".zip", dialog.FileName + "\\" + tempFileName + ".zip");
                 Directory.Delete(tempDir, true);
+
+                MessageBox.Show("Crash log export finished!");
+                Process.Start("explorer.exe", "/select,\""+dialog.FileName + "\\" + tempFileName + ".zip" + "\"");
             }
         }
         #endregion
